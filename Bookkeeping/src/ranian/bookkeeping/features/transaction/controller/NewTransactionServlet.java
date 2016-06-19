@@ -44,22 +44,22 @@ public class NewTransactionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		AuthenFacadeMock authenFacadeMock = new AuthenFacadeMock();
-		ITransactionFacade transactionFacade = new TransactionFacadeImpl();
-		
-		Transaction transaction = new Transaction();
-		transaction.setTransAmount(100.0f);
-		transaction.setToAccId(1);
-		transaction.setTransType(1);
-		transaction.setTransCategory(1);
-		transaction.setTransRecordTime(new Timestamp(new Date().getTime()));
-		
-		User user = authenFacadeMock.createNewTestUser();
-		Boolean isSuccess = transactionFacade.createTransaction(user, transaction);
-		
-		System.out.println("post hit");
-		response.getWriter().append("Served at: ").append(request.getContextPath())
-							.append("\nTransaction created: ").append(isSuccess.toString());
+//		AuthenFacadeMock authenFacadeMock = new AuthenFacadeMock();
+//		ITransactionFacade transactionFacade = new TransactionFacadeImpl();
+//		
+//		Transaction transaction = new Transaction();
+//		transaction.setTransAmount(100.0f);
+//		transaction.setToAccId(1);
+//		transaction.setTransType(1);
+//		transaction.setTransCategory(1);
+//		transaction.setTransRecordTime(new Timestamp(new Date().getTime()));
+//		
+//		User user = authenFacadeMock.createNewTestUser();
+//		Boolean isSuccess = transactionFacade.createTransaction(user, transaction);
+//		
+//		System.out.println("post hit");
+//		response.getWriter().append("Served at: ").append(request.getContextPath())
+//							.append("\nTransaction created: ").append(isSuccess.toString());
 
 	}
 

@@ -32,7 +32,24 @@ public class Transaction {
 	private Timestamp transRecordTime;
 	
 	private Boolean delTransRecord;
-
+	
+	public Transaction(Integer recordId ,Float amount, Integer type, Integer toAcc, 
+			Integer fromAcc, Integer category, String note, Timestamp time) {
+		this(amount, type, toAcc, fromAcc, category, note, time);
+		this.transRecordId = recordId;
+	}
+	
+	public Transaction(Float amount, Integer type, Integer toAcc, 
+			Integer fromAcc, Integer category, String note, Timestamp time) {
+		this.transAmount = amount;
+		this.transType = type;
+		this.toAccId = toAcc;
+		this.fromAccId = fromAcc;
+		this.transCategory = category;
+		this.transNote = note;
+		this.transRecordTime = time;
+	}
+	
 	public Integer getTransRecordId() {
 		return transRecordId;
 	}

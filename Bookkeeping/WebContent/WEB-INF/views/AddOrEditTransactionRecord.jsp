@@ -20,7 +20,7 @@ Each operation deals with 3 types of transaction: income, expense, account trans
 	<input type="text" name="transAmount" />
 	
 	<!-- Indicates type of transaction, such as income, expense, account transfer. -->
-	<span></span>
+	<input type="text" name="transType" readonly />
 	
 	<!-- Income or transfer to certain account. -->
 	<select name="toAcc">
