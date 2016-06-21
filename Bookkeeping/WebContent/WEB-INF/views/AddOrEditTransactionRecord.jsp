@@ -22,6 +22,9 @@ Each operation deals with 3 types of transaction: income, expense, account trans
 	<!-- Indicates type of transaction, such as income, expense, account transfer. -->
 	<input type="text" name="transType" readonly />
 	
+	<!-- Indicates category of transaction -->
+	<input type="text" name="transCategory" />
+	
 	<!-- Income or transfer to certain account. -->
 	<select name="toAcc">
 	</select>

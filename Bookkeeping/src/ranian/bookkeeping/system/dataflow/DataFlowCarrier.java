@@ -27,22 +27,26 @@ public class DataFlowCarrier {
 		
 		public AddOrEditTransRecordData(HttpServletRequest request) {
 			
-			Map<String, String[]> paramsMap = request.getParameterMap();
-			
-			Integer transId = Integer.valueOf(paramsMap.get("transRecordId")[0]);
-			Float transAmount = Float.valueOf(paramsMap.get("transAmount")[0]);
-			Integer transTypeId = Integer.valueOf(paramsMap.get("transType")[0]);
-			Integer toAccId = Integer.valueOf(paramsMap.get("toAcc")[0]);
-			Integer fromAccId = Integer.valueOf(paramsMap.get("fromAcc")[0]);
-			Timestamp transDate = new Timestamp(Long.valueOf(paramsMap.get("transDate")[0]));
-			String transNote = paramsMap.get("transNote")[0];
+			Integer transId = request.getParameter("transRecordId").isEmpty() ? 
+					null : Integer.valueOf(request.getParameter("transRecordId"));
+			Float transAmount = Float.valueOf(request.getParameter("transAmount"));
+			Integer transTypeId = Integer.valueOf(request.getParameter("transType"));
+			Integer categoryId = Integer.valueOf(request.getParameter("transCategory"));
+			Integer toAccId = request.getParameter("toAcc") == null ? 
+					null : Integer.valueOf(request.getParameter("toAcc"));
+			Integer fromAccId = request.getParameter("fromAcc") == null ?
+					null : Integer.valueOf(request.getParameter("fromAcc"));
+			Timestamp transDate = new Timestamp(Long.valueOf(request.getParameter("transDate")));
+			String transNote = request.getParameter("transNote");
 			/*
 			 * TODO validate form data here
 			 */
+			if( transId == null ) {
+				transRecordToAdd = new Transaction(transAmount, transTypeId, toAccId, fromAccId, categoryId, transNote, transDate);
+			} else {
+				transRecordToEdit = new Transaction(transId, transAmount, transTypeId, toAccId, fromAccId, categoryId, transNote, transDate);
+			}
 			
-			/*
-			 * construct and assign object here
-			 */
 		}
 
 		public Transaction getTransRecordToAdd() {
