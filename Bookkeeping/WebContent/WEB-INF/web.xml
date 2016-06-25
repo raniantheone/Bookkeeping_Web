@@ -9,14 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  	<servlet-name>NewTransTest</servlet-name>
-  	<servlet-class>tw.ranian.bookkeeping.transaction.controller.NewTransactionServlet</servlet-class>
+    <servlet-name>NewTransTest</servlet-name>
+    <servlet-class>tw.ranian.bookkeeping.transaction.controller.NewTransactionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>NewTransTest</servlet-name>
-  	<url-pattern>/newTransTest</url-pattern>
+    <servlet-name>NewTransTest</servlet-name>
+    <url-pattern>/newTransTest</url-pattern>
   </servlet-mapping>
-  
 </web-app>

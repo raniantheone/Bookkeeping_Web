@@ -15,6 +15,8 @@ import ranian.bookkeeping.system.authentication.model.User;
  */
 public class DataFlowCarrier {
 	
+	// Use these inner classes to retrieve and contain front-end input for further use by servlets
+	
 	public class AddOrEditTransRecordData {
 		
 		static final String PATH = "";
@@ -47,6 +49,7 @@ public class DataFlowCarrier {
 				transRecordToEdit = new Transaction(transId, transAmount, transTypeId, toAccId, fromAccId, categoryId, transNote, transDate);
 			}
 			
+			this.user = (User) request.getSession().getAttribute("USER");
 		}
 
 		public Transaction getTransRecordToAdd() {
@@ -63,7 +66,15 @@ public class DataFlowCarrier {
 		
 	}
 	
+	public class SetupFormData {
+		
+		static final String PATH = "";
+		
+	}
+	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
+	
+	public SetupFormData setupFormData;
 	
 	private Map<String, Object> flowResults;
 	
