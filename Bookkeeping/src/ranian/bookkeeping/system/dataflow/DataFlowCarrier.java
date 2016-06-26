@@ -27,8 +27,6 @@ public class DataFlowCarrier {
 		
 		private Transaction transRecordToEdit;
 		
-		private User user;
-		
 		public AddOrEditTransRecordData(HttpServletRequest request) {
 			
 			Integer transId = request.getParameter("transRecordId").isEmpty() ? 
@@ -51,7 +49,6 @@ public class DataFlowCarrier {
 				transRecordToEdit = new Transaction(transId, transAmount, transTypeId, toAccId, fromAccId, categoryId, transNote, transDate);
 			}
 			
-			this.user = (User) request.getSession().getAttribute("USER");
 		}
 
 		public Transaction getTransRecordToAdd() {
@@ -61,23 +58,19 @@ public class DataFlowCarrier {
 		public Transaction getTransRecordToEdit() {
 			return transRecordToEdit;
 		}
-
-		public User getUser() {
-			return user;
-		}
 		
 	}
 	
-	public class SetupFormData {
+	public class QueryFormData {
 		
 		static final String PATH = "test02"; // TODO not decided yet
 		
 		private Integer transType;
 		
-		// TODO implement this when working on form data for editing
+		// TODO implement this when working on editing/deleting transaction record in query form row
 		// private Integer transId;
 		
-		public SetupFormData(HttpServletRequest request) {
+		public QueryFormData(HttpServletRequest request) {
 			
 			this.transType = Integer.valueOf(request.getParameter("transType"));
 			
@@ -91,7 +84,9 @@ public class DataFlowCarrier {
 	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
 	
-	public SetupFormData setupFormData;
+	public QueryFormData queryFormData;
+	
+	private User user;
 	
 	private Map<String, Object> flowResults;
 	
@@ -108,12 +103,13 @@ public class DataFlowCarrier {
 				this.addOrEditTransRecordData = new AddOrEditTransRecordData(request);
 				break;
 				
-			case SetupFormData.PATH:
-				this.setupFormData = new SetupFormData(request);
+			case QueryFormData.PATH:
+				this.queryFormData = new QueryFormData(request);
 				break;
 				
 		}
 		
+		this.user = (User) request.getSession().getAttribute(User.SESSION_ATTR_NAME);
 	}
 	
 	public Map<String, Object> getFlowResults() {
@@ -122,6 +118,10 @@ public class DataFlowCarrier {
 
 	public void setFlowResults(Map<String, Object> flowResults) {
 		this.flowResults = flowResults;
+	}
+
+	public User getUser() {
+		return user;
 	}
 	
 }

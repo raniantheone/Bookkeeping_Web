@@ -1,23 +1,18 @@
 package ranian.bookkeeping.system.authentication.facade.mock;
 
+import ranian.bookkeeping.system.authentication.facade.IAuthenticationFacade;
 import ranian.bookkeeping.system.authentication.model.User;
 
-public class AuthenFacadeMock {
-	
-	private User user;
+public class AuthenFacadeMock implements IAuthenticationFacade{
+
 	
 	public AuthenFacadeMock() {
-	};
-	
-	public User createNewTestUser() {
-		
-		user = new User();
-		user.setLoginAcc("Default Tester");
-		user.setLoginAcc("Should be a hashed string");
-		user.setUserMail("test@test.any.tw");
-		user.setUserName("Yo Dummy");
-		
-		return user;
 	}
+
+	@Override
+	public User validateUser(String userLoginAcc, String userLoginPw) {
+		// TODO Auto-generated method stub
+		return null;
+	};
 	
 }

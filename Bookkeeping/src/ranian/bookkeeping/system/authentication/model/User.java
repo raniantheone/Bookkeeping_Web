@@ -2,6 +2,8 @@ package ranian.bookkeeping.system.authentication.model;
 
 public class User {
 	
+	public static final String SESSION_ATTR_NAME = "currentUser";
+	
 	/**
 	 * Unique identifier of the user
 	 */
