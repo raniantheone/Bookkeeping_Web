@@ -15,11 +15,13 @@ import ranian.bookkeeping.system.authentication.model.User;
  */
 public class DataFlowCarrier {
 	
+	public static final String SESSION_ATTR_NAME = "DataFlowCarrier"; 
+	
 	// Use these inner classes to retrieve and contain front-end input for further use by servlets
 	
 	public class AddOrEditTransRecordData {
 		
-		static final String PATH = "";
+		static final String PATH = "test01"; // TODO not decided yet
 		
 		private Transaction transRecordToAdd;
 		
@@ -68,7 +70,22 @@ public class DataFlowCarrier {
 	
 	public class SetupFormData {
 		
-		static final String PATH = "";
+		static final String PATH = "test02"; // TODO not decided yet
+		
+		private Integer transType;
+		
+		// TODO implement this when working on form data for editing
+		// private Integer transId;
+		
+		public SetupFormData(HttpServletRequest request) {
+			
+			this.transType = Integer.valueOf(request.getParameter("transType"));
+			
+		}
+
+		public Integer getTransType() {
+			return transType;
+		}
 		
 	}
 	
@@ -89,6 +106,10 @@ public class DataFlowCarrier {
 			
 			case AddOrEditTransRecordData.PATH:
 				this.addOrEditTransRecordData = new AddOrEditTransRecordData(request);
+				break;
+				
+			case SetupFormData.PATH:
+				this.setupFormData = new SetupFormData(request);
 				break;
 				
 		}
