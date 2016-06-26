@@ -1,8 +1,8 @@
-package ranian.bookkeeping.system.persistence.transaction.dao.impl;
+package ranian.bookkeeping.system.persistence.tables.transaction.dao.impl;
 
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
-import ranian.bookkeeping.system.persistence.transaction.dao.ITransactionRecordDAO;
+import ranian.bookkeeping.system.persistence.tables.transaction.dao.ITransactionRecordDAO;
 
 public class TransactionRecordDAO implements ITransactionRecordDAO {
 

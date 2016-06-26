@@ -1,4 +1,4 @@
-package ranian.bookkeeping.system.persistence.transaction.vo;
+package ranian.bookkeeping.system.persistence.tables.transaction.vo;
 
 import java.sql.Timestamp;
 

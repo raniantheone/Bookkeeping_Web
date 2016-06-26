@@ -1,4 +1,4 @@
-package ranian.bookkeeping.system.persistence.transaction.dao;
+package ranian.bookkeeping.system.persistence.tables.transaction.dao;
 
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
