@@ -1,16 +1,19 @@
 package ranian.bookkeeping.system.persistence.tables.transaction.dao;
 
+import java.util.List;
+
+import ranian.bookkeeping.features.transaction.model.Criteria;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
 
 public interface ITransactionRecordDAO {
 
-	public Boolean insertATransactionRecord(User usr, Transaction trans);
+	public Boolean insertTransactionRecord(User usr, Transaction trans);
 	
-	public Boolean updateATransactionRecord();
+	public Boolean updateTransactionRecord();
 	
-	public Integer retrieveAllTransactionRecord();
+	public List<Transaction> retrieveAllTransactionRecordsByUser(Integer userId);
 	
-	public Integer searchTransactionRecord();
+	public List<Transaction> searchTransactionRecord(Criteria criteria);
 	
 }

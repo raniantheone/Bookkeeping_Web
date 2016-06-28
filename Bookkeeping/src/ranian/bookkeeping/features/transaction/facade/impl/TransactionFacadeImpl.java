@@ -6,6 +6,8 @@ import ranian.bookkeeping.features.transaction.facade.ITransactionFacade;
 import ranian.bookkeeping.features.transaction.model.Criteria;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
+import ranian.bookkeeping.system.persistence.tables.transaction.dao.ITransactionRecordDAO;
+import ranian.bookkeeping.system.persistence.tables.transaction.dao.impl.TransactionRecordDAO;
 
 public class TransactionFacadeImpl implements ITransactionFacade {
 	
@@ -31,7 +33,10 @@ public class TransactionFacadeImpl implements ITransactionFacade {
 
 	@Override
 	public List<Transaction> retrieveAllTransactions(User usr) {
-		// TODO Auto-generated method stub
+		
+		ITransactionRecordDAO transactionDao = new TransactionRecordDAO();
+		transactionDao.retrieveAllTransactionRecordsByUser(usr.getUserId());
+		
 		return null;
 	}
 
