@@ -17,7 +17,7 @@ public class User {
 	/**
 	 * Login password of this user, case sensitive, hashed
 	 */
-	private String lgoinPw;
+	private String loginPw;
 	
 	/**
 	 * Display name of the user
@@ -29,44 +29,40 @@ public class User {
 	 */
 	private String userMail;
 
-	public Integer getUserId() {
-		return userId;
+	public User(String loginAcc, String loginPw, String userName, String userMail) {
+		this.loginAcc = loginAcc;
+		this.loginPw = loginPw;
+		this.userName = userName;
+		this.userMail = userMail;
+	}
+	
+	public User(Integer userId, String loginAcc, String loginPw, String userName, String userMail) {
+		this(loginAcc, loginPw, userName, userMail);
+		this.userId = userId;
 	}
 
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public static String getSessionAttrName() {
+		return SESSION_ATTR_NAME;
+	}
+
+	public Integer getUserId() {
+		return userId;
 	}
 
 	public String getLoginAcc() {
 		return loginAcc;
 	}
 
-	public void setLoginAcc(String loginAcc) {
-		this.loginAcc = loginAcc;
-	}
-
-	public String getLgoinPw() {
-		return lgoinPw;
-	}
-
-	public void setLgoinPw(String lgoinPw) {
-		this.lgoinPw = lgoinPw;
+	public String getLoginPw() {
+		return loginPw;
 	}
 
 	public String getUserName() {
 		return userName;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
 	public String getUserMail() {
 		return userMail;
-	}
-
-	public void setUserMail(String userMail) {
-		this.userMail = userMail;
 	}
 	
 }

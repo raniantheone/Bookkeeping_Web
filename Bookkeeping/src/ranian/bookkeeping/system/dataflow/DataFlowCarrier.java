@@ -61,30 +61,7 @@ public class DataFlowCarrier {
 		
 	}
 	
-	public class QueryFormData {
-		
-		static final String PATH = "test02"; // TODO not decided yet
-		
-		private Integer transType;
-		
-		// TODO implement this when working on editing/deleting transaction record in query form row
-		// private Integer transId;
-		
-		public QueryFormData(HttpServletRequest request) {
-			
-			this.transType = Integer.valueOf(request.getParameter("transType"));
-			
-		}
-
-		public Integer getTransType() {
-			return transType;
-		}
-		
-	}
-	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
-	
-	public QueryFormData queryFormData;
 	
 	private User user;
 	
@@ -101,10 +78,6 @@ public class DataFlowCarrier {
 			
 			case AddOrEditTransRecordData.PATH:
 				this.addOrEditTransRecordData = new AddOrEditTransRecordData(request);
-				break;
-				
-			case QueryFormData.PATH:
-				this.queryFormData = new QueryFormData(request);
 				break;
 				
 		}
