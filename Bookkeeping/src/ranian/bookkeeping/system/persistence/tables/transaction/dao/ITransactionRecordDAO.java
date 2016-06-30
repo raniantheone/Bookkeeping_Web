@@ -5,6 +5,7 @@ import java.util.List;
 import ranian.bookkeeping.features.transaction.model.Criteria;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
+import ranian.bookkeeping.system.persistence.tables.transaction.vo.TransactionRecordVO;
 
 public interface ITransactionRecordDAO {
 
@@ -12,8 +13,8 @@ public interface ITransactionRecordDAO {
 	
 	public Boolean updateTransactionRecord();
 	
-	public List<Transaction> retrieveAllTransactionRecordsByUser(Integer userId);
+	public List<TransactionRecordVO> retrieveAllTransactionRecordsByUser(Integer userId);
 	
-	public List<Transaction> searchTransactionRecord(Criteria criteria);
+	public List<TransactionRecordVO> searchTransactionRecord(Criteria criteria);
 	
 }

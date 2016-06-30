@@ -4,18 +4,6 @@ import java.sql.Timestamp;
 
 public class TransactionRecordVO {
 
-	/*
-	| RECORD_ID   | int(10) unsigned | NO   | PRI | NULL    | auto_increment |
-	| AMOUNT      | decimal(11,2)    | NO   |     | NULL    |                |
-	| TYPE_ID     | int(10) unsigned | NO   | MUL | NULL    |                |
-	| TO_ACC_ID   | int(10) unsigned | YES  | MUL | NULL    |                |
-	| FROM_ACC_ID | int(10) unsigned | YES  | MUL | NULL    |                |
-	| CATEGORY_ID | int(10) unsigned | NO   | MUL | NULL    |                |
-	| NOTE        | varchar(512)     | YES  |     | NULL    |                |
-	| RECORD_TIME | datetime         | NO   |     | NULL    |                |
-	| RECORD_DEL  | tinyint(1)       | YES  |     | NULL    |                |
-	 */
-	
 	private Integer recordId;
 	
 	private Float amount;
@@ -32,7 +20,9 @@ public class TransactionRecordVO {
 	
 	private Timestamp recordTime;
 	
-	private Integer recordDel;
+	private Boolean recordDel;
+	
+	private Integer userId;
 
 	public Integer getRecordId() {
 		return recordId;
@@ -98,12 +88,20 @@ public class TransactionRecordVO {
 		this.recordTime = recordTime;
 	}
 
-	public Integer getRecordDel() {
+	public Boolean getRecordDel() {
 		return recordDel;
 	}
 
-	public void setRecordDel(Integer recordDel) {
+	public void setRecordDel(Boolean recordDel) {
 		this.recordDel = recordDel;
+	}
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 	
 }

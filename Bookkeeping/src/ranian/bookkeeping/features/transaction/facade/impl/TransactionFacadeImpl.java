@@ -1,5 +1,6 @@
 package ranian.bookkeeping.features.transaction.facade.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ranian.bookkeeping.features.transaction.facade.ITransactionFacade;
@@ -8,6 +9,7 @@ import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
 import ranian.bookkeeping.system.persistence.tables.transaction.dao.ITransactionRecordDAO;
 import ranian.bookkeeping.system.persistence.tables.transaction.dao.impl.TransactionRecordDAO;
+import ranian.bookkeeping.system.persistence.tables.transaction.vo.TransactionRecordVO;
 
 public class TransactionFacadeImpl implements ITransactionFacade {
 	
@@ -35,9 +37,22 @@ public class TransactionFacadeImpl implements ITransactionFacade {
 	public List<Transaction> retrieveAllTransactions(User usr) {
 		
 		ITransactionRecordDAO transactionDao = new TransactionRecordDAO();
-		transactionDao.retrieveAllTransactionRecordsByUser(usr.getUserId());
+		List<TransactionRecordVO> transactionVOs = transactionDao.retrieveAllTransactionRecordsByUser(usr.getUserId());
 		
-		return null;
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		for(TransactionRecordVO transVo : transactionVOs) {
+			Transaction transaction = new Transaction(transVo.getRecordId(), 
+					transVo.getAmount(), 
+					transVo.getTypeId(),
+					transVo.getToAcc(), 
+					transVo.getFromAcc(),
+					transVo.getCategoryId(),
+					transVo.getNote(),
+					transVo.getRecordTime());
+			transactions.add(transaction);
+		}
+		
+		return transactions;
 	}
 
 	@Override
