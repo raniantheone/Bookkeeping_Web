@@ -9,12 +9,49 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+<!-- Filters begin -->
+
+	<filter>
+		<filter-name>requestEncodingFilter</filter-name>
+		<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>requestEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<filter>
+		<filter-name>authenticationFilter</filter-name>
+		<filter-class>ranian.bookkeeping.system.authentication.AuthenticationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>authenticationFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>dataFlowFitler</filter-name>
+		<filter-class>ranian.bookkeeping.system.dataflow.DataFlowFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>dataFlowFitler</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+<!-- Filters end -->
+  
   <servlet>
-    <servlet-name>NewTransTest</servlet-name>
-    <servlet-class>tw.ranian.bookkeeping.transaction.controller.NewTransactionServlet</servlet-class>
+  	<servlet-name>queryTransServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.transaction.controller.QueryTransactionServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>NewTransTest</servlet-name>
-    <url-pattern>/newTransTest</url-pattern>
+  	<servlet-name>queryTransServlet</servlet-name>
+  	<url-pattern>/queryTransactionRecords</url-pattern>
   </servlet-mapping>
+  
 </web-app>

@@ -40,7 +40,7 @@ public class QueryTransactionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		doPost(request, response);
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class QueryTransactionServlet extends HttpServlet {
 		dataFlowResults.put("transactions", transactions);
 		dataFlowCarrier.setFlowResults(dataFlowResults);
 		
-		RequestDispatcher reqDispatcher = request.getRequestDispatcher(""); // TODO set view page here
+		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/QueryTransactionRecord.jsp");
 		reqDispatcher.forward(request, response);
 		
 	}

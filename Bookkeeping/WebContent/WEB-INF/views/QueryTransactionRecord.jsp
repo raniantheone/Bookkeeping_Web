@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:set var="transTypeOpts" scope="page" value="${ sessionScope.DataFlowCarrier.flowResults.transactionTypes }" />
+<c:set var="transactionRecords" scope="page" value="${ sessionScope.DataFlowCarrier.flowResults.transactions }" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,6 +15,9 @@
 <form action="">
 
 	<select name="transType">
+		<c:forEach var="transOpt" items="${ transTypeOpts }" >
+			<option value="${ transOpt.key }">${ transOpt.value }</option>
+		</c:forEach>
 	</select>
 	
 	<input type="submit" value="Add Transaction Record" />
@@ -20,18 +26,41 @@
 
 <table>
 	<tr>
-		<th></th>
+		<th>Record Time</th>
+		<th>Type</th>
+		<th>Amount</th>
+		<th>Category</th>
+		<th>From Account</th>
+		<th>To Account</th>
+		<th>Note</th>
 	</tr>
-	<tr>
-		<td>
-			<!-- Trigger the operation to edit this record. -->
-			<form action=""></form>
-		</td>
-		<td>
-			<!-- Trigger the operation to delete this record. -->
-			<form action=""></form>
-		</td>
-	</tr>
+	<c:forEach var="transactionRecord" items="${ transactionRecords }">
+		<tr>
+			<td>${ transactionRecord.transRecordTime }</td>
+			<td>${ transactionRecord.transType }</td>
+			<td>${ transactionRecord.transAmount }</td>
+			<td>${ transactionRecord.transCategory }</td>
+			<td>${ transactionRecord.transCategory }</td>
+			<td>${ transactionRecord.fromAccId }</td>
+			<td>${ transactionRecord.toAccId }</td>
+			<td>${ transactionRecord.transNote }</td>
+			<td>
+				<!-- Trigger the operation to edit this record. -->
+				<form action="">
+					<input type="hidden" value="${ transactionRecord.transRecordId }" />
+					<input type="submit" value="Edit" />
+				</form>
+			</td>
+			<td>
+				<!-- Trigger the operation to delete this record. -->
+				<form action="">
+					<input type="hidden" value="${ transactionRecord.transRecordId }" />
+					<input type="submit" value="Delete" />
+				</form>
+			</td>
+		</tr>
+	</c:forEach>
+	
 </table>
 
 </body>
