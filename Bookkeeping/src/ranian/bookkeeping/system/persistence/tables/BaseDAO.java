@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import ranian.bookkeeping.system.persistence.connection.IConnectionUtil;
+import ranian.bookkeeping.system.persistence.connection.impl.DatasourceConnectionUtil;
 import ranian.bookkeeping.system.persistence.connection.impl.PooledConnectionUtil;
 
 public class BaseDAO {
 	
 	
-	public PooledConnectionUtil connUtil;
+	public IConnectionUtil connUtil;
 	
 	public Connection conn = null;
 	
@@ -18,7 +20,8 @@ public class BaseDAO {
 	public ResultSet rs;
 	
 	public BaseDAO() {
-		connUtil = PooledConnectionUtil.getInstance();
+		// connUtil = PooledConnectionUtil.getInstance();
+		connUtil = DatasourceConnectionUtil.getInstance(); // TODO test JNDI datasource
 	}
 	
 	public void closeResources(PreparedStatement pstmt, Connection conn) {

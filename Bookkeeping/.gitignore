@@ -1,3 +1,4 @@
+/WebContent/META-INF/context.xml
 /src/ranian/bookkeeping/system/resources/MySQL_access.properties
 /build/
 /.classpath
