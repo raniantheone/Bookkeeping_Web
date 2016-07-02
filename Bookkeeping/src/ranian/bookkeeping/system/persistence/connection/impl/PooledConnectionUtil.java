@@ -1,8 +1,10 @@
 package ranian.bookkeeping.system.persistence.connection.impl;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -21,17 +23,13 @@ import ranian.bookkeeping.system.persistence.connection.IConnectionUtil;
  */
 public class PooledConnectionUtil implements IConnectionUtil {  
 	
-	// FIXME move the sensitive info into properties file
-	private static String mysqlConnectorClassName = "com.mysql.jdbc.Driver";
+	private static String mysqlConnectorClassName;
 
-	// FIXME move the sensitive info into properties file
-	private static String mysqlConnectionStr = "jdbc:mysql://127.0.0.1:3306/bookkeeping_application";
+	private static String mysqlConnectionStr;
 	
-	// FIXME move the sensitive info into properties file
-	private static String mysqlAcc = "root";
+	private static String mysqlAcc;
 	
-	// FIXME move the sensitive info into properties file
-	private static String mysqlPw = "yian";
+	private static String mysqlPw;
 	
 	private final static PooledConnectionUtil connUtil;
 	
@@ -44,8 +42,20 @@ public class PooledConnectionUtil implements IConnectionUtil {
 	static {
 		
 		try {
+			
+			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+			InputStream is = classLoader.getResourceAsStream("ranian/bookkeeping/system/resources/MySQL_access.properties");
+			Properties properties = new Properties();
+			properties.load(is);
+			
+			mysqlConnectorClassName = properties.getProperty("mysqlConnectorClassName");
+			mysqlConnectionStr = properties.getProperty("mysqlConnectionStr");
+			mysqlAcc = properties.getProperty("mysqlAcc");
+			mysqlPw = properties.getProperty("mysqlPw");
+			
 			Class.forName(mysqlConnectorClassName);
-		} catch (ClassNotFoundException e) {
+			
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
