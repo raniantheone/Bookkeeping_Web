@@ -12,7 +12,7 @@
 <body>
 
 <!-- Add transaction record: income, expense, or account transfer. -->
-<form action="">
+<form action="setupAddOrEditForm" method="post">
 
 	<select name="transType">
 		<c:forEach var="transOpt" items="${ transTypeOpts }" >
@@ -46,8 +46,8 @@
 			<td>${ transactionRecord.transNote }</td>
 			<td>
 				<!-- Trigger the operation to edit this record. -->
-				<form action="">
-					<input type="hidden" value="${ transactionRecord.transRecordId }" />
+				<form action="setupAddOrEditForm" method="post">
+					<input type="hidden" name="transIdForEdit" value="${ transactionRecord.transRecordId }" />
 					<input type="submit" value="Edit" />
 				</form>
 			</td>

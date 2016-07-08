@@ -21,11 +21,13 @@ public class DataFlowCarrier {
 	
 	public class AddOrEditTransRecordData {
 		
-		static final String PATH = "test01"; // TODO not decided yet
+		static final String PATH = "/addOrEditTransaction";
 		
 		private Transaction transRecordToAdd;
 		
 		private Transaction transRecordToEdit;
+		
+		private Boolean isEdit;
 		
 		public AddOrEditTransRecordData(HttpServletRequest request) {
 			
@@ -45,8 +47,10 @@ public class DataFlowCarrier {
 			 */
 			if( transId == null ) {
 				transRecordToAdd = new Transaction(transAmount, transTypeId, toAccId, fromAccId, categoryId, transNote, transDate);
+				isEdit = false;
 			} else {
 				transRecordToEdit = new Transaction(transId, transAmount, transTypeId, toAccId, fromAccId, categoryId, transNote, transDate);
+				isEdit = true;
 			}
 			
 		}
@@ -58,10 +62,52 @@ public class DataFlowCarrier {
 		public Transaction getTransRecordToEdit() {
 			return transRecordToEdit;
 		}
+
+		public Boolean isEdit() {
+			return isEdit;
+		}
+		
+	}
+
+	public class FormSetupData {
+		
+		static final String PATH = "/setupAddOrEditForm"; // TODO to be confirmed
+		
+		private Integer transType;
+		
+		private Integer transIdForEdit;
+		
+		private Boolean isEdit;
+		
+		public FormSetupData(HttpServletRequest request) {
+			
+			transType = request.getParameter("transType") == null ?
+					null : Integer.valueOf(request.getParameter("transType"));
+			
+			transIdForEdit = request.getParameter("transIdForEdit") == null ?
+					null : Integer.valueOf(request.getParameter("transIdForEdit"));
+			
+			isEdit = transIdForEdit == null ? false : true;
+			
+		}
+
+		public Integer getTransType() {
+			return transType;
+		}
+
+		public Integer getTransIdForEdit() {
+			return transIdForEdit;
+		}
+
+		public Boolean isEdit() {
+			return isEdit;
+		}
 		
 	}
 	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
+	
+	public FormSetupData formSetupData;
 	
 	private User user;
 	
@@ -78,6 +124,10 @@ public class DataFlowCarrier {
 			
 			case AddOrEditTransRecordData.PATH:
 				this.addOrEditTransRecordData = new AddOrEditTransRecordData(request);
+				break;
+				
+			case FormSetupData.PATH:
+				this.formSetupData = new FormSetupData(request);
 				break;
 				
 		}

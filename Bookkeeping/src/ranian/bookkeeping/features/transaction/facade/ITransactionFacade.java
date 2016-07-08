@@ -32,11 +32,11 @@ public interface ITransactionFacade {
 	public List<Transaction> retrieveAllTransactions(User usr);
 	
 	/**
-	 * Retrieve transaction records by criteria
+	 * Retrieve the transaction specified by id for editing later
 	 * @param usr
-	 * @param criteria
+	 * @param transId
 	 * @return
 	 */
-	public List<Transaction> searchTransactions(User usr, Criteria criteria);
+	public Transaction getTransactionForEdit(User usr, Integer transId);
 	
 }

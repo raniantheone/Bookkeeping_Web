@@ -13,24 +13,26 @@ import ranian.bookkeeping.system.persistence.tables.transaction.vo.TransactionRe
 
 public class TransactionFacadeImpl implements ITransactionFacade {
 	
-	// private dao interface
-	
 	@Override
 	public boolean createTransaction(User usr, Transaction trans) {
 		
-		/*
+		Boolean isSuccess = false;
 		
-		call dao to perform db insert
+		ITransactionRecordDAO transDao = new TransactionRecordDAO();
+		isSuccess = transDao.insertTransactionRecord(usr.getUserId(), trans);
 		
-		 */
-		
-		return false;
+		return isSuccess;
 	}
 
 	@Override
 	public boolean updateTransaction(User usr, Transaction trans) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		Boolean isSuccess = false;
+		
+		ITransactionRecordDAO transDao = new TransactionRecordDAO();
+		isSuccess = transDao.updateTransactionRecord(usr.getUserId(), trans);
+		
+		return isSuccess;
 	}
 
 	@Override
@@ -56,9 +58,25 @@ public class TransactionFacadeImpl implements ITransactionFacade {
 	}
 
 	@Override
-	public List<Transaction> searchTransactions(User usr, Criteria criteria) {
-		// TODO Auto-generated method stub
-		return null;
+	public Transaction getTransactionForEdit(User usr, Integer transId) {
+		
+		Transaction transaction = null;
+		
+		Criteria criteria = new Criteria();
+		criteria.setRecordIdEqualsTo(transId);
+		
+		ITransactionRecordDAO transDao = new TransactionRecordDAO();
+		TransactionRecordVO transVo = transDao.searchTransactionRecord(usr.getUserId(), criteria).get(0);
+		transaction = new Transaction(transVo.getRecordId(), 
+				transVo.getAmount(), 
+				transVo.getTypeId(), 
+				transVo.getToAcc(), 
+				transVo.getFromAcc(), 
+				transVo.getCategoryId(), 
+				transVo.getNote(),
+				transVo.getRecordTime());
+		
+		return transaction;
 	}
 
 }

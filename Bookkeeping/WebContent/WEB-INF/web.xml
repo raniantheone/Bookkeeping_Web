@@ -10,7 +10,7 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
-<!-- MySQL resource -->
+<!-- MySQL datasource resource -->
 	<resource-ref>
 		<description>MySQL connection datasource</description>
 		<res-ref-name>jdbc/bookkeeping_application</res-ref-name>
@@ -60,6 +60,24 @@
   <servlet-mapping>
   	<servlet-name>queryTransServlet</servlet-name>
   	<url-pattern>/queryTransactionRecords</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>formSetupServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.transaction.controller.SetupFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>formSetupServlet</servlet-name>
+  	<url-pattern>/setupAddOrEditForm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>addOrEditTransServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.transaction.controller.NewOrEditTransactionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>addOrEditTransServlet</servlet-name>
+  	<url-pattern>/addOrEditTransaction</url-pattern>
   </servlet-mapping>
   
 </web-app>
