@@ -53,8 +53,8 @@
 			</td>
 			<td>
 				<!-- Trigger the operation to delete this record. -->
-				<form action="">
-					<input type="hidden" value="${ transactionRecord.transRecordId }" />
+				<form action="delTransaction">
+					<input type="hidden" name="transIdForDel" value="${ transactionRecord.transRecordId }" />
 					<input type="submit" value="Delete" />
 				</form>
 			</td>

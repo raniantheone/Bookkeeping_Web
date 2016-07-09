@@ -2,7 +2,6 @@ package ranian.bookkeeping.features.transaction.facade;
 
 import java.util.List;
 
-import ranian.bookkeeping.features.transaction.model.Criteria;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
 
@@ -38,5 +37,13 @@ public interface ITransactionFacade {
 	 * @return
 	 */
 	public Transaction getTransactionForEdit(User usr, Integer transId);
+	
+	/**
+	 * Delete transaction specified by user and transId
+	 * @param usr
+	 * @param transId
+	 * @return
+	 */
+	public Boolean deleteTransaction(User usr, Integer transId);
 	
 }

@@ -71,7 +71,7 @@ public class DataFlowCarrier {
 
 	public class FormSetupData {
 		
-		static final String PATH = "/setupAddOrEditForm"; // TODO to be confirmed
+		static final String PATH = "/setupAddOrEditForm";
 		
 		private Integer transType;
 		
@@ -105,9 +105,29 @@ public class DataFlowCarrier {
 		
 	}
 	
+	public class DeleteTransactionData {
+		
+		static final String PATH = "/delTransaction";
+		
+		private Integer transIdForDel;
+		
+		public DeleteTransactionData(HttpServletRequest request) {
+			
+			transIdForDel = Integer.valueOf(request.getParameter("transIdForDel"));
+			
+		}
+
+		public Integer getTransIdForDel() {
+			return transIdForDel;
+		}
+		
+	}
+	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
 	
 	public FormSetupData formSetupData;
+	
+	public DeleteTransactionData deleteTransactionData; 
 	
 	private User user;
 	
@@ -128,6 +148,10 @@ public class DataFlowCarrier {
 				
 			case FormSetupData.PATH:
 				this.formSetupData = new FormSetupData(request);
+				break;
+			
+			case DeleteTransactionData.PATH:
+				this.deleteTransactionData = new DeleteTransactionData(request);
 				break;
 				
 		}

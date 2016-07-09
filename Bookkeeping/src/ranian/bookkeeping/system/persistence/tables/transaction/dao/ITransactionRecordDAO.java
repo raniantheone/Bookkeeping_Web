@@ -16,4 +16,6 @@ public interface ITransactionRecordDAO {
 	
 	public List<TransactionRecordVO> searchTransactionRecord(Integer userId, Criteria criteria);
 	
+	public Boolean deleteTransactionRecord(Integer userId, Integer transId);
+	
 }

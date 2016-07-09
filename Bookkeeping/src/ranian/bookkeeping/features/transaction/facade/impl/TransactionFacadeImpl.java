@@ -79,4 +79,15 @@ public class TransactionFacadeImpl implements ITransactionFacade {
 		return transaction;
 	}
 
+	@Override
+	public Boolean deleteTransaction(User usr, Integer transId) {
+		
+		Boolean isSuccess = false;
+		
+		ITransactionRecordDAO transDao = new TransactionRecordDAO();
+		isSuccess = transDao.deleteTransactionRecord(usr.getUserId(), transId);
+		
+		return isSuccess;
+	}
+
 }

@@ -80,4 +80,13 @@
   	<url-pattern>/addOrEditTransaction</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>delTransServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.transaction.controller.DeleteTransactionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>delTransServlet</servlet-name>
+  	<url-pattern>/delTransaction</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

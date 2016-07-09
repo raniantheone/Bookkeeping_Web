@@ -239,4 +239,29 @@ public class TransactionRecordDAO extends BaseDAO implements ITransactionRecordD
 		return transactionVOs;
 	}
 
+	@Override
+	public Boolean deleteTransactionRecord(Integer userId, Integer transId) {
+		
+		String sqlCmd = "delete from TR_RECORD "
+				+ "where USER_ID = ? and RECORD_ID = ?";
+		
+		Boolean isSuccess = false;
+		try{
+			
+			conn = connUtil.getMysqlConnection();
+			pstmt = conn.prepareStatement(sqlCmd);
+			pstmt.setInt(1, userId);
+			pstmt.setInt(2, transId);
+			int rowCount = pstmt.executeUpdate();
+			isSuccess = rowCount > 0 ? true : false;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeResources(pstmt, conn);
+		}
+		
+		return isSuccess;
+	}
+
 }
