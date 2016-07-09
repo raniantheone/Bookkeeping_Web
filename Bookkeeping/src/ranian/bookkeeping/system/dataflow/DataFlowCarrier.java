@@ -3,6 +3,8 @@ package ranian.bookkeeping.system.dataflow;
 import java.sql.Timestamp;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+
+import ranian.bookkeeping.features.category.model.Category;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
 
@@ -87,7 +89,7 @@ public class DataFlowCarrier {
 			transIdForEdit = request.getParameter("transIdForEdit") == null ?
 					null : Integer.valueOf(request.getParameter("transIdForEdit"));
 			
-			isEdit = transIdForEdit == null ? false : true;
+			isEdit = transIdForEdit != null;
 			
 		}
 
@@ -123,11 +125,93 @@ public class DataFlowCarrier {
 		
 	}
 	
+	public class AddOrEditCategoryFormData {
+		
+		static final String PATH = "/serveAddOrEditForm";
+		
+		private Integer categoryIdForEdit;
+		
+		private Boolean isEdit;
+		
+		public AddOrEditCategoryFormData(HttpServletRequest request) {
+			
+			categoryIdForEdit = request.getParameter("categoryIdForEdit") == null ?
+					null : Integer.valueOf(request.getParameter("categoryIdForEdit"));
+			
+			isEdit = categoryIdForEdit != null;
+			
+		}
+
+		public Integer getCategoryIdForEdit() {
+			return categoryIdForEdit;
+		}
+
+		public Boolean isEdit() {
+			return isEdit;
+		}
+		
+	}
+	
+	public class AddOrEditCategoryData {
+		
+		static final String PATH = "/addOrEditCategory";
+		
+		private String categoryName;
+		
+		private Category categoryForEdit;
+		
+		private Category categoryForAdd;
+		
+		private Boolean isEdit;
+		
+		public AddOrEditCategoryData(HttpServletRequest request) {
+			
+			this.categoryName = request.getParameter("categoryName");
+			
+			Integer categoryIdForEdit = request.getParameter("categoryIdForEdit").isEmpty() ?
+					null : Integer.valueOf(request.getParameter("categoryIdForEdit"));
+			
+			if( categoryIdForEdit != null ) {
+				
+				categoryForEdit = new Category(categoryIdForEdit, user.getUserId(), categoryName);
+				isEdit = true;
+				
+			} else {
+				
+				categoryForAdd = new Category(user.getUserId(), categoryName);
+				isEdit = false;
+				
+			}
+			
+		}
+
+		public String getCategoryName() {
+			return categoryName;
+		}
+
+		public Category getCategoryForEdit() {
+			return categoryForEdit;
+		}
+
+		public Category getCategoryForAdd() {
+			return categoryForAdd;
+		}
+
+		public Boolean isEdit() {
+			return isEdit;
+		}
+		
+	}
+	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
 	
 	public FormSetupData formSetupData;
 	
 	public DeleteTransactionData deleteTransactionData; 
+	
+	public AddOrEditCategoryFormData addOrEditCategoryFormData;
+	
+	public AddOrEditCategoryData addOrEditCategoryData;
 	
 	private User user;
 	
@@ -138,6 +222,8 @@ public class DataFlowCarrier {
 	}
 	
 	public void startDataFlow(HttpServletRequest request) {
+		
+		this.user = (User) request.getSession().getAttribute(User.SESSION_ATTR_NAME);
 		
 		String path = request.getServletPath();
 		switch( path ) {
@@ -154,9 +240,16 @@ public class DataFlowCarrier {
 				this.deleteTransactionData = new DeleteTransactionData(request);
 				break;
 				
+			case AddOrEditCategoryFormData.PATH:
+				this.addOrEditCategoryFormData = new AddOrEditCategoryFormData(request);
+				break;
+				
+			case AddOrEditCategoryData.PATH:
+				this.addOrEditCategoryData = new AddOrEditCategoryData(request);
+				break;
+				
 		}
 		
-		this.user = (User) request.getSession().getAttribute(User.SESSION_ATTR_NAME);
 	}
 	
 	public Map<String, Object> getFlowResults() {

@@ -89,4 +89,31 @@
   	<url-pattern>/delTransaction</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>queryCategoriesServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.category.controller.queryCategoriesServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>queryCategoriesServlet</servlet-name>
+  	<url-pattern>/queryCategories</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>serveAddOrEditFormServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.category.controller.serveAddOreEditCategoryFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>serveAddOrEditFormServlet</servlet-name>
+  	<url-pattern>/serveAddOrEditForm</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>addOrEditCategoryServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.category.controller.AddOrEditCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>addOrEditCategoryServlet</servlet-name>
+  	<url-pattern>/addOrEditCategory</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
