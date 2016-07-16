@@ -116,4 +116,13 @@
   	<url-pattern>/addOrEditCategory</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>queryAccountsServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.account.controller.queryAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>queryAccountsServlet</servlet-name>
+  	<url-pattern>/queryAccounts</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
