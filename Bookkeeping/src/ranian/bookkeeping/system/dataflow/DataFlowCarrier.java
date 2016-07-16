@@ -17,7 +17,7 @@ import ranian.bookkeeping.system.authentication.model.User;
  */
 public class DataFlowCarrier {
 	
-	public static final String SESSION_ATTR_NAME = "DataFlowCarrier"; 
+	public static final String SESSION_ATTRIBUTE_NAME = "DataFlowCarrier"; 
 	
 	// Use these inner classes to retrieve and contain front-end input for further use by servlets
 	

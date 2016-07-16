@@ -47,7 +47,7 @@ public class AddOrEditCategoryServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		DataFlowCarrier dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTR_NAME);
+		DataFlowCarrier dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
 		
 		ICategoryManagementFacade categoryFacade = new CategoryManagementFacade();
 		User user = dataFlowCarrier.getUser();
