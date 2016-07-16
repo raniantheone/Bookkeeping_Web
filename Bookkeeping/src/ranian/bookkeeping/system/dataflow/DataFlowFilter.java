@@ -42,14 +42,14 @@ public class DataFlowFilter implements Filter {
 		HttpSession session = req.getSession();
 		
 		DataFlowCarrier dataFlowCarrier = null;
-		if( session.getAttribute(DataFlowCarrier.SESSION_ATTR_NAME) != null ) {
+		if( session.getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME) != null ) {
 			
-			dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTR_NAME);
+			dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
 			
 		} else {
 			
 			dataFlowCarrier = new DataFlowCarrier();
-			session.setAttribute(DataFlowCarrier.SESSION_ATTR_NAME, dataFlowCarrier);
+			session.setAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME, dataFlowCarrier);
 			
 		}
 		dataFlowCarrier.startDataFlow(req);

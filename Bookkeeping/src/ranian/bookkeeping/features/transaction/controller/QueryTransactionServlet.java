@@ -49,7 +49,7 @@ public class QueryTransactionServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
-		DataFlowCarrier dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTR_NAME);
+		DataFlowCarrier dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
 		
 		IFormSetupFacade formSetupFacade = new FormSetupFacadeImpl();
 		Map<Integer, String> transactionTypes = formSetupFacade.getTransactionTypes();

@@ -40,7 +40,6 @@
 			<td>${ transactionRecord.transType }</td>
 			<td>${ transactionRecord.transAmount }</td>
 			<td>${ transactionRecord.transCategory }</td>
-			<td>${ transactionRecord.transCategory }</td>
 			<td>${ transactionRecord.fromAccId }</td>
 			<td>${ transactionRecord.toAccId }</td>
 			<td>${ transactionRecord.transNote }</td>
