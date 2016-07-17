@@ -203,6 +203,33 @@ public class DataFlowCarrier {
 		
 	}
 	
+	public class AddOrEditAccountFormData {
+		
+		static final String PATH = "/serveAddOrEditAccountForm";
+		
+		private Integer accountIdForEdit;
+		
+		private Boolean isEdit; 
+		
+		public AddOrEditAccountFormData(HttpServletRequest request) {
+			
+			accountIdForEdit = request.getParameter("accountIdForEdit") == null ?
+					null : Integer.valueOf(request.getParameter("accountIdForEdit"));
+			
+			isEdit = accountIdForEdit != null;
+			
+		}
+
+		public Integer getAccountIdForEdit() {
+			return accountIdForEdit;
+		}
+
+		public Boolean isEdit() {
+			return isEdit;
+		}
+		
+	}
+	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
 	
 	public FormSetupData formSetupData;
@@ -212,6 +239,8 @@ public class DataFlowCarrier {
 	public AddOrEditCategoryFormData addOrEditCategoryFormData;
 	
 	public AddOrEditCategoryData addOrEditCategoryData;
+	
+	public AddOrEditAccountFormData addOrEditAccountFormData;
 	
 	private User user;
 	
@@ -246,6 +275,10 @@ public class DataFlowCarrier {
 				
 			case AddOrEditCategoryData.PATH:
 				this.addOrEditCategoryData = new AddOrEditCategoryData(request);
+				break;
+				
+			case AddOrEditAccountFormData.PATH:
+				this.addOrEditAccountFormData = new AddOrEditAccountFormData(request);
 				break;
 				
 		}

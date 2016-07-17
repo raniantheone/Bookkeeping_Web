@@ -125,4 +125,13 @@
   	<url-pattern>/queryAccounts</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>serveAddOrEditAccountFormServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.account.controller.ServeAddOrEditAccountFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>serveAddOrEditAccountFormServlet</servlet-name>
+  	<url-pattern>/serveAddOrEditAccountForm</url-pattern>  
+  </servlet-mapping>
+  
 </web-app>

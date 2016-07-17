@@ -47,5 +47,20 @@ public class AccountManagementFacade implements IAccountManagementFacade {
 		return null;
 	}
 
+	@Override
+	public Account getAccountForEdit(User user, Integer accountId) {
+		
+		Account accountForEdit = null;
+		
+		IAccountDAO accountDao = new AccountDAO();
+		AccountVO accountVo = accountDao.retrieveAccountById(user.getUserId(), accountId);
+		accountForEdit = new Account(accountVo.getAccountId(), 
+				accountVo.getUserId(), 
+				accountVo.getAccountName(), 
+				accountVo.getAccountDesc());
+		
+		return accountForEdit;
+	}
+
 
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form action="" method="post">
+<form action="serveAddOrEditAccountForm" method="post">
 	<input type="submit" value="Add an account" />
 </form>
 
@@ -26,12 +26,13 @@
 			<td>${ account.accountName }</td>
 			<td>${ account.accountDesc }</td>
 			<td>
-				<form action="" method="post">
+				<form action="serveAddOrEditAccountForm" method="post">
 					<input type="hidden" name="accountIdForEdit" value="${ account.accountId }" />
+					<input type="submit" value="Edit" />
 				</form>
 			</td>
 			<td>
-				<form action="" method="post">
+				<form action="" method="post"> <!-- TODO delete account -->
 					<input type="hidden" name="accountIdForEdit" value="${ account.accountId }" />
 				</form>
 			</td>

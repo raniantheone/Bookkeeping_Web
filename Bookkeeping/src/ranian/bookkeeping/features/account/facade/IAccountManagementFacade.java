@@ -15,4 +15,6 @@ public interface IAccountManagementFacade {
 	
 	public Boolean deleteAccount(User user, Integer accoutnIdForDel);
 	
+	public Account getAccountForEdit(User user, Integer accountId);
+	
 }

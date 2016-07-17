@@ -14,4 +14,6 @@ public interface IAccountDAO {
 	
 	public List<AccountVO> retrieveAllAccountsByUser(Integer userId);
 	
+	public AccountVO retrieveAccountById(Integer userId, Integer accountId);
+	
 }
