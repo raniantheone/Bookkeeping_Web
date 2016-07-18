@@ -31,14 +31,34 @@ public class AccountManagementFacade implements IAccountManagementFacade {
 
 	@Override
 	public Boolean createAccount(User user, Account account) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Boolean isSuccess = false;
+
+		AccountVO accountVo = new AccountVO();
+		accountVo.setAccountName(account.getAccountName());
+		accountVo.setAccountDesc(account.getAccountDesc());
+		accountVo.setUserId(user.getUserId());
+		IAccountDAO accountDao = new AccountDAO();
+		isSuccess = accountDao.insertAccountByUser(accountVo, user.getUserId());
+		
+		return isSuccess;
 	}
 
 	@Override
 	public Boolean editAccount(User user, Account account) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Boolean isSuccess = false;
+		
+		IAccountDAO accountDao = new AccountDAO();
+		AccountVO accountVo = new AccountVO();
+		accountVo.setAccountId(account.getAccountId());
+		accountVo.setAccountName(account.getAccountName());
+		accountVo.setAccountDesc(account.getAccountDesc());
+		accountVo.setUserId(user.getUserId());
+		
+		isSuccess = accountDao.updateAccountByUser(accountVo, user.getUserId());
+		
+		return isSuccess;
 	}
 
 	@Override

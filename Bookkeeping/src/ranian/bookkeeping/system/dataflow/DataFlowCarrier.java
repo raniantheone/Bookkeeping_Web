@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
+import ranian.bookkeeping.features.account.model.Account;
 import ranian.bookkeeping.features.category.model.Category;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
@@ -230,6 +231,71 @@ public class DataFlowCarrier {
 		
 	}
 	
+	public class AddOrEditAccountData {
+		
+		static final String PATH = "/addOrEditAccount";
+		
+		private String accountName;
+		
+		private String accountDescription;
+		
+		private Integer accountIdToEdit;
+		
+		private Boolean isEdit;
+		
+		private Account accountToEdit;
+		
+		private Account accountToAdd;		
+		
+		public AddOrEditAccountData(HttpServletRequest request) {
+			
+			accountName = request.getParameter("accountName");
+			
+			accountDescription = request.getParameter("accountDescription");
+			
+			accountIdToEdit = request.getParameter("accountIdToEdit").isEmpty() ?
+					null : Integer.valueOf(request.getParameter("accountIdToEdit"));
+			
+			isEdit = accountIdToEdit != null;
+			
+			if( isEdit ) {
+				
+				accountToEdit = new Account(accountIdToEdit, user.getUserId(), accountName, accountDescription);
+				
+			} else {
+				
+				accountToAdd = new Account(user.getUserId(), accountName, accountDescription);
+				
+			}
+			
+		}
+
+		public String getAccountName() {
+			return accountName;
+		}
+
+		public String getAccountDescription() {
+			return accountDescription;
+		}
+
+		public Integer getAccountIdToEdit() {
+			return accountIdToEdit;
+		}
+
+		public Boolean getIsEdit() {
+			return isEdit;
+		}
+
+		public Account getAccountToEdit() {
+			return accountToEdit;
+		}
+
+		public Account getAccountToAdd() {
+			return accountToAdd;
+		}
+		
+	}
+	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
 	
 	public FormSetupData formSetupData;
@@ -241,6 +307,8 @@ public class DataFlowCarrier {
 	public AddOrEditCategoryData addOrEditCategoryData;
 	
 	public AddOrEditAccountFormData addOrEditAccountFormData;
+	
+	public AddOrEditAccountData addOrEditAccountData;
 	
 	private User user;
 	
@@ -279,6 +347,10 @@ public class DataFlowCarrier {
 				
 			case AddOrEditAccountFormData.PATH:
 				this.addOrEditAccountFormData = new AddOrEditAccountFormData(request);
+				break;
+				
+			case AddOrEditAccountData.PATH:
+				this.addOrEditAccountData = new AddOrEditAccountData(request);
 				break;
 				
 		}

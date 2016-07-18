@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form action="" method="post">
+<form action="addOrEditAccount" method="post">
 	<span>Account Name</span><input type="text" name="accountName" value="${ accountForEdit.accountName }" />
 	<br>
 	<span>Account Description</span><input type="text" name="accountDescription" value="${ accountForEdit.accountDesc }" />

@@ -14,21 +14,20 @@ import javax.servlet.http.HttpSession;
 
 import ranian.bookkeeping.features.account.facade.IAccountManagementFacade;
 import ranian.bookkeeping.features.account.facade.impl.AccountManagementFacade;
-import ranian.bookkeeping.features.account.model.Account;
 import ranian.bookkeeping.system.authentication.model.User;
 import ranian.bookkeeping.system.dataflow.DataFlowCarrier;
 
 /**
- * Servlet implementation class ServeAddOrEditAccountFormServlet
+ * Servlet implementation class AddOrEditAccountServlet
  */
-@WebServlet("/ServeAddOrEditAccountFormServlet")
-public class ServeAddOrEditAccountFormServlet extends HttpServlet {
+@WebServlet("/AddOrEditAccountServlet")
+public class AddOrEditAccountServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServeAddOrEditAccountFormServlet() {
+    public AddOrEditAccountServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,7 +36,6 @@ public class ServeAddOrEditAccountFormServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
@@ -48,25 +46,28 @@ public class ServeAddOrEditAccountFormServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		DataFlowCarrier dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
+		User user = dataFlowCarrier.getUser();
 		
-		Account accountForEdit = null;
-		if( dataFlowCarrier.addOrEditAccountFormData.isEdit() ) {
+		Boolean operationSuccess = false;
+		IAccountManagementFacade accountFacade = new AccountManagementFacade();
+		if( dataFlowCarrier.addOrEditAccountData.getIsEdit() ) {
 			
-			User user = dataFlowCarrier.getUser();
-			Integer accountIdForEdit = dataFlowCarrier.addOrEditAccountFormData.getAccountIdForEdit();
+			operationSuccess = accountFacade.editAccount(user, 
+					dataFlowCarrier.addOrEditAccountData.getAccountToEdit());
 			
-			IAccountManagementFacade accountFacade = new AccountManagementFacade();
-			accountForEdit = accountFacade.getAccountForEdit(user, accountIdForEdit);
+		} else {
+			
+			operationSuccess = accountFacade.createAccount(user, 
+					dataFlowCarrier.addOrEditAccountData.getAccountToAdd());
 			
 		}
 		
 		Map<String, Object> dataFlowResults = new HashMap<String, Object>();
-		dataFlowResults.put("accountForEdit", accountForEdit); // null if it's a add account operation
+		dataFlowResults.put("operationSuccess", operationSuccess); // null if it's a add account operation
 		dataFlowCarrier.setFlowResults(dataFlowResults);
 
-		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/account/AddOrEditAccount.jsp");
+		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/queryAccounts"); // direct request to QueryAccountServlet
 		reqDispatcher.forward(request, response);
-		
 	}
 
 }

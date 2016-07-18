@@ -134,4 +134,13 @@
   	<url-pattern>/serveAddOrEditAccountForm</url-pattern>  
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>addOrEditAccountServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.account.controller.AddOrEditAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>addOrEditAccountServlet</servlet-name>
+  	<url-pattern>/addOrEditAccount</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

@@ -15,14 +15,60 @@ public class AccountDAO extends BaseDAO implements IAccountDAO {
 	
 	@Override
 	public Boolean insertAccountByUser(AccountVO account, Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String sqlCmd = "insert into TR_ACCOUNT (USER_ID, "
+				+ "ACCOUNT_NAME, "
+				+ "ACCOUNT_DESC) "
+				+ "values (?, ?, ?)";
+		
+		Boolean isSuccess = false;
+		try {
+			
+			conn = connUtil.getMysqlConnection();
+			pstmt = conn.prepareStatement(sqlCmd);
+			pstmt.setInt(1, userId);
+			pstmt.setString(2, account.getAccountName());
+			pstmt.setString(3, account.getAccountDesc());
+			int rowCount = pstmt.executeUpdate();
+			isSuccess = rowCount > 0;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeResources(pstmt, conn);
+		}
+		
+		return isSuccess;
 	}
 
 	@Override
 	public Boolean updateAccountByUser(AccountVO account, Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		String sqlCmd = "update TR_ACCOUNT "
+				+ "set ACCOUNT_NAME = ?, "
+				+ "ACCOUNT_DESC = ? "
+				+ "where ACCOUNT_ID = ? "
+				+ "and USER_ID = ?";
+		
+		Boolean isSuccess = false;
+		try {
+			
+			conn = connUtil.getMysqlConnection();
+			pstmt = conn.prepareStatement(sqlCmd);
+			pstmt.setString(1, account.getAccountName());
+			pstmt.setString(2, account.getAccountDesc());
+			pstmt.setInt(3, account.getAccountId());
+			pstmt.setInt(4, account.getUserId());
+			int rowCount = pstmt.executeUpdate();
+			isSuccess = rowCount > 0;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeResources(pstmt, conn);
+		}
+		
+		return isSuccess;
 	}
 
 	@Override
