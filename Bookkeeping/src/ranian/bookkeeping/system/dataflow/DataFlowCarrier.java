@@ -314,6 +314,10 @@ public class DataFlowCarrier {
 	
 	private Map<String, Object> flowResults;
 	
+	public static DataFlowCarrier GetCurrentDataFlowCarrier(HttpServletRequest request) {
+		return (DataFlowCarrier) request.getSession().getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
+	}
+	
 	public DataFlowCarrier() {
 		
 	}
