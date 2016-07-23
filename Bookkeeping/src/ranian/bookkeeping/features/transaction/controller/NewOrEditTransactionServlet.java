@@ -68,6 +68,8 @@ public class NewOrEditTransactionServlet extends HttpServlet {
 		
 		Map<String, Object> dataFlowResults = new HashMap<String, Object>();
 		dataFlowResults.put("operationSuccess", operationSuccess);
+		dataFlowResults.put("nextActionUrl", "queryTransactionRecords");
+		dataFlowResults.put("nextActionDescription", "Back to transaction management");
 		dataFlowCarrier.setFlowResults(dataFlowResults);
 		
 		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/OperationResult.jsp");

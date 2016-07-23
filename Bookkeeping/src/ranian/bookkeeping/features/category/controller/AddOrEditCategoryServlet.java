@@ -66,9 +66,11 @@ public class AddOrEditCategoryServlet extends HttpServlet {
 		
 		Map<String, Object> dataFlowResults = new HashMap<String, Object>();
 		dataFlowResults.put("operationSuccess", operationSuccess);
+		dataFlowResults.put("nextActionUrl", "queryCategories");
+		dataFlowResults.put("nextActionDescription", "Back to category management");
 		dataFlowCarrier.setFlowResults(dataFlowResults);
 
-		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/CategoryManagement.jsp");
+		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/OperationResult.jsp");
 		reqDispatcher.forward(request, response);
 		
 	}

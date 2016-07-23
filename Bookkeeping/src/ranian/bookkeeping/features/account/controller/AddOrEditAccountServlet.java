@@ -44,8 +44,12 @@ public class AddOrEditAccountServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession();
-		DataFlowCarrier dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
+//		HttpSession session = request.getSession();
+//		DataFlowCarrier dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
+//		User user = dataFlowCarrier.getUser();
+		
+		// TODO test helper method for getting dataflowcarrier
+		DataFlowCarrier dataFlowCarrier = DataFlowCarrier.GetCurrentDataFlowCarrier(request);
 		User user = dataFlowCarrier.getUser();
 		
 		Boolean operationSuccess = false;
@@ -63,10 +67,12 @@ public class AddOrEditAccountServlet extends HttpServlet {
 		}
 		
 		Map<String, Object> dataFlowResults = new HashMap<String, Object>();
-		dataFlowResults.put("operationSuccess", operationSuccess); // null if it's a add account operation
+		dataFlowResults.put("operationSuccess", operationSuccess);
+		dataFlowResults.put("nextActionUrl", "queryAccounts");
+		dataFlowResults.put("nextActionDescription", "Back to account management");
 		dataFlowCarrier.setFlowResults(dataFlowResults);
 
-		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/queryAccounts"); // direct request to QueryAccountServlet
+		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/OperationResult.jsp"); 
 		reqDispatcher.forward(request, response);
 	}
 

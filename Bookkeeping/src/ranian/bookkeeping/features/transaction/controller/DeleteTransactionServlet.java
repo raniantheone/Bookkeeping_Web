@@ -45,8 +45,7 @@ public class DeleteTransactionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		DataFlowCarrier dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
+		DataFlowCarrier dataFlowCarrier = DataFlowCarrier.GetCurrentDataFlowCarrier(request);
 		
 		User user = dataFlowCarrier.getUser();
 		Integer transIdForDel = dataFlowCarrier.deleteTransactionData.getTransIdForDel();
@@ -57,6 +56,8 @@ public class DeleteTransactionServlet extends HttpServlet {
 		
 		Map<String, Object> dataFlowResults = new HashMap<String, Object>();
 		dataFlowResults.put("operationSuccess", operationSuccess);
+		dataFlowResults.put("nextActionUrl", "queryTransactionRecords");
+		dataFlowResults.put("nextActionDescription", "Back to transaction management");
 		dataFlowCarrier.setFlowResults(dataFlowResults);
 
 		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/OperationResult.jsp");
