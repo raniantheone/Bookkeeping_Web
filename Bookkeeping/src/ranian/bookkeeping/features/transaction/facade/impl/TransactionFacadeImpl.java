@@ -39,7 +39,8 @@ public class TransactionFacadeImpl implements ITransactionFacade {
 	public List<Transaction> retrieveAllTransactions(User usr) {
 		
 		ITransactionRecordDAO transactionDao = new TransactionRecordDAO();
-		List<TransactionRecordVO> transactionVOs = transactionDao.retrieveAllTransactionRecordsByUser(usr.getUserId());
+		// List<TransactionRecordVO> transactionVOs = transactionDao.retrieveAllTransactionRecordsByUser(usr.getUserId());
+		List<TransactionRecordVO> transactionVOs = transactionDao.searchTransactionRecord(usr.getUserId(), null);
 		
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		for(TransactionRecordVO transVo : transactionVOs) {

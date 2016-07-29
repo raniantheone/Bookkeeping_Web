@@ -182,11 +182,16 @@ public class TransactionRecordDAO extends BaseDAO implements ITransactionRecordD
 		StringBuilder sb = new StringBuilder();
 		sb.append(baseCmd);
 		
-		Set<Entry<String, Object>> criteriaEntrySet = criteria.getCriteriaMap().entrySet();
-		for( Entry<String, Object> entry : criteriaEntrySet ) {
-			if( entry != null ) {
-				sb.append(" and ").append(entry.getKey()).append("?");
+		Set<Entry<String, Object>> criteriaEntrySet = null;
+		if( criteria != null ) {
+			
+			criteriaEntrySet = criteria.getCriteriaMap().entrySet();
+			for( Entry<String, Object> entry : criteriaEntrySet ) {
+				if( entry != null ) {
+					sb.append(" and ").append(entry.getKey()).append("?");
+				}
 			}
+			
 		}
 		String sqlCmd = sb.toString();
 		
@@ -197,21 +202,25 @@ public class TransactionRecordDAO extends BaseDAO implements ITransactionRecordD
 			pstmt = conn.prepareStatement(sqlCmd);
 			pstmt.setInt(1, userId);
 			
-			int paramIndex = 2;
-			for( Entry<String, Object> entry : criteriaEntrySet ) {
+			if( criteriaEntrySet != null ) {
 				
-				Object criteriaValue = entry.getValue();
-				if( criteriaValue instanceof Integer ) {
-					pstmt.setInt(paramIndex, (Integer) criteriaValue);
-				}else if( criteriaValue instanceof Float ) {
-					pstmt.setFloat(paramIndex, (Float) criteriaValue);
-				}else if( criteriaValue instanceof String ) {
-					pstmt.setString(paramIndex, (String) criteriaValue);
-				}else if( criteriaValue instanceof Timestamp ) {
-					pstmt.setTimestamp(paramIndex, (Timestamp) criteriaValue);
+				int paramIndex = 2;
+				for( Entry<String, Object> entry : criteriaEntrySet ) {
+					
+					Object criteriaValue = entry.getValue();
+					if( criteriaValue instanceof Integer ) {
+						pstmt.setInt(paramIndex, (Integer) criteriaValue);
+					}else if( criteriaValue instanceof Float ) {
+						pstmt.setFloat(paramIndex, (Float) criteriaValue);
+					}else if( criteriaValue instanceof String ) {
+						pstmt.setString(paramIndex, (String) criteriaValue);
+					}else if( criteriaValue instanceof Timestamp ) {
+						pstmt.setTimestamp(paramIndex, (Timestamp) criteriaValue);
+					}
+					
+					paramIndex++;
 				}
 				
-				paramIndex++;
 			}
 			
 			rs = pstmt.executeQuery();
