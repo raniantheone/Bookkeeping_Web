@@ -19,6 +19,8 @@ import ranian.bookkeeping.features.transaction.facade.impl.FormSetupFacadeImpl;
 import ranian.bookkeeping.features.transaction.facade.impl.TransactionFacadeImpl;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.dataflow.DataFlowCarrier;
+import ranian.bookkeeping.system.resultpaging.PagedData;
+import ranian.bookkeeping.system.resultpaging.impl.PageUtil;
 
 /**
  * Servlet implementation class QueryTransactionServlet
@@ -39,8 +41,35 @@ public class QueryTransactionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
+		
+		// TODO temporarily test paging via post request
+		
+		DataFlowCarrier dataFlowCarrier = DataFlowCarrier.GetCurrentDataFlowCarrier(request);
+		
+		Integer pageNum = request.getParameter("page") == null ?
+				null : Integer.valueOf(request.getParameter("page"));
+		
+		if( pageNum == null ) {
+			
+			doPost(request, response);
+			
+		} else{
+		
+			PagedData pagedData = PageUtil.getInstance().retvPagedData(pageNum, request);
+			
+			IFormSetupFacade formSetupFacade = new FormSetupFacadeImpl();
+			Map<Integer, String> transactionTypes = formSetupFacade.getTransactionTypes();
+			
+			Map<String, Object> dataFlowResults = new HashMap<String, Object>();
+			dataFlowResults.put("transactionTypes", transactionTypes);
+			dataFlowResults.put("pagedData", pagedData);
+			dataFlowCarrier.setFlowResults(dataFlowResults);
+			
+			RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/transaction/QueryTransactionRecord.jsp");
+			reqDispatcher.forward(request, response);
+			
+		}
+		
 	}
 
 	/**
@@ -56,13 +85,17 @@ public class QueryTransactionServlet extends HttpServlet {
 		
 		ITransactionFacade transactionFacade = new TransactionFacadeImpl();
 		List<Transaction> transactions = transactionFacade.retrieveAllTransactions(dataFlowCarrier.getUser());
+		
+		// TODO Test pageutil
+		PageUtil.getInstance().prepareCompleteData(transactions, 10, request);
+		PagedData pagedData = PageUtil.getInstance().retvPagedData(1, request);
 
 		Map<String, Object> dataFlowResults = new HashMap<String, Object>();
 		dataFlowResults.put("transactionTypes", transactionTypes);
-		dataFlowResults.put("transactions", transactions);
+		dataFlowResults.put("pagedData", pagedData);
 		dataFlowCarrier.setFlowResults(dataFlowResults);
 		
-		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/QueryTransactionRecord.jsp");
+		RequestDispatcher reqDispatcher = request.getRequestDispatcher("/WEB-INF/views/transaction/QueryTransactionRecord.jsp");
 		reqDispatcher.forward(request, response);
 		
 	}
