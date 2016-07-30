@@ -1,11 +1,16 @@
 package ranian.bookkeeping.system.dataflow;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import ranian.bookkeeping.features.account.model.Account;
 import ranian.bookkeeping.features.category.model.Category;
+import ranian.bookkeeping.features.transaction.model.Criteria;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
 
@@ -296,6 +301,93 @@ public class DataFlowCarrier {
 		
 	}
 	
+	public class QueryTransactionData {
+		
+		static final String PATH = "/queryTransactionRecords";
+		
+		private Criteria criteria;
+		
+		private Boolean isDefaultInit;
+		
+		Boolean isPageDataRequest;
+		
+		public QueryTransactionData(HttpServletRequest request) {
+			
+			isPageDataRequest = request.getParameter("page") != null;
+			isDefaultInit = request.getParameterMap().size() == 0;
+			
+			// TODO validation
+			if( !(isPageDataRequest || isDefaultInit) ) {
+				
+				criteria = new Criteria();
+				
+				if( !request.getParameter("criteria_start_date").isEmpty() ) {
+				
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+					try {
+						long millis = df.parse(request.getParameter("criteria_start_date")).getTime();
+						criteria.setRecordTimeNewerThanOrEqualsTo(new Timestamp(millis));
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+				
+				if( !request.getParameter("criteria_end_date").isEmpty() ) {
+				
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+					try {
+						long millis = df.parse(request.getParameter("criteria_end_date")).getTime();
+						criteria.setRecordTimeOlderThanOrEqualsTo(new Timestamp(millis));
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+					
+				}
+				
+				if( !request.getParameter("criteria_trans_type").isEmpty() ) {
+					
+					int typeId = Integer.valueOf(request.getParameter("criteria_trans_type"));
+					criteria.setTypeIdEqualsTo(typeId);
+					
+				}
+				
+				if( !request.getParameter("criteria_category").isEmpty() ) {
+					
+					int categoryId = Integer.valueOf(request.getParameter("criteria_category"));
+					criteria.setCategoryIdEqualsTo(categoryId);
+					
+				}
+				
+				if( !request.getParameter("criteria_from_acc").isEmpty() ) {
+					
+					int fromAccId = Integer.valueOf(request.getParameter("criteria_from_acc"));
+					criteria.setFromAccIdEqualsTo(fromAccId);
+					
+				}
+				
+				if( !request.getParameter("criteria_to_acc").isEmpty() ) {
+					
+					int toAccId = Integer.valueOf(request.getParameter("criteria_to_acc"));
+					criteria.setToAccIdEqualsTo(toAccId);
+					
+				}
+				
+			}
+			
+		}
+
+		public Criteria getCriteria() {
+			return criteria;
+		}
+
+		public Boolean isDefaultInit() {
+			return isDefaultInit;
+		}
+		
+	}
+	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
 	
 	public FormSetupData formSetupData;
@@ -309,6 +401,8 @@ public class DataFlowCarrier {
 	public AddOrEditAccountFormData addOrEditAccountFormData;
 	
 	public AddOrEditAccountData addOrEditAccountData;
+	
+	public QueryTransactionData queryTransactionData;
 	
 	private User user;
 	
@@ -355,6 +449,10 @@ public class DataFlowCarrier {
 				
 			case AddOrEditAccountData.PATH:
 				this.addOrEditAccountData = new AddOrEditAccountData(request);
+				break;
+				
+			case QueryTransactionData.PATH:
+				this.queryTransactionData = new QueryTransactionData(request);
 				break;
 				
 		}

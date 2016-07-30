@@ -91,4 +91,25 @@ public class TransactionFacadeImpl implements ITransactionFacade {
 		return isSuccess;
 	}
 
+	@Override
+	public List<Transaction> searchTransactions(User usr, Criteria criteria) {
+		
+		List<Transaction> transactions = new ArrayList<Transaction>();
+		
+		ITransactionRecordDAO transDao = new TransactionRecordDAO();
+		List<TransactionRecordVO> transactionVos = transDao.searchTransactionRecord(usr.getUserId(), criteria);
+		for( TransactionRecordVO transVo : transactionVos ) {
+			transactions.add(new Transaction(transVo.getRecordId(), 
+					transVo.getAmount(), 
+					transVo.getTypeId(), 
+					transVo.getToAcc(), 
+					transVo.getFromAcc(), 
+					transVo.getCategoryId(), 
+					transVo.getNote(), 
+					transVo.getRecordTime()));
+		}
+		
+		return transactions;
+	}
+
 }

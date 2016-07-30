@@ -1,6 +1,7 @@
 package ranian.bookkeeping.features.transaction.controller;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import ranian.bookkeeping.features.transaction.facade.IFormSetupFacade;
 import ranian.bookkeeping.features.transaction.facade.ITransactionFacade;
 import ranian.bookkeeping.features.transaction.facade.impl.FormSetupFacadeImpl;
 import ranian.bookkeeping.features.transaction.facade.impl.TransactionFacadeImpl;
+import ranian.bookkeeping.features.transaction.model.FormOptions;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.dataflow.DataFlowCarrier;
 import ranian.bookkeeping.system.resultpaging.PagedData;
@@ -42,7 +44,7 @@ public class QueryTransactionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// TODO temporarily test paging via post request
+		// TODO temporarily test paging via get request
 		
 		DataFlowCarrier dataFlowCarrier = DataFlowCarrier.GetCurrentDataFlowCarrier(request);
 		
@@ -58,10 +60,10 @@ public class QueryTransactionServlet extends HttpServlet {
 			PagedData pagedData = PageUtil.getInstance().retvPagedData(pageNum, request);
 			
 			IFormSetupFacade formSetupFacade = new FormSetupFacadeImpl();
-			Map<Integer, String> transactionTypes = formSetupFacade.getTransactionTypes();
+			FormOptions formOpts = formSetupFacade.getAddOrEditFormOptionsByUser(dataFlowCarrier.getUser(), Calendar.getInstance());
 			
 			Map<String, Object> dataFlowResults = new HashMap<String, Object>();
-			dataFlowResults.put("transactionTypes", transactionTypes);
+			dataFlowResults.put("formOpts", formOpts);
 			dataFlowResults.put("pagedData", pagedData);
 			dataFlowCarrier.setFlowResults(dataFlowResults);
 			
@@ -81,17 +83,27 @@ public class QueryTransactionServlet extends HttpServlet {
 		DataFlowCarrier dataFlowCarrier = (DataFlowCarrier) session.getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
 		
 		IFormSetupFacade formSetupFacade = new FormSetupFacadeImpl();
-		Map<Integer, String> transactionTypes = formSetupFacade.getTransactionTypes();
+		// Map<Integer, String> transactionTypes = formSetupFacade.getTransactionTypes();
+		// TODO test retrieving form options
+		FormOptions formOpts = formSetupFacade.getAddOrEditFormOptionsByUser(dataFlowCarrier.getUser(), Calendar.getInstance());
 		
 		ITransactionFacade transactionFacade = new TransactionFacadeImpl();
-		List<Transaction> transactions = transactionFacade.retrieveAllTransactions(dataFlowCarrier.getUser());
+		List<Transaction> transactions = null;
+		if( dataFlowCarrier.queryTransactionData.isDefaultInit() ) {
+			transactions = transactionFacade.retrieveAllTransactions(dataFlowCarrier.getUser());
+		} else {
+			transactions = transactionFacade.searchTransactions(dataFlowCarrier.getUser(), 
+					dataFlowCarrier.queryTransactionData.getCriteria());
+		}		
 		
 		// TODO Test pageutil
 		PageUtil.getInstance().prepareCompleteData(transactions, 10, request);
 		PagedData pagedData = PageUtil.getInstance().retvPagedData(1, request);
 
 		Map<String, Object> dataFlowResults = new HashMap<String, Object>();
-		dataFlowResults.put("transactionTypes", transactionTypes);
+		// dataFlowResults.put("transactionTypes", transactionTypes);
+		// TODO test retrieving form options
+		dataFlowResults.put("formOpts", formOpts);
 		dataFlowResults.put("pagedData", pagedData);
 		dataFlowCarrier.setFlowResults(dataFlowResults);
 		

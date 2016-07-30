@@ -2,6 +2,7 @@ package ranian.bookkeeping.features.transaction.facade;
 
 import java.util.List;
 
+import ranian.bookkeeping.features.transaction.model.Criteria;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
 
@@ -46,4 +47,11 @@ public interface ITransactionFacade {
 	 */
 	public Boolean deleteTransaction(User usr, Integer transId);
 	
+	/**
+	 * Search transactions by specified criteria
+	 * @param usr
+	 * @param criteria support "and" combinations only
+	 * @return
+	 */
+	public List<Transaction> searchTransactions(User usr, Criteria criteria);
 }

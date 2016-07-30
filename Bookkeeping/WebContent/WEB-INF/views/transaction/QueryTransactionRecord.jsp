@@ -1,10 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:set var="transTypeOpts" scope="page" value="${ sessionScope.DataFlowCarrier.flowResults.transactionTypes }" />
+
+<c:set var="formOpts" scope="page" value="${ sessionScope.DataFlowCarrier.flowResults.formOpts }" />
+<c:set var="transTypeOpts" scope="page" value="${ formOpts.transTypes }" />
+<c:set var="userAccounts" scope="page" value="${ formOpts.userAccounts }" />
+<c:set var="transCategories" scope="page" value="${ formOpts.transCategories }" />
+
 <c:set var="transactionRecords" scope="page" value="${ sessionScope.DataFlowCarrier.flowResults.pagedData.pagedDataList }" />
 <c:set var="currentPage" scope="page" value="${ sessionScope.DataFlowCarrier.flowResults.pagedData.currentPage }" />
 <c:set var="totalPages" scope="page" value="${ sessionScope.DataFlowCarrier.flowResults.pagedData.totalPages }" />
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,6 +32,55 @@
 	
 </form>
 
+<!-- Drafting search criteria form -->
+<form action="queryTransactionRecords" method="post">
+
+	<span>Start date</span><input type="text" name="criteria_start_date" placeholder="YYYY-MM-DD" />
+	<br>
+	
+	<span>End date</span><input type="text" name="criteria_end_date" placeholder="YYYY-MM-DD" />
+	<br>
+	
+	<span>Type</span>
+	<select name="criteria_trans_type">
+		<option value="">Pick below or leave empty</option>
+		<c:forEach var="transOpt" items="${ transTypeOpts }" >
+			<option value="${ transOpt.key }">${ transOpt.value }</option>
+		</c:forEach>
+	</select>
+	<br>
+	
+	<span>Category</span>
+	<select name="criteria_category">
+		<option value="">Pick below or leave empty</option>
+		<c:forEach var="categoryOpt" items="${ transCategories }">
+			<option value="${ categoryOpt.key }">${ categoryOpt.value }</option>
+		</c:forEach>
+	</select>
+	<br>
+	
+	<span>From Account</span>
+	<select name="criteria_from_acc">
+		<option value="">Pick below or leave empty</option>
+		<c:forEach var="accOpt" items="${ userAccounts }">
+			<option value="${ accOpt.key }">${ accOpt.value }</option>
+		</c:forEach>
+	</select>
+	<br>
+	
+	<span>To Account</span>
+	<select name="criteria_to_acc">
+		<option value="">Pick below or leave empty</option>
+		<c:forEach var="accOpt" items="${ userAccounts }">
+			<option value="${ accOpt.key }">${ accOpt.value }</option>
+		</c:forEach>
+	</select>
+	<br>
+	
+	<input type="submit" value="Search transaction records" />
+	
+</form>
+
 <table>
 	<tr>
 		<th>Record Time</th>
@@ -39,11 +94,11 @@
 	<c:forEach var="transactionRecord" items="${ transactionRecords }">
 		<tr>
 			<td>${ transactionRecord.transRecordTime }</td>
-			<td>${ transactionRecord.transType }</td>
+			<td>${ transTypeOpts[transactionRecord.transType] }</td>
 			<td>${ transactionRecord.transAmount }</td>
-			<td>${ transactionRecord.transCategory }</td>
-			<td>${ transactionRecord.fromAccId }</td>
-			<td>${ transactionRecord.toAccId }</td>
+			<td>${ transCategories[transactionRecord.transCategory] }</td>
+			<td>${ userAccounts[transactionRecord.fromAccId] }</td>
+			<td>${ userAccounts[transactionRecord.toAccId] }</td>
 			<td>${ transactionRecord.transNote }</td>
 			<td>
 				<!-- Trigger the operation to edit this record. -->
