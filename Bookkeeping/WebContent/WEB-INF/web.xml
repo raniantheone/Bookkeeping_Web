@@ -143,4 +143,13 @@
   	<url-pattern>/addOrEditAccount</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>DeleteCategoryServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.features.category.controller.DeleteCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+   	<servlet-name>DeleteCategoryServlet</servlet-name>
+   	<url-pattern>/deleteCategory</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

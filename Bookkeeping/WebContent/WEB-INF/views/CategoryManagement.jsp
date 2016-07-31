@@ -30,7 +30,7 @@
 				</form>
 			</td>
 			<td>
-				<form>
+				<form action="deleteCategory" method="post">
 					<input type="hidden" name="categoryIdForDel" value="${ category.categoryId }" />
 					<input type="submit" value="Delete" />
 				</form>

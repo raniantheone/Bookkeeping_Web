@@ -46,8 +46,13 @@ public class CategoryManagementFacade implements ICategoryManagementFacade {
 
 	@Override
 	public Boolean deleteCategory(User user, Integer categoryId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Boolean isSuccess = false;
+		
+		ICategoryDAO categoryDao = new CategoryDAO();
+		isSuccess = categoryDao.deleteCategoryByUser(categoryId, user.getUserId());
+		
+		return isSuccess;
 	}
 
 	@Override

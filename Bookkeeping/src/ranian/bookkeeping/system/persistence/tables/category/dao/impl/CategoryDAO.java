@@ -69,8 +69,50 @@ public class CategoryDAO extends BaseDAO implements ICategoryDAO {
 
 	@Override
 	public Boolean deleteCategoryByUser(Integer categoryId, Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		// TODO deal with transaction issue
+		
+		Boolean isSuccess = false;
+		
+		String sqlCmdStep01 = "delete from TR_RECORD "
+				+ "where CATEGORY_ID = ? "
+				+ "and USER_ID = ?";
+		
+		try {
+			
+			conn = connUtil.getMysqlConnection();
+			pstmt = conn.prepareStatement(sqlCmdStep01);
+			pstmt.setInt(1, categoryId);
+			pstmt.setInt(2, userId);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return isSuccess;
+		} finally {
+			closeResources(pstmt, conn);
+		}
+		
+		String sqlCmdStep02 = "delete from TR_CATEGORY "
+				+ "where CATEGORY_ID = ? "
+				+ "and USER_ID = ?";
+		
+		try {
+			
+			conn = connUtil.getMysqlConnection();
+			pstmt = conn.prepareStatement(sqlCmdStep02);
+			pstmt.setInt(1, categoryId);
+			pstmt.setInt(2, userId);
+			int rowCount = pstmt.executeUpdate();
+			isSuccess = rowCount > 0 ? true : false;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeResources(pstmt, conn);
+		}
+		
+		return isSuccess;
 	}
 
 	@Override
