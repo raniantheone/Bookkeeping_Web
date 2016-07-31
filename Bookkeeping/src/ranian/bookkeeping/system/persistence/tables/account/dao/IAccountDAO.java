@@ -10,7 +10,7 @@ public interface IAccountDAO {
 	
 	public Boolean updateAccountByUser(AccountVO account, Integer userId);
 	
-	public Boolean deleteAccountByUser(AccountVO account, Integer userId);
+	public Boolean deleteAccountByUser(Integer accountId, Integer userId);
 	
 	public List<AccountVO> retrieveAllAccountsByUser(Integer userId);
 	

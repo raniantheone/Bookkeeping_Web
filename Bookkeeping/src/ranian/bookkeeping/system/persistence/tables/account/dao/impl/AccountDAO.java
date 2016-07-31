@@ -72,9 +72,53 @@ public class AccountDAO extends BaseDAO implements IAccountDAO {
 	}
 
 	@Override
-	public Boolean deleteAccountByUser(AccountVO account, Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean deleteAccountByUser(Integer accountId, Integer userId) {	
+		
+		// TODO deal with sql transaction issue
+		
+		Boolean isSuccess = false;
+		
+		String sqlCmdStep01 = "delete from TR_RECORD "
+				+ "where (TO_ACC_ID = ? or FROM_ACC_ID = ?) "
+				+ "and USER_ID = ?";
+		
+		try {
+			
+			conn = connUtil.getMysqlConnection();
+			pstmt = conn.prepareStatement(sqlCmdStep01);
+			pstmt.setInt(1, accountId);
+			pstmt.setInt(2, accountId);
+			pstmt.setInt(3, userId);
+			pstmt.executeUpdate();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			return isSuccess;
+		} finally {
+			closeResources(pstmt, conn);
+		}
+		
+		String sqlCmdStep02 = "delete from TR_ACCOUNT "
+				+ "where ACCOUNT_ID = ? "
+				+ "and USER_ID = ?";
+		
+		try {
+			
+			conn = connUtil.getMysqlConnection();
+			pstmt = conn.prepareStatement(sqlCmdStep02);
+			pstmt.setInt(1, accountId);
+			pstmt.setInt(2, userId);
+			int rowCount = pstmt.executeUpdate();
+			isSuccess = rowCount > 0;
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+			return isSuccess;
+		} finally {
+			closeResources(pstmt, conn);
+		}
+		
+		return isSuccess;
 	}
 
 	@Override

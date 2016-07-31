@@ -32,8 +32,9 @@
 				</form>
 			</td>
 			<td>
-				<form action="" method="post"> <!-- TODO delete account -->
+				<form action="deleteAccount" method="post">
 					<input type="hidden" name="accountIdForEdit" value="${ account.accountId }" />
+					<input type="submit" value="DELETE" />
 				</form>
 			</td>
 		</tr>	

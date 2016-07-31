@@ -63,8 +63,13 @@ public class AccountManagementFacade implements IAccountManagementFacade {
 
 	@Override
 	public Boolean deleteAccount(User user, Integer accoutnIdForDel) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Boolean isSuccess = false;
+		
+		IAccountDAO accountDao = new AccountDAO();
+		isSuccess = accountDao.deleteAccountByUser(accoutnIdForDel, user.getUserId());
+		
+		return isSuccess;
 	}
 
 	@Override

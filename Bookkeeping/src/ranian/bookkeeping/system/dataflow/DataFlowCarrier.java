@@ -406,6 +406,24 @@ public class DataFlowCarrier {
 		
 	}
 	
+	public class DeleteAccountData {
+		
+		static final String PATH = "/deleteAccount"; // TODO
+		
+		private Integer accountIdForEdit;
+		
+		public DeleteAccountData(HttpServletRequest request) {
+			
+			accountIdForEdit = Integer.valueOf(request.getParameter("accountIdForEdit"));
+			
+		}
+
+		public Integer getAccountIdForEdit() {
+			return accountIdForEdit;
+		}
+		
+	}
+	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
 	
 	public FormSetupData formSetupData;
@@ -423,6 +441,8 @@ public class DataFlowCarrier {
 	public QueryTransactionData queryTransactionData;
 	
 	public DeleteCategoryData deleteCategoryData;
+	
+	public DeleteAccountData deleteAccountData;
 	
 	private User user;
 	
@@ -477,6 +497,10 @@ public class DataFlowCarrier {
 				
 			case DeleteCategoryData.PATH:
 				this.deleteCategoryData = new DeleteCategoryData(request);
+				break;
+				
+			case DeleteAccountData.PATH:
+				this.deleteAccountData = new DeleteAccountData(request);
 				break;
 				
 		}
