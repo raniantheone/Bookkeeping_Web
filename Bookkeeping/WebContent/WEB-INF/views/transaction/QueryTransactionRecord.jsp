@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <c:set var="formOpts" scope="page" value="${ sessionScope.DataFlowCarrier.flowResults.formOpts }" />
 <c:set var="transTypeOpts" scope="page" value="${ formOpts.transTypes }" />
@@ -118,11 +119,26 @@
 	</c:forEach>
 </table>
 
-<c:forEach var="index" begin="1" end="${ totalPages }">
-	<a href="queryTransactionRecords?page=${ index }">
-		<span <c:if test="${ index == currentPage }">style="color:red;"</c:if> > ${ index } </span>
+<!-- 10 page per group: 1~10,11~20,21~30...etc -->
+<c:set var="currentPageGroupIndex" scope="page" value="${ (currentPage - 1) - ((currentPage - 1) % 10) }" /><!-- start from 0 -->
+<c:if test="${ currentPage > 10 }">
+	<a href="queryTransactionRecords?page=<fmt:formatNumber value="${ currentPageGroupIndex }" minFractionDigits="0" maxFractionDigits="0"/>">
+		<span> Previous </span>
 	</a>
+</c:if>
+<c:forEach var="index" begin="1" end="${ totalPages }">
+	<c:if test="${ ((index - 1) - ((index - 1) % 10)) == currentPageGroupIndex }">
+		<a href="queryTransactionRecords?page=${ index }">
+			<span <c:if test="${ index == currentPage }">style="color:red;"</c:if> > ${ index } </span>
+		</a>
+	</c:if>
 </c:forEach>
+<c:set var="lastPageGroupIndex" scope="page" value="${ (totalPages - 1) - ((totalPages - 1) % 10) }" />
+<c:if test="${ lastPageGroupIndex > currentPageGroupIndex }">
+	<a href="queryTransactionRecords?page=<fmt:formatNumber value="${ currentPageGroupIndex + 11 }" minFractionDigits="0" maxFractionDigits="0" />">
+		<span> Next </span>
+	</a>
+</c:if>
 
 </body>
 </html>
