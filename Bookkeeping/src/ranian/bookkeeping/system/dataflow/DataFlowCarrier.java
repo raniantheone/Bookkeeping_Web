@@ -408,7 +408,7 @@ public class DataFlowCarrier {
 	
 	public class DeleteAccountData {
 		
-		static final String PATH = "/deleteAccount"; // TODO
+		static final String PATH = "/deleteAccount";
 		
 		private Integer accountIdForEdit;
 		
@@ -420,6 +420,66 @@ public class DataFlowCarrier {
 
 		public Integer getAccountIdForEdit() {
 			return accountIdForEdit;
+		}
+		
+	}
+	
+	public class SignInPageData {
+		
+		static final String PATH = "/EntryPage";
+		
+		private Boolean isLoggedInUser;
+		
+		private Boolean isPageInit;
+		
+		private String userAccount;
+		
+		private String userPassword;
+		
+		public SignInPageData(HttpServletRequest request) {
+			
+			/**
+			 * 3 possible situations:
+			 * 1. User has logged in
+			 * 2. User has not logged in, and attempts to do so via sign-in form
+			 * 3. User has not logged in, and access sign-in page (page init)
+			 */
+			
+			isLoggedInUser = user != null;
+			
+			isPageInit = false;
+			if( !isLoggedInUser ) {
+				
+				if( request.getParameter("userAccount") != null 
+						&& request.getParameter("userPassword") != null) {
+					
+					userAccount = request.getParameter("userAccount");
+					userPassword = request.getParameter("userPassword");
+					
+				} else {
+					
+					isPageInit = true;
+					
+				}
+				
+			}
+			
+		}
+		
+		public Boolean isLoggedInUser() {
+			return isLoggedInUser;
+		}
+		
+		public Boolean isPageInit() {
+			return isPageInit;
+		}
+
+		public String getUserAccount() {
+			return userAccount;
+		}
+
+		public String getUserPassword() {
+			return userPassword;
 		}
 		
 	}
@@ -443,6 +503,8 @@ public class DataFlowCarrier {
 	public DeleteCategoryData deleteCategoryData;
 	
 	public DeleteAccountData deleteAccountData;
+	
+	public SignInPageData signInPageData;
 	
 	private User user;
 	
@@ -501,6 +563,10 @@ public class DataFlowCarrier {
 				
 			case DeleteAccountData.PATH:
 				this.deleteAccountData = new DeleteAccountData(request);
+				break;
+				
+			case SignInPageData.PATH:
+				this.signInPageData = new SignInPageData(request);
 				break;
 				
 		}

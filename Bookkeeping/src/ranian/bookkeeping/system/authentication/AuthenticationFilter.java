@@ -4,6 +4,7 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -45,13 +46,30 @@ public class AuthenticationFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpSession session = req.getSession();
 		
-		User user = null;
-		if( session.getAttribute(User.SESSION_ATTR_NAME) == null ) {
-			
-			IAuthenticationFacade authenticationFacade = new AuthenFacadeMock();
-			user = authenticationFacade.validateUser("", ""); // TODO for testing purpose, remove later
-			session.setAttribute(User.SESSION_ATTR_NAME, user);
-			
+//		User user = null;
+//		if( session.getAttribute(User.SESSION_ATTR_NAME) == null ) {
+//			
+//			IAuthenticationFacade authenticationFacade = new AuthenFacadeMock();
+//			user = authenticationFacade.validateUser("", ""); // TODO for testing purpose, remove later
+//			session.setAttribute(User.SESSION_ATTR_NAME, user);
+//			
+//		}
+		
+		// TODO Test hardcode, implement with map later
+		Boolean haveToLogin = true;
+		String[] whiteList = {"/EntryPage"};
+		String requestServletPath = req.getServletPath();
+		for(String function : whiteList) {
+			if( requestServletPath.equals(function) ) {
+				haveToLogin = false;
+				break;
+			}
+		}
+		
+		if( session.getAttribute(User.SESSION_ATTR_NAME) == null && haveToLogin ) {
+			RequestDispatcher reqDispatcher = req.getRequestDispatcher("/WEB-INF/views/SignIn.jsp");
+			reqDispatcher.forward(request, response);
+			return;
 		}
 		
 		// pass the request along the filter chain

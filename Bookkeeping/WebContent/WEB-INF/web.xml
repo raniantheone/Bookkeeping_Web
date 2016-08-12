@@ -52,6 +52,15 @@
 	</filter-mapping>
 	
 <!-- Filters end -->
+	
+  <servlet>
+  	<servlet-name>SimpleExperiment</servlet-name>
+  	<servlet-class>ranian.bookkeeping.system.experiments.VerySimpleExperimentsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SimpleExperiment</servlet-name>
+    <url-pattern>/SimpleExperiment</url-pattern>
+  </servlet-mapping>
   
   <servlet>
   	<servlet-name>queryTransServlet</servlet-name>
@@ -159,6 +168,15 @@
   <servlet-mapping>
     <servlet-name>DeleteAccountServlet</servlet-name>
     <url-pattern>/deleteAccount</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+	  <servlet-name>SignInServlet</servlet-name>
+	  <servlet-class>ranian.bookkeeping.system.authentication.controller.SignInServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	  <servlet-name>SignInServlet</servlet-name>
+  	  <url-pattern>/EntryPage</url-pattern>
   </servlet-mapping>
   
 </web-app>

@@ -69,4 +69,40 @@ public class UserDAO extends BaseDAO implements IUserDAO {
 		return null;
 	}
 
+	@Override
+	public UserVO getAuthenticatedUser(String userAccount, String userPassword) {
+
+		String sqlCmd = "select USER_ID, USER_LOGIN_ACC, USER_LOGIN_PW, USER_NAME, USER_MAIL "
+				+ "from USER_AUTHEN "
+				+ "where USER_LOGIN_ACC = ? "
+				+ "and USER_LOGIN_PW = ?";
+		
+		UserVO userVo = new UserVO();
+		try {
+			
+			conn = connUtil.getMysqlConnection();
+			pstmt = conn.prepareStatement(sqlCmd);
+			pstmt.setString(1, userAccount);
+			pstmt.setString(2, userPassword);
+			rs = pstmt.executeQuery();
+			while( rs.next() ) {
+				
+				userVo.setUserId(rs.getInt("USER_ID"));
+				userVo.setUserLoginAcc(rs.getString("USER_LOGIN_ACC"));
+				userVo.setUserLoginPw(rs.getString("USER_LOGIN_PW"));
+				userVo.setUserName(rs.getString("USER_NAME"));
+				userVo.setUserMail(rs.getString("USER_MAIL"));
+				break;
+				
+			}
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeResources(rs, pstmt, conn);
+		}
+		
+		return userVo;
+	}
+
 }

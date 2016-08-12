@@ -14,4 +14,6 @@ public interface IUserDAO {
 	
 	public UserVO getUserByLoginAccount(String userLoginAccount);
 	
+	public UserVO getAuthenticatedUser(String userAccount, String userPassword);
+	
 }
