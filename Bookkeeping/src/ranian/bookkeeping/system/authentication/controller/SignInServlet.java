@@ -60,6 +60,11 @@ public class SignInServlet extends HttpServlet {
 						dataFlowCarrier.signInPageData.getUserPassword());
 				request.getSession().setAttribute(User.SESSION_ATTR_NAME, user);
 				
+				if( user != null ) {
+					response.sendRedirect((String)request.getSession().getAttribute("ORIGINAL_URL"));
+					return;
+				}
+				
 			}
 
 		}
