@@ -171,12 +171,21 @@
   </servlet-mapping>
   
   <servlet>
-	  <servlet-name>SignInServlet</servlet-name>
-	  <servlet-class>ranian.bookkeeping.system.authentication.controller.SignInServlet</servlet-class>
+	<servlet-name>SignInServlet</servlet-name>
+	<servlet-class>ranian.bookkeeping.system.authentication.controller.SignInServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	  <servlet-name>SignInServlet</servlet-name>
-  	  <url-pattern>/EntryPage</url-pattern>
+  	<servlet-name>SignInServlet</servlet-name>
+  	<url-pattern>/EntryPage</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SignOutServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.system.authentication.controller.SignOutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SignOutServlet</servlet-name>
+  	<url-pattern>/SignOut</url-pattern>
   </servlet-mapping>
   
 </web-app>

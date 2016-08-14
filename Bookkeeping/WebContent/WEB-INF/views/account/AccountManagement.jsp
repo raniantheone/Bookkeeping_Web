@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<jsp:include page="/WEB-INF/views/SignOut.jsp" />
+
 <form action="serveAddOrEditAccountForm" method="post">
 	<input type="submit" value="Add an account" />
 </form>

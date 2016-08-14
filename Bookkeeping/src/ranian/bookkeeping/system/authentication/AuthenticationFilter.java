@@ -66,7 +66,7 @@ public class AuthenticationFilter implements Filter {
 			}
 		}
 		
-		if( session.getAttribute(User.SESSION_ATTR_NAME) == null && haveToLogin ) {
+		if( haveToLogin && session.getAttribute(User.SESSION_ATTR_NAME) == null ) {
 			session.setAttribute("ORIGINAL_URL", req.getRequestURL().toString());
 			RequestDispatcher reqDispatcher = req.getRequestDispatcher("/WEB-INF/views/SignIn.jsp");
 			reqDispatcher.forward(request, response);

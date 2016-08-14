@@ -20,6 +20,8 @@
 </head>
 <body>
 
+<jsp:include page="/WEB-INF/views/SignOut.jsp" />
+
 <!-- Add transaction record: income, expense, or account transfer. -->
 <form action="setupAddOrEditForm" method="post">
 

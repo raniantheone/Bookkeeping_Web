@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<jsp:include page="/WEB-INF/views/SignOut.jsp" />
+
 <form action="addOrEditCategory" method="post">
 	<input type="text" name="categoryName" value="${ categoryToEdit.categoryName }" />
 	<input type="hidden" name="categoryIdForEdit" value="${ categoryToEdit.categoryId }" />

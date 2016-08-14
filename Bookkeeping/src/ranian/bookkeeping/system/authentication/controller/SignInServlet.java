@@ -60,8 +60,14 @@ public class SignInServlet extends HttpServlet {
 						dataFlowCarrier.signInPageData.getUserPassword());
 				request.getSession().setAttribute(User.SESSION_ATTR_NAME, user);
 				
-				if( user != null ) {
-					response.sendRedirect((String)request.getSession().getAttribute("ORIGINAL_URL"));
+				String originalUrl = null;
+				if( request.getSession().getAttribute("ORIGINAL_URL") != null ) {
+					originalUrl = (String)request.getSession().getAttribute("ORIGINAL_URL");	
+				}
+
+				if( originalUrl != null && user != null ) {
+					request.getSession().removeAttribute("ORIGINAL_URL");
+					response.sendRedirect(originalUrl);
 					return;
 				}
 				

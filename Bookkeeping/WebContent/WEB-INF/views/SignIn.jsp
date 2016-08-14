@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<jsp:include page="/WEB-INF/views/SignOut.jsp" />
+
 <c:if test="${ empty user }">
 	<form action="EntryPage" method="post">
 	Account: <input type="text" name="userAccount" />

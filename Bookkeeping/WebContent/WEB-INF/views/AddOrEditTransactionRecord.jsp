@@ -13,6 +13,8 @@
 </head>
 <body>
 
+<jsp:include page="/WEB-INF/views/SignOut.jsp" />
+
 <!-- 
 The form is used for 2 operations: add or edit transaction record.
 Each operation deals with 3 types of transaction: income, expense, account transfer.

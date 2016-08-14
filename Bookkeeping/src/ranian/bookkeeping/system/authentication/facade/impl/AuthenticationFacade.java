@@ -10,15 +10,19 @@ public class AuthenticationFacade implements IAuthenticationFacade {
 	@Override
 	public User validateUser(String userLoginAcc, String userLoginPw) {
 		
+		User user = null;
+		
 		UserDAO userDao = new UserDAO();
 		UserVO userVo = userDao.getAuthenticatedUser(userLoginAcc, userLoginPw);
 		
-		User user = new User(userVo.getUserId(), 
-				userVo.getUserLoginAcc(), 
-				userVo.getUserLoginPw(), 
-				userVo.getUserName(), 
-				userVo.getUserMail());
-		
+		if( userVo != null ) {
+			user = new User(userVo.getUserId(), 
+					userVo.getUserLoginAcc(), 
+					userVo.getUserLoginPw(), 
+					userVo.getUserName(), 
+					userVo.getUserMail());
+		}
+
 		return user;
 	}
 	

@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<jsp:include page="/WEB-INF/views/SignOut.jsp" />
+
 <form action="addOrEditAccount" method="post">
 	<span>Account Name</span><input type="text" name="accountName" value="${ accountForEdit.accountName }" />
 	<br>

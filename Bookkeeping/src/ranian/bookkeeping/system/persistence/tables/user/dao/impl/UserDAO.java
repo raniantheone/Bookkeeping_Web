@@ -77,7 +77,7 @@ public class UserDAO extends BaseDAO implements IUserDAO {
 				+ "where USER_LOGIN_ACC = ? "
 				+ "and USER_LOGIN_PW = ?";
 		
-		UserVO userVo = new UserVO();
+		UserVO userVo = null;
 		try {
 			
 			conn = connUtil.getMysqlConnection();
@@ -87,6 +87,7 @@ public class UserDAO extends BaseDAO implements IUserDAO {
 			rs = pstmt.executeQuery();
 			while( rs.next() ) {
 				
+				userVo = new UserVO();
 				userVo.setUserId(rs.getInt("USER_ID"));
 				userVo.setUserLoginAcc(rs.getString("USER_LOGIN_ACC"));
 				userVo.setUserLoginPw(rs.getString("USER_LOGIN_PW"));

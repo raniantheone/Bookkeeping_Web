@@ -10,6 +10,8 @@
 </head>
 <body>
 
+<jsp:include page="/WEB-INF/views/SignOut.jsp" />
+
 <!-- trigger add category form -->
 <form action="serveAddOrEditForm" method="post">
 	<input type="submit" value="add a category" />

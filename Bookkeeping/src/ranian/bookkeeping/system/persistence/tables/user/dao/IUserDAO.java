@@ -14,6 +14,12 @@ public interface IUserDAO {
 	
 	public UserVO getUserByLoginAccount(String userLoginAccount);
 	
+	/**
+	 * Select user that matches the combination of given account and password
+	 * @param userAccount
+	 * @param userPassword
+	 * @return null if none matched
+	 */
 	public UserVO getAuthenticatedUser(String userAccount, String userPassword);
 	
 }
