@@ -11,9 +11,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
-import ranian.bookkeeping.system.authentication.facade.IAuthenticationFacade;
-import ranian.bookkeeping.system.authentication.facade.mock.AuthenFacadeMock;
 import ranian.bookkeeping.system.authentication.model.User;
 
 /**
@@ -21,51 +18,36 @@ import ranian.bookkeeping.system.authentication.model.User;
  */
 @WebFilter("/AuthenticationFilter")
 public class AuthenticationFilter implements Filter {
-
+	
+	private FilterConfig authenFilterConf;
+	
     /**
      * Default constructor. 
      */
     public AuthenticationFilter() {
-        // TODO Auto-generated constructor stub
+
     }
 
 	/**
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		// TODO Auto-generated method stub
+
 	}
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
 		
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpSession session = req.getSession();
+		HttpSession session = req.getSession();		
 		
-//		User user = null;
-//		if( session.getAttribute(User.SESSION_ATTR_NAME) == null ) {
-//			
-//			IAuthenticationFacade authenticationFacade = new AuthenFacadeMock();
-//			user = authenticationFacade.validateUser("", ""); // TODO for testing purpose, remove later
-//			session.setAttribute(User.SESSION_ATTR_NAME, user);
-//			
-//		}
-		
-		// TODO Test hardcode, implement with map later
-		Boolean haveToLogin = true;
-		String[] whiteList = {"/EntryPage"};
-		String requestServletPath = req.getServletPath();
-		for(String function : whiteList) {
-			if( requestServletPath.equals(function) ) {
-				haveToLogin = false;
-				break;
-			}
-		}
-		
+		/**
+		 * Functions which do not require authentication are defined in init-params of authentication filter
+		 * Refer to web.xml for exact details 
+		 */
+		Boolean haveToLogin = authenFilterConf.getInitParameter(req.getServletPath()) == null;
 		if( haveToLogin && session.getAttribute(User.SESSION_ATTR_NAME) == null ) {
 			session.setAttribute("ORIGINAL_URL", req.getRequestURL().toString());
 			RequestDispatcher reqDispatcher = req.getRequestDispatcher("/WEB-INF/views/SignIn.jsp");
@@ -73,7 +55,6 @@ public class AuthenticationFilter implements Filter {
 			return;
 		}
 		
-		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}
 
@@ -81,7 +62,9 @@ public class AuthenticationFilter implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		
+		this.authenFilterConf = fConfig;
+		
 	}
 
 }

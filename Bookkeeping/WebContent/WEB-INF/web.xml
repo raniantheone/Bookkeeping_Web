@@ -36,6 +36,10 @@
 	<filter>
 		<filter-name>authenticationFilter</filter-name>
 		<filter-class>ranian.bookkeeping.system.authentication.AuthenticationFilter</filter-class>
+		<init-param> <!-- Functions which do not require authentication are declared here -->
+			<param-name>/EntryPage</param-name>
+			<param-value>/EntryPage</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>authenticationFilter</filter-name>
