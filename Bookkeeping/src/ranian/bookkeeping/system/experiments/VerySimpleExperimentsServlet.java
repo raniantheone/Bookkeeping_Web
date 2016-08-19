@@ -1,6 +1,9 @@
 package ranian.bookkeeping.system.experiments;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -33,6 +36,23 @@ public class VerySimpleExperimentsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		testRetvUrlMappingInfo(request);
+		
+		String password = "abcd";
+		System.out.println(encodePassword(password));;
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+	
+	private void testRetvUrlMappingInfo(HttpServletRequest request) {
+		
 		ServletContext servletCtx = request.getServletContext();
 		Map<String, ServletRegistration> registrationsMap = (Map<String, ServletRegistration>) servletCtx.getServletRegistrations();
 		for(Entry<String, ServletRegistration> entry : registrationsMap.entrySet()) {
@@ -52,13 +72,32 @@ public class VerySimpleExperimentsServlet extends HttpServlet {
 		}
 		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+	private String encodePassword(String password) {
+		
+		MessageDigest md = null;
+		String resultString = "";
+		try {
+			
+			md = MessageDigest.getInstance("SHA-1");
+			md.update(password.getBytes("UTF-8"));
+			byte[] resultBytes = md.digest();
+			
+			StringBuilder sb = new StringBuilder();
+			for(int i = 0; i < resultBytes.length; i++) {
+				sb.append(Integer.toString(resultBytes[i]));	
+			}
+			resultString = sb.toString();
+			
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return resultString;
 	}
-
+	
 }
