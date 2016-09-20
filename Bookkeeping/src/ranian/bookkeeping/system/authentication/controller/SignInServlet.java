@@ -15,6 +15,7 @@ import ranian.bookkeeping.system.authentication.facade.IAuthenticationFacade;
 import ranian.bookkeeping.system.authentication.facade.impl.AuthenticationFacade;
 import ranian.bookkeeping.system.authentication.model.User;
 import ranian.bookkeeping.system.dataflow.DataFlowCarrier;
+import ranian.bookkeeping.system.utilities.EncryptionUtility;
 
 /**
  * Servlet implementation class SignInController
@@ -57,7 +58,7 @@ public class SignInServlet extends HttpServlet {
 			
 				IAuthenticationFacade authenFacade = new AuthenticationFacade();
 				user = authenFacade.validateUser(dataFlowCarrier.signInPageData.getUserAccount(), 
-						dataFlowCarrier.signInPageData.getUserPassword());
+						EncryptionUtility.encodePassword(dataFlowCarrier.signInPageData.getUserPassword()));
 				request.getSession().setAttribute(User.SESSION_ATTR_NAME, user);
 				
 				String originalUrl = null;

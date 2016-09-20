@@ -85,7 +85,8 @@ public class VerySimpleExperimentsServlet extends HttpServlet {
 			
 			StringBuilder sb = new StringBuilder();
 			for(int i = 0; i < resultBytes.length; i++) {
-				sb.append(Integer.toString(resultBytes[i]));	
+				sb.append(Integer.toHexString(resultBytes[i]));
+				// sb.append(Integer.toString(0xFF & resultBytes[i]));
 			}
 			resultString = sb.toString();
 			

@@ -39,6 +39,8 @@
 		<init-param> <!-- Functions which do not require authentication are declared here -->
 			<param-name>/EntryPage</param-name>
 			<param-value>/EntryPage</param-value>
+		</init-param>
+		<init-param>
 			<param-name>/SimpleExperiment</param-name>
 			<param-value>/SimpleExperiment</param-value>
 		</init-param>
