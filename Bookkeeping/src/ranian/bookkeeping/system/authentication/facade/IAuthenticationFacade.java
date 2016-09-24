@@ -12,4 +12,25 @@ public interface IAuthenticationFacade {
 	 */
 	public User validateUser(String userLoginAcc, String userLoginPw);
 	
+	/**
+	 * Check if the data provided by this applicant is valid
+	 * @param userAccount
+	 * @param userEmail
+	 * @return true if both userAccount and userEmail are unique in system
+	 */
+	public Boolean isValidApplicant(String userAccount, String userEmail);
+	
+	/**
+	 * Create a legitimate user for this applicant
+	 * @param applicantUser
+	 * @return A newly created user
+	 */
+	public User createNewUser(User applicantUser);
+	
+	/**
+	 * Create default bookkeeping account and category for the newly created user
+	 * @param newlyCreatedUser
+	 * @return true if operation success
+	 */
+	public Boolean createDefaultData(User newlyCreatedUser);
 }

@@ -484,6 +484,31 @@ public class DataFlowCarrier {
 		
 	}
 	
+	public class SignUpFormData {
+		
+		static final String PATH = "/SignUp";
+		
+		User signUpUser;
+		
+		public SignUpFormData(HttpServletRequest request) {
+			
+			// TODO add validation
+			
+			this.signUpUser = new User(
+					request.getParameter("loginAcc"), 
+					request.getParameter("loginPw"), 
+					request.getParameter("userName"), 
+					request.getParameter("userEmail")
+					);
+			
+		}
+
+		public User getSignUpUser() {
+			return signUpUser;
+		}
+		
+	}
+	
 	public AddOrEditTransRecordData addOrEditTransRecordData;
 	
 	public FormSetupData formSetupData;
@@ -505,6 +530,8 @@ public class DataFlowCarrier {
 	public DeleteAccountData deleteAccountData;
 	
 	public SignInPageData signInPageData;
+	
+	public SignUpFormData signUpFormData;
 	
 	private User user;
 	
@@ -569,6 +596,9 @@ public class DataFlowCarrier {
 				this.signInPageData = new SignInPageData(request);
 				break;
 				
+			case SignUpFormData.PATH:
+				this.signUpFormData = new SignUpFormData(request);
+				break;
 		}
 		
 	}

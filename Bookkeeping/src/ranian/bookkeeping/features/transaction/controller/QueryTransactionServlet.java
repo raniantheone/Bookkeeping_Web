@@ -97,8 +97,11 @@ public class QueryTransactionServlet extends HttpServlet {
 		}		
 		
 		// TODO Test pageutil
-		PageUtil.getInstance().prepareCompleteData(transactions, 10, request);
-		PagedData pagedData = PageUtil.getInstance().retvPagedData(1, request);
+		PagedData pagedData = null;
+		if( transactions != null && transactions.size() > 0 ) {
+			PageUtil.getInstance().prepareCompleteData(transactions, 10, request);
+			pagedData = PageUtil.getInstance().retvPagedData(1, request);			
+		}
 
 		Map<String, Object> dataFlowResults = new HashMap<String, Object>();
 		// dataFlowResults.put("transactionTypes", transactionTypes);

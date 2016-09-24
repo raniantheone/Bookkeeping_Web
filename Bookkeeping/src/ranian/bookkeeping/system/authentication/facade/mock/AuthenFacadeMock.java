@@ -23,6 +23,24 @@ public class AuthenFacadeMock implements IAuthenticationFacade{
 				userVo.getUserMail());
 		
 		return user;
+	}
+
+	@Override
+	public Boolean isValidApplicant(String userAccount, String userEmail) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User createNewUser(User applicantUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean createDefaultData(User newlyCreatedUser) {
+		// TODO Auto-generated method stub
+		return null;
 	};
 	
 }

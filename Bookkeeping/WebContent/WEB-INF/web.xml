@@ -44,6 +44,14 @@
 			<param-name>/SimpleExperiment</param-name>
 			<param-value>/SimpleExperiment</param-value>
 		</init-param>
+		<init-param>
+			<param-name>/SignUp</param-name>
+			<param-value>/SignUp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>/SignUpPage</param-name>
+			<param-value>/SignUpPage</param-value>
+		</init-param>
 	</filter>
 	<filter-mapping>
 		<filter-name>authenticationFilter</filter-name>
@@ -194,6 +202,24 @@
   <servlet-mapping>
   	<servlet-name>SignOutServlet</servlet-name>
   	<url-pattern>/SignOut</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SignUpServlet</servlet-name>
+  	<servlet-class>ranian.bookkeeping.system.authentication.controller.SignUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SignUpServlet</servlet-name>
+  	<url-pattern>/SignUp</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>SignUpPage</servlet-name>
+  	<jsp-file>/WEB-INF/views/signup/Signup.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SignUpPage</servlet-name>
+  	<url-pattern>/SignUpPage</url-pattern>
   </servlet-mapping>
   
 </web-app>

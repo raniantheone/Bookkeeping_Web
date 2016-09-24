@@ -36,7 +36,7 @@ public class StandAloneTester {
 	
 	public static void main(String[] args) {
 		
-		System.out.println( StandAloneTester.encodePassword("tester") );
+		System.out.println( StandAloneTester.encodePassword("ranian") );
 
 	}
 

@@ -3,8 +3,13 @@ package ranian.bookkeeping.system.persistence.tables.user.dao;
 import ranian.bookkeeping.system.persistence.tables.user.vo.UserVO;
 
 public interface IUserDAO {
-
-	public Boolean insertUser(UserVO user);
+	
+	/**
+	 * Insert a new user and retrieve the newly created user id
+	 * @param user
+	 * @return userid
+	 */
+	public Integer insertUser(UserVO user);
 	
 	public Boolean updateUser(UserVO user);
 	
@@ -21,5 +26,11 @@ public interface IUserDAO {
 	 * @return null if none matched
 	 */
 	public UserVO getAuthenticatedUser(String userAccount, String userPassword);
+	
+	/**
+	 * Count the entry which matches given bookkeeping account or email
+	 * @return matched count
+	 */
+	public Integer queryExistingAccountAndEmail(String bookkeepingAccount, String userEmail);
 	
 }
