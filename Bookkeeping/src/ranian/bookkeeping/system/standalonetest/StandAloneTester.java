@@ -1,6 +1,7 @@
 package ranian.bookkeeping.system.standalonetest;
 
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Constructor;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -36,8 +37,27 @@ public class StandAloneTester {
 	
 	public static void main(String[] args) {
 		
-		System.out.println( StandAloneTester.encodePassword("ranian") );
-
+		// System.out.println( StandAloneTester.encodePassword("ranian") );
+		
+		try {
+			Class<?> clazz = Class.forName("ranian.bookkeeping.system.standalonetest.TestObjectA");
+			
+			// 1 str arg constructor
+			// Constructor<?> ctor = clazz.getConstructor(String.class);
+			// Object testObjectA = ctor.newInstance("Ranian test");
+			
+			// 1 str arg and int constructor
+			// Constructor<?> ctor = clazz.getConstructor(String.class, Integer.class);
+			// Object testObjectA = ctor.newInstance("Ranian test", 10);
+			
+			Constructor<?> ctor = clazz.getConstructor();
+			Object testObjectA = ctor.newInstance();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }

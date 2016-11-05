@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import ranian.bookkeeping.system.authentication.facade.IAuthenticationFacade;
 import ranian.bookkeeping.system.authentication.facade.impl.AuthenticationFacade;
 import ranian.bookkeeping.system.authentication.model.User;

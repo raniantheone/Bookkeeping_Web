@@ -60,14 +60,28 @@ public class VerySimpleExperimentsServlet extends HttpServlet {
 			String key = entry.getKey();
 			ServletRegistration registration = entry.getValue();
 			String registrationName = registration.getName();
-			Collection<String> mappings = registration.getMappings();
 			
+			Collection<String> mappings = registration.getMappings();
 			StringBuilder sb = new StringBuilder();
 			for(String mapping : mappings) {
 				sb.append(mapping).append(", ");
 			}
+			String registrationMappings = sb.toString();
+			sb.setLength(0);
 			
-			String testResult = String.format("registration key:%s ; registration name:%s ; mappings:%s", key, registrationName, sb.toString());
+			Map<String, String> testMap = registration.getInitParameters();
+			for(Entry<String, String> paramEntry : testMap.entrySet()) {
+				sb.append(paramEntry.getKey()).append(" - ").append(paramEntry.getValue()).append("; ");
+			}
+			String initParams = sb.toString();
+			
+			String testResult = String.format(
+					"registration key:%s \n registration name:%s \n registration mappings:%s \n initParams:%s", 
+					key, 
+					registrationName, 
+					registrationMappings,
+					initParams
+					);
 			System.out.println(testResult);
 		}
 		

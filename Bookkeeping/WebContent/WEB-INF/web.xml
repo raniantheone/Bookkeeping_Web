@@ -72,6 +72,14 @@
   <servlet>
   	<servlet-name>SimpleExperiment</servlet-name>
   	<servlet-class>ranian.bookkeeping.system.experiments.VerySimpleExperimentsServlet</servlet-class>
+  	<init-param>
+  		<param-name>test name 1</param-name>
+  		<param-value>test value 1</param-value>
+  	</init-param>
+	<init-param>
+  		<param-name>test name 2</param-name>
+  		<param-value>test value 2</param-value>
+  	</init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>SimpleExperiment</servlet-name>

@@ -8,11 +8,15 @@ import java.util.Date;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import ranian.bookkeeping.features.account.model.Account;
 import ranian.bookkeeping.features.category.model.Category;
 import ranian.bookkeeping.features.transaction.model.Criteria;
 import ranian.bookkeeping.features.transaction.model.Transaction;
 import ranian.bookkeeping.system.authentication.model.User;
+import ranian.bookkeeping.system.utilities.LoggingUtility;
 
 /**
  * Handles data preparation from front-end to servlets, 
@@ -493,14 +497,19 @@ public class DataFlowCarrier {
 		public SignUpFormData(HttpServletRequest request) {
 			
 			// TODO add validation
+			String loginAcc = request.getParameter("loginAcc");
+			String loginPw = request.getParameter("loginPw");
+			String userName = request.getParameter("userName");
+			String userEmail = request.getParameter("userEmail");
 			
 			this.signUpUser = new User(
-					request.getParameter("loginAcc"), 
-					request.getParameter("loginPw"), 
-					request.getParameter("userName"), 
-					request.getParameter("userEmail")
+					loginAcc, 
+					loginPw, 
+					userName, 
+					userEmail
 					);
 			
+			logger.info(String.format("SignUpFormData submitted for login acc: %s", loginAcc));
 		}
 
 		public User getSignUpUser() {
@@ -537,12 +546,14 @@ public class DataFlowCarrier {
 	
 	private Map<String, Object> flowResults;
 	
+	private Logger logger;
+	
 	public static DataFlowCarrier GetCurrentDataFlowCarrier(HttpServletRequest request) {
 		return (DataFlowCarrier) request.getSession().getAttribute(DataFlowCarrier.SESSION_ATTRIBUTE_NAME);
 	}
 	
 	public DataFlowCarrier() {
-		
+		this.logger = LoggingUtility.getLogger();
 	}
 	
 	public void startDataFlow(HttpServletRequest request) {
@@ -550,6 +561,7 @@ public class DataFlowCarrier {
 		this.user = (User) request.getSession().getAttribute(User.SESSION_ATTR_NAME);
 		
 		String path = request.getServletPath();
+		logger.info(String.format("Path requested: %s", path));
 		switch( path ) {
 			
 			case AddOrEditTransRecordData.PATH:

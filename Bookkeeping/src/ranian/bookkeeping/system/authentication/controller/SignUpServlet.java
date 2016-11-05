@@ -26,7 +26,6 @@ public class SignUpServlet extends HttpServlet {
      */
     public SignUpServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -53,7 +52,7 @@ public class SignUpServlet extends HttpServlet {
 		User newlyCreatedUser = null;
 		IAuthenticationFacade authFacade = new AuthenticationFacade();
 		if( authFacade.isValidApplicant(applicantAccount, applicantEmail) ) {
-
+			
 			// Create new user
 			newlyCreatedUser = authFacade.createNewUser(applicantUser);
 			
