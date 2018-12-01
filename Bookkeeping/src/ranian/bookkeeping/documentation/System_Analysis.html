@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>System_Analysis</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/ranian/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h2 class="mume-header" id="feature-name">Feature Name</h2>
+
+<h3 class="mume-header" id="activity-flow">Activity Flow</h3>
+
+<h3 class="mume-header" id="description">Description</h3>
+
+<h3 class="mume-header" id="requirement-mapping">Requirement Mapping</h3>
+
+<hr>
+<h2 class="mume-header" id="display-total-expense-of-this-month">Display Total Expense of This Month</h2>
+
+<hr>
+<h2 class="mume-header" id="create-an-expense-record">Create An Expense Record</h2>
+
+<h3 class="mume-header" id="main-flow">Main Flow</h3>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="571px" preserveAspectRatio="none" style="width:438px;height:571px;" version="1.1" viewBox="0 0 438 571" width="438px" zoomAndPan="magnify"><defs><filter height="300%" id="fs0yzfq76ttnr" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="41" x="93.5" y="29.4531">User</text><line style="stroke: #000000; stroke-width: 2.0;" x1="10" x2="10" y1="12.7451" y2="559.4795"></line><ellipse cx="114.5" cy="43.6982" fill="#000000" filter="url(#fs0yzfq76ttnr)" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"></ellipse><rect fill="#FEFECE" filter="url(#fs0yzfq76ttnr)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="189" x="20" y="73.6982"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="169" x="30" y="94.8369">Access expense entry form</text><rect fill="#FEFECE" filter="url(#fs0yzfq76ttnr)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="108" x="60.5" y="225.6357"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="88" x="70.5" y="246.7744">Fill in the form</text><rect fill="#FEFECE" filter="url(#fs0yzfq76ttnr)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="120" x="54.5" y="279.6045"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="100" x="64.5" y="300.7432">Submit the form</text><polygon fill="#FEFECE" filter="url(#fs0yzfq76ttnr)" points="114.5,181.6357,126.5,193.6357,114.5,205.6357,102.5,193.6357,114.5,181.6357" style="stroke: #A80036; stroke-width: 1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="65" x="289.5" y="29.4531">System</text><line style="stroke: #000000; stroke-width: 2.0;" x1="218" x2="218" y1="12.7451" y2="559.4795"></line><rect fill="#FEFECE" filter="url(#fs0yzfq76ttnr)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="189" x="228" y="127.667"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="169" x="238" y="148.8057">Display expense entry form</text><rect fill="#FEFECE" filter="url(#fs0yzfq76ttnr)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="136" x="254.5" y="333.5732"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="116" x="264.5" y="354.7119">Validate form data</text><polygon fill="#FEFECE" filter="url(#fs0yzfq76ttnr)" points="287,387.542,358,387.542,370,399.542,358,411.542,287,411.542,275,399.542,287,387.542" style="stroke: #A80036; stroke-width: 1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71" x="287" y="403.3501">invalid data?</text><rect fill="#FEFECE" filter="url(#fs0yzfq76ttnr)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="166" x="239.5" y="431.542"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="146" x="249.5" y="452.6807">Add an expense record</text><rect fill="#FEFECE" filter="url(#fs0yzfq76ttnr)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="169" x="238" y="485.5107"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="149" x="248" y="506.6494">Display operation result</text><ellipse cx="322.5" cy="549.4795" fill="none" filter="url(#fs0yzfq76ttnr)" rx="10" ry="10" style="stroke: #000000; stroke-width: 1.0;"></ellipse><ellipse cx="323" cy="549.9795" fill="#000000" filter="url(#fs0yzfq76ttnr)" rx="6" ry="6" style="stroke: none; stroke-width: 1.0;"></ellipse><line style="stroke: #000000; stroke-width: 2.0;" x1="426" x2="426" y1="12.7451" y2="559.4795"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="114.5" x2="114.5" y1="53.6982" y2="73.6982"></line><polygon fill="#A80036" points="110.5,63.6982,114.5,73.6982,118.5,63.6982,114.5,67.6982" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="114.5" x2="114.5" y1="259.6045" y2="279.6045"></line><polygon fill="#A80036" points="110.5,269.6045,114.5,279.6045,118.5,269.6045,114.5,273.6045" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="114.5" x2="114.5" y1="205.6357" y2="225.6357"></line><polygon fill="#A80036" points="110.5,215.6357,114.5,225.6357,118.5,215.6357,114.5,219.6357" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="370" x2="402.5" y1="399.542" y2="399.542"></line><polygon fill="#A80036" points="398.5,306.5889,402.5,296.5889,406.5,306.5889,402.5,302.5889" style="stroke: #A80036; stroke-width: 1.5;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="402.5" x2="402.5" y1="193.6357" y2="399.542"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="402.5" x2="126.5" y1="193.6357" y2="193.6357"></line><polygon fill="#A80036" points="136.5,189.6357,126.5,193.6357,136.5,197.6357,132.5,193.6357" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="322.5" x2="322.5" y1="367.542" y2="387.542"></line><polygon fill="#A80036" points="318.5,377.542,322.5,387.542,326.5,377.542,322.5,381.542" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="322.5" x2="322.5" y1="411.542" y2="431.542"></line><polygon fill="#A80036" points="318.5,421.542,322.5,431.542,326.5,421.542,322.5,425.542" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="322.5" x2="322.5" y1="465.5107" y2="485.5107"></line><polygon fill="#A80036" points="318.5,475.5107,322.5,485.5107,326.5,475.5107,322.5,479.5107" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="322.5" x2="322.5" y1="519.4795" y2="539.4795"></line><polygon fill="#A80036" points="318.5,529.4795,322.5,539.4795,326.5,529.4795,322.5,533.4795" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="114.5" x2="114.5" y1="107.667" y2="112.667"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="114.5" x2="322.5" y1="112.667" y2="112.667"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="322.5" x2="322.5" y1="112.667" y2="127.667"></line><polygon fill="#A80036" points="318.5,117.667,322.5,127.667,326.5,117.667,322.5,121.667" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="114.5" x2="114.5" y1="313.5732" y2="318.5732"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="114.5" x2="322.5" y1="318.5732" y2="318.5732"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="322.5" x2="322.5" y1="318.5732" y2="333.5732"></line><polygon fill="#A80036" points="318.5,323.5732,322.5,333.5732,326.5,323.5732,322.5,327.5732" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="322.5" x2="322.5" y1="161.6357" y2="166.6357"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="322.5" x2="114.5" y1="166.6357" y2="166.6357"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="114.5" x2="114.5" y1="166.6357" y2="181.6357"></line><polygon fill="#A80036" points="110.5,171.6357,114.5,181.6357,118.5,171.6357,114.5,175.6357" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--
+@startuml
+|User|
+start
+:Access expense entry form;
+|System|
+:Display expense entry form;
+|User|
+repeat
+:Fill in the form;
+:Submit the form;
+|System|
+:Validate form data;
+repeat while (invalid data?)
+:Add an expense record;
+:Display operation result;
+stop
+@enduml
+
+PlantUML version 1.2017.19(Sun Nov 12 19:46:22 CST 2017)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12
+Operating System: Linux
+OS Version: 4.4.0-112-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p>
+<hr>
+<h2 class="mume-header" id="create-an-income-record">Create An Income Record</h2>
+
+<h3 class="mume-header" id="main-flow-1">Main Flow</h3>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="571px" preserveAspectRatio="none" style="width:422px;height:571px;" version="1.1" viewBox="0 0 422 571" width="422px" zoomAndPan="magnify"><defs><filter height="300%" id="f19u22yh2l8tm" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="41" x="89.5" y="29.4531">User</text><line style="stroke: #000000; stroke-width: 2.0;" x1="10" x2="10" y1="12.7451" y2="559.4795"></line><ellipse cx="110.5" cy="43.6982" fill="#000000" filter="url(#f19u22yh2l8tm)" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"></ellipse><rect fill="#FEFECE" filter="url(#f19u22yh2l8tm)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="181" x="20" y="73.6982"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="161" x="30" y="94.8369">Access income entry form</text><rect fill="#FEFECE" filter="url(#f19u22yh2l8tm)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="108" x="56.5" y="225.6357"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="88" x="66.5" y="246.7744">Fill in the form</text><rect fill="#FEFECE" filter="url(#f19u22yh2l8tm)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="120" x="50.5" y="279.6045"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="100" x="60.5" y="300.7432">Submit the form</text><polygon fill="#FEFECE" filter="url(#f19u22yh2l8tm)" points="110.5,181.6357,122.5,193.6357,110.5,205.6357,98.5,193.6357,110.5,181.6357" style="stroke: #A80036; stroke-width: 1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="65" x="277.5" y="29.4531">System</text><line style="stroke: #000000; stroke-width: 2.0;" x1="210" x2="210" y1="12.7451" y2="559.4795"></line><rect fill="#FEFECE" filter="url(#f19u22yh2l8tm)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="181" x="220" y="127.667"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="161" x="230" y="148.8057">Display income entry form</text><rect fill="#FEFECE" filter="url(#f19u22yh2l8tm)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="136" x="242.5" y="333.5732"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="116" x="252.5" y="354.7119">Validate form data</text><polygon fill="#FEFECE" filter="url(#f19u22yh2l8tm)" points="275,387.542,346,387.542,358,399.542,346,411.542,275,411.542,263,399.542,275,387.542" style="stroke: #A80036; stroke-width: 1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71" x="275" y="403.3501">invalid data?</text><rect fill="#FEFECE" filter="url(#f19u22yh2l8tm)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="158" x="231.5" y="431.542"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="138" x="241.5" y="452.6807">Add an income record</text><rect fill="#FEFECE" filter="url(#f19u22yh2l8tm)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="169" x="226" y="485.5107"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="149" x="236" y="506.6494">Display operation result</text><ellipse cx="310.5" cy="549.4795" fill="none" filter="url(#f19u22yh2l8tm)" rx="10" ry="10" style="stroke: #000000; stroke-width: 1.0;"></ellipse><ellipse cx="311" cy="549.9795" fill="#000000" filter="url(#f19u22yh2l8tm)" rx="6" ry="6" style="stroke: none; stroke-width: 1.0;"></ellipse><line style="stroke: #000000; stroke-width: 2.0;" x1="410" x2="410" y1="12.7451" y2="559.4795"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="110.5" y1="53.6982" y2="73.6982"></line><polygon fill="#A80036" points="106.5,63.6982,110.5,73.6982,114.5,63.6982,110.5,67.6982" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="110.5" y1="259.6045" y2="279.6045"></line><polygon fill="#A80036" points="106.5,269.6045,110.5,279.6045,114.5,269.6045,110.5,273.6045" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="110.5" y1="205.6357" y2="225.6357"></line><polygon fill="#A80036" points="106.5,215.6357,110.5,225.6357,114.5,215.6357,110.5,219.6357" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="358" x2="390.5" y1="399.542" y2="399.542"></line><polygon fill="#A80036" points="386.5,306.5889,390.5,296.5889,394.5,306.5889,390.5,302.5889" style="stroke: #A80036; stroke-width: 1.5;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="390.5" x2="390.5" y1="193.6357" y2="399.542"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="390.5" x2="122.5" y1="193.6357" y2="193.6357"></line><polygon fill="#A80036" points="132.5,189.6357,122.5,193.6357,132.5,197.6357,128.5,193.6357" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="310.5" x2="310.5" y1="367.542" y2="387.542"></line><polygon fill="#A80036" points="306.5,377.542,310.5,387.542,314.5,377.542,310.5,381.542" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="310.5" x2="310.5" y1="411.542" y2="431.542"></line><polygon fill="#A80036" points="306.5,421.542,310.5,431.542,314.5,421.542,310.5,425.542" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="310.5" x2="310.5" y1="465.5107" y2="485.5107"></line><polygon fill="#A80036" points="306.5,475.5107,310.5,485.5107,314.5,475.5107,310.5,479.5107" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="310.5" x2="310.5" y1="519.4795" y2="539.4795"></line><polygon fill="#A80036" points="306.5,529.4795,310.5,539.4795,314.5,529.4795,310.5,533.4795" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="110.5" y1="107.667" y2="112.667"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="310.5" y1="112.667" y2="112.667"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="310.5" x2="310.5" y1="112.667" y2="127.667"></line><polygon fill="#A80036" points="306.5,117.667,310.5,127.667,314.5,117.667,310.5,121.667" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="110.5" y1="313.5732" y2="318.5732"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="310.5" y1="318.5732" y2="318.5732"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="310.5" x2="310.5" y1="318.5732" y2="333.5732"></line><polygon fill="#A80036" points="306.5,323.5732,310.5,333.5732,314.5,323.5732,310.5,327.5732" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="310.5" x2="310.5" y1="161.6357" y2="166.6357"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="310.5" x2="110.5" y1="166.6357" y2="166.6357"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="110.5" x2="110.5" y1="166.6357" y2="181.6357"></line><polygon fill="#A80036" points="106.5,171.6357,110.5,181.6357,114.5,171.6357,110.5,175.6357" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--
+@startuml
+|User|
+start
+:Access income entry form;
+|System|
+:Display income entry form;
+|User|
+repeat
+:Fill in the form;
+:Submit the form;
+|System|
+:Validate form data;
+repeat while (invalid data?)
+:Add an income record;
+:Display operation result;
+stop
+@enduml
+
+PlantUML version 1.2017.19(Sun Nov 12 19:46:22 CST 2017)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12
+Operating System: Linux
+OS Version: 4.4.0-112-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p>
+<hr>
+<h2 class="mume-header" id="configure-depository">Configure Depository</h2>
+
+<h3 class="mume-header" id="main-flow-2">Main Flow</h3>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="717px" preserveAspectRatio="none" style="width:564px;height:717px;" version="1.1" viewBox="0 0 564 717" width="564px" zoomAndPan="magnify"><defs><filter height="300%" id="f1w0r0wypetm9n" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="41" x="90.5" y="29.4531">User</text><line style="stroke: #000000; stroke-width: 2.0;" x1="10" x2="10" y1="12.7451" y2="705.8506"></line><ellipse cx="111.5" cy="43.6982" fill="#000000" filter="url(#f1w0r0wypetm9n)" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"></ellipse><rect fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="183" x="20" y="73.6982"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="163" x="30" y="94.8369">Access configuration form</text><rect fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="108" x="57.5" y="225.6357"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="88" x="67.5" y="246.7744">Fill in the form</text><rect fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="120" x="51.5" y="279.6045"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="100" x="61.5" y="300.7432">Submit the form</text><polygon fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" points="111.5,181.6357,123.5,193.6357,111.5,205.6357,99.5,193.6357,111.5,181.6357" style="stroke: #A80036; stroke-width: 1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="65" x="349.5" y="29.4531">System</text><line style="stroke: #000000; stroke-width: 2.0;" x1="212" x2="212" y1="12.7451" y2="705.8506"></line><rect fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="183" x="282.5" y="127.667"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="163" x="292.5" y="148.8057">Display configuration form</text><rect fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="136" x="306" y="333.5732"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="116" x="316" y="354.7119">Validate form data</text><polygon fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" points="338.5,387.542,409.5,387.542,421.5,399.542,409.5,411.542,338.5,411.542,326.5,399.542,338.5,387.542" style="stroke: #A80036; stroke-width: 1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="71" x="338.5" y="403.3501">invalid data?</text><rect fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="174" x="287" y="479.9443"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="154" x="297" y="501.083">Delete the existing entry</text><polygon fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" points="244,431.542,504,431.542,516,443.542,504,455.542,244,455.542,232,443.542,244,431.542" style="stroke: #A80036; stroke-width: 1.5;"></polygon><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="20" x="378" y="465.7524">yes</text><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="260" x="244" y="447.3501">Same combo of depository &amp; mngAcc exists?</text><polygon fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" points="374,533.9131,386,545.9131,374,557.9131,362,545.9131,374,533.9131" style="stroke: #A80036; stroke-width: 1.5;"></polygon><rect fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="241" x="253.5" y="577.9131"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="221" x="263.5" y="599.0518">Add an income record with init type</text><rect fill="#FEFECE" filter="url(#f1w0r0wypetm9n)" height="33.9688" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="169" x="289.5" y="631.8818"></rect><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="149" x="299.5" y="653.0205">Display operation result</text><ellipse cx="374" cy="695.8506" fill="none" filter="url(#f1w0r0wypetm9n)" rx="10" ry="10" style="stroke: #000000; stroke-width: 1.0;"></ellipse><ellipse cx="374.5" cy="696.3506" fill="#000000" filter="url(#f1w0r0wypetm9n)" rx="6" ry="6" style="stroke: none; stroke-width: 1.0;"></ellipse><line style="stroke: #000000; stroke-width: 2.0;" x1="552" x2="552" y1="12.7451" y2="705.8506"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="111.5" x2="111.5" y1="53.6982" y2="73.6982"></line><polygon fill="#A80036" points="107.5,63.6982,111.5,73.6982,115.5,63.6982,111.5,67.6982" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="111.5" x2="111.5" y1="259.6045" y2="279.6045"></line><polygon fill="#A80036" points="107.5,269.6045,111.5,279.6045,115.5,269.6045,111.5,273.6045" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="111.5" x2="111.5" y1="205.6357" y2="225.6357"></line><polygon fill="#A80036" points="107.5,215.6357,111.5,225.6357,115.5,215.6357,111.5,219.6357" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="421.5" x2="454" y1="399.542" y2="399.542"></line><polygon fill="#A80036" points="450,306.5889,454,296.5889,458,306.5889,454,302.5889" style="stroke: #A80036; stroke-width: 1.5;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="454" x2="454" y1="193.6357" y2="399.542"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="454" x2="123.5" y1="193.6357" y2="193.6357"></line><polygon fill="#A80036" points="133.5,189.6357,123.5,193.6357,133.5,197.6357,129.5,193.6357" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="367.542" y2="387.542"></line><polygon fill="#A80036" points="370,377.542,374,387.542,378,377.542,374,381.542" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="455.542" y2="479.9443"></line><polygon fill="#A80036" points="370,469.9443,374,479.9443,378,469.9443,374,473.9443" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="516" x2="528" y1="443.542" y2="443.542"></line><polygon fill="#A80036" points="524,486.9287,528,496.9287,532,486.9287,528,490.9287" style="stroke: #A80036; stroke-width: 1.5;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="528" x2="528" y1="443.542" y2="545.9131"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="528" x2="386" y1="545.9131" y2="545.9131"></line><polygon fill="#A80036" points="396,541.9131,386,545.9131,396,549.9131,392,545.9131" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="513.9131" y2="533.9131"></line><polygon fill="#A80036" points="370,523.9131,374,533.9131,378,523.9131,374,527.9131" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="411.542" y2="431.542"></line><polygon fill="#A80036" points="370,421.542,374,431.542,378,421.542,374,425.542" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="557.9131" y2="577.9131"></line><polygon fill="#A80036" points="370,567.9131,374,577.9131,378,567.9131,374,571.9131" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="611.8818" y2="631.8818"></line><polygon fill="#A80036" points="370,621.8818,374,631.8818,378,621.8818,374,625.8818" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="665.8506" y2="685.8506"></line><polygon fill="#A80036" points="370,675.8506,374,685.8506,378,675.8506,374,679.8506" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="111.5" x2="111.5" y1="107.667" y2="112.667"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="111.5" x2="374" y1="112.667" y2="112.667"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="112.667" y2="127.667"></line><polygon fill="#A80036" points="370,117.667,374,127.667,378,117.667,374,121.667" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="111.5" x2="111.5" y1="313.5732" y2="318.5732"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="111.5" x2="374" y1="318.5732" y2="318.5732"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="318.5732" y2="333.5732"></line><polygon fill="#A80036" points="370,323.5732,374,333.5732,378,323.5732,374,327.5732" style="stroke: #A80036; stroke-width: 1.0;"></polygon><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="374" y1="161.6357" y2="166.6357"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="374" x2="111.5" y1="166.6357" y2="166.6357"></line><line style="stroke: #A80036; stroke-width: 1.5;" x1="111.5" x2="111.5" y1="166.6357" y2="181.6357"></line><polygon fill="#A80036" points="107.5,171.6357,111.5,181.6357,115.5,171.6357,111.5,175.6357" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--
+@startuml
+|User|
+start
+:Access configuration form;
+|System|
+:Display configuration form;
+|User|
+repeat
+:Fill in the form;
+:Submit the form;
+|System|
+:Validate form data;
+repeat while (invalid data?)
+if (Same combo of depository & mngAcc exists?) then (yes)
+  :Delete the existing entry;
+endif
+:Add an income record with init type;
+:Display operation result;
+stop
+@enduml
+
+PlantUML version 1.2017.19(Sun Nov 12 19:46:22 CST 2017)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12
+Operating System: Linux
+OS Version: 4.4.0-112-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p>
+<h3 class="mume-header" id="description-1">Description</h3>
+
+<p>Transaction entries of a certain depository with transaction date prior than that of depository configuration entry will not be calculated.</p>
+<h3 class="mume-header" id="ux-state">UX State</h3>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="389px" preserveAspectRatio="none" style="width:299px;height:389px;" version="1.1" viewBox="0 0 299 389" width="299px" zoomAndPan="magnify"><defs><filter height="300%" id="fdis45h6al7at" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="233" x="36.5" y="16.708">Modification of Depository</text><ellipse cx="167.5" cy="38.9531" fill="#000000" filter="url(#fdis45h6al7at)" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"></ellipse><rect fill="#FEFECE" filter="url(#fdis45h6al7at)" height="50.2656" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="170" x="82.5" y="108.9531"></rect><line style="stroke: #A80036; stroke-width: 1.5;" x1="82.5" x2="252.5" y1="135.25" y2="135.25"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="150" x="92.5" y="126.9482">DepositoryInfoLocked</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="94" x="87.5" y="151.3887">Contents - void</text><rect fill="#FEFECE" filter="url(#fdis45h6al7at)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="185" x="6" y="218.9531"></rect><line style="stroke: #A80036; stroke-width: 1.5;" x1="6" x2="191" y1="245.25" y2="245.25"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="165" x="16" y="236.9482">DepositoryInfoUnlocked</text><rect fill="#FEFECE" filter="url(#fdis45h6al7at)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="178" x="109.5" y="328.9531"></rect><line style="stroke: #A80036; stroke-width: 1.5;" x1="109.5" x2="287.5" y1="355.25" y2="355.25"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="158" x="119.5" y="346.9482">DepositoryInfoModified</text><ellipse cx="236.5" cy="243.9531" fill="none" filter="url(#fdis45h6al7at)" rx="10" ry="10" style="stroke: #000000; stroke-width: 1.0;"></ellipse><ellipse cx="237" cy="244.4531" fill="#000000" rx="6" ry="6" style="stroke: none; stroke-width: 1.0;"></ellipse><!--link *start to DepositoryInfoLocked--><path d="M167.5,49.2101 C167.5,61.8091 167.5,84.9341 167.5,103.6961 " fill="none" id="*start-DepositoryInfoLocked" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="167.5,108.8601,171.5,99.8601,167.5,103.8601,163.5,99.8601,167.5,108.8601" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoLocked to DepositoryInfoUnlocked--><path d="M141.172,159.1901 C128.457,175.4481 114.529,196.9411 105.5101,214.0851 " fill="none" id="DepositoryInfoLocked-DepositoryInfoUnlocked" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="103.1016,218.7971,110.7592,212.6035,105.3771,214.3449,103.6357,208.9628,103.1016,218.7971" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoUnlocked to DepositoryInfoLocked--><path d="M125.402,218.7971 C138.25,202.5561 152.196,181.0651 161.118,163.9071 " fill="none" id="DepositoryInfoUnlocked-DepositoryInfoLocked" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="163.496,159.1901,155.8726,165.4258,161.2451,163.6548,163.0161,169.0273,163.496,159.1901" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoUnlocked to DepositoryInfoModified--><path d="M120.942,269.1901 C136.253,285.7265 156.578,307.6777 172.58,324.96 " fill="none" id="DepositoryInfoUnlocked-DepositoryInfoModified" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="176.133,328.7967,172.9531,319.4753,172.7359,325.128,167.0832,324.9107,176.133,328.7967" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoModified to DepositoryInfoLocked--><path d="M224.33,328.9481 C249.723,302.2887 282.281,257.8721 264.5,218.9531 C253.871,195.6881 233.264,176.3951 213.768,162.1911 " fill="none" id="DepositoryInfoModified-DepositoryInfoLocked" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="209.369,159.0561,214.3784,167.5359,213.4413,161.9572,219.02,161.0202,209.369,159.0561" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoLocked to *end--><path d="M182.985,159.1901 C197.077,181.2471 217.323,212.9381 228.437,230.3321 " fill="none" id="DepositoryInfoLocked-*end" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="231.316,234.8401,229.8415,225.1023,228.6241,230.6266,223.0998,229.4093,231.316,234.8401" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--
+@startuml
+title Modification of Depository
+[*] - -> DepositoryInfoLocked
+DepositoryInfoLocked - -> DepositoryInfoUnlocked
+DepositoryInfoUnlocked - -> DepositoryInfoModified
+DepositoryInfoUnlocked - -> DepositoryInfoLocked
+DepositoryInfoModified - -> DepositoryInfoLocked
+DepositoryInfoLocked - -> [*]
+DepositoryInfoLocked : Contents - void
+@enduml
+
+PlantUML version 1.2017.19(Sun Nov 12 19:46:22 CST 2017)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12
+Operating System: Linux
+OS Version: 4.4.0-112-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p>
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="469px" preserveAspectRatio="none" style="width:217px;height:469px;" version="1.1" viewBox="0 0 217 469" width="217px" zoomAndPan="magnify"><defs><filter height="300%" id="fdav7ve3k3nb5" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="202" x="3.5" y="16.708">Creation of Depository</text><ellipse cx="98.5" cy="38.9531" fill="#000000" filter="url(#fdav7ve3k3nb5)" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"></ellipse><rect fill="#FEFECE" filter="url(#fdav7ve3k3nb5)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="185" x="6" y="108.9531"></rect><line style="stroke: #A80036; stroke-width: 1.5;" x1="6" x2="191" y1="135.25" y2="135.25"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="165" x="16" y="126.9482">DepositoryInfoUnlocked</text><rect fill="#FEFECE" filter="url(#fdav7ve3k3nb5)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="175" x="11" y="218.9531"></rect><line style="stroke: #A80036; stroke-width: 1.5;" x1="11" x2="186" y1="245.25" y2="245.25"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="155" x="21" y="236.9482">DepositoryInfoCreated</text><rect fill="#FEFECE" filter="url(#fdav7ve3k3nb5)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="170" x="13.5" y="328.9531"></rect><line style="stroke: #A80036; stroke-width: 1.5;" x1="13.5" x2="183.5" y1="355.25" y2="355.25"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="150" x="23.5" y="346.9482">DepositoryInfoLocked</text><ellipse cx="98.5" cy="448.9531" fill="none" filter="url(#fdav7ve3k3nb5)" rx="10" ry="10" style="stroke: #000000; stroke-width: 1.0;"></ellipse><ellipse cx="99" cy="449.4531" fill="#000000" rx="6" ry="6" style="stroke: none; stroke-width: 1.0;"></ellipse><!--link *start to DepositoryInfoUnlocked--><path d="M98.5,49.2101 C98.5,61.8091 98.5,84.9341 98.5,103.6961 " fill="none" id="*start-DepositoryInfoUnlocked" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="98.5,108.8601,102.5,99.8601,98.5,103.8601,94.5,99.8601,98.5,108.8601" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoUnlocked to DepositoryInfoCreated--><path d="M98.5,159.1901 C98.5,175.3101 98.5,196.5741 98.5,213.6441 " fill="none" id="DepositoryInfoUnlocked-DepositoryInfoCreated" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="98.5,218.7971,102.5,209.7971,98.5,213.7971,94.5,209.7971,98.5,218.7971" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoCreated to DepositoryInfoLocked--><path d="M98.5,269.1901 C98.5,285.3101 98.5,306.5741 98.5,323.6441 " fill="none" id="DepositoryInfoCreated-DepositoryInfoLocked" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="98.5,328.7971,102.5,319.7971,98.5,323.7971,94.5,319.7971,98.5,328.7971" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoLocked to *end--><path d="M98.5,379.3878 C98.5,396.4915 98.5,418.7801 98.5,433.2267 " fill="none" id="DepositoryInfoLocked-*end" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="98.5,438.5348,102.5,429.5348,98.5,433.5348,94.5,429.5348,98.5,438.5348" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--
+@startuml
+title Creation of Depository
+[*] - -> DepositoryInfoUnlocked
+DepositoryInfoUnlocked - -> DepositoryInfoCreated
+DepositoryInfoCreated - -> DepositoryInfoLocked
+DepositoryInfoLocked - -> [*]
+@enduml
+
+PlantUML version 1.2017.19(Sun Nov 12 19:46:22 CST 2017)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12
+Operating System: Linux
+OS Version: 4.4.0-112-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p>
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="359px" preserveAspectRatio="none" style="width:215px;height:359px;" version="1.1" viewBox="0 0 215 359" width="215px" zoomAndPan="magnify"><defs><filter height="300%" id="f4me6byrc9krb" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"></feGaussianBlur><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"></feColorMatrix><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"></feOffset><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"></feBlend></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="201" x="2" y="16.708">Deletion of Depository</text><ellipse cx="96.5" cy="38.9531" fill="#000000" filter="url(#f4me6byrc9krb)" rx="10" ry="10" style="stroke: none; stroke-width: 1.0;"></ellipse><rect fill="#FEFECE" filter="url(#f4me6byrc9krb)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="170" x="11.5" y="108.9531"></rect><line style="stroke: #A80036; stroke-width: 1.5;" x1="11.5" x2="181.5" y1="135.25" y2="135.25"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="150" x="21.5" y="126.9482">DepositoryInfoLocked</text><rect fill="#FEFECE" filter="url(#f4me6byrc9krb)" height="50" rx="12.5" ry="12.5" style="stroke: #A80036; stroke-width: 1.5;" width="175" x="9" y="218.9531"></rect><line style="stroke: #A80036; stroke-width: 1.5;" x1="9" x2="184" y1="245.25" y2="245.25"></line><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="155" x="19" y="236.9482">DepositoryInfoDeleted</text><ellipse cx="96.5" cy="338.9531" fill="none" filter="url(#f4me6byrc9krb)" rx="10" ry="10" style="stroke: #000000; stroke-width: 1.0;"></ellipse><ellipse cx="97" cy="339.4531" fill="#000000" rx="6" ry="6" style="stroke: none; stroke-width: 1.0;"></ellipse><!--link *start to DepositoryInfoLocked--><path d="M96.5,49.2101 C96.5,61.8091 96.5,84.9341 96.5,103.6961 " fill="none" id="*start-DepositoryInfoLocked" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="96.5,108.8601,100.5,99.8601,96.5,103.8601,92.5,99.8601,96.5,108.8601" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoLocked to DepositoryInfoDeleted--><path d="M96.5,159.1901 C96.5,175.3101 96.5,196.5741 96.5,213.6441 " fill="none" id="DepositoryInfoLocked-DepositoryInfoDeleted" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="96.5,218.7971,100.5,209.7971,96.5,213.7971,92.5,209.7971,96.5,218.7971" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--link DepositoryInfoDeleted to *end--><path d="M96.5,269.3878 C96.5,286.4915 96.5,308.7801 96.5,323.2267 " fill="none" id="DepositoryInfoDeleted-*end" style="stroke: #A80036; stroke-width: 1.0;"></path><polygon fill="#A80036" points="96.5,328.5348,100.5,319.5348,96.5,323.5348,92.5,319.5348,96.5,328.5348" style="stroke: #A80036; stroke-width: 1.0;"></polygon><!--
+@startuml
+title Deletion of Depository
+[*] - -> DepositoryInfoLocked
+DepositoryInfoLocked - -> DepositoryInfoDeleted
+DepositoryInfoDeleted - -> [*]
+@enduml
+
+PlantUML version 1.2017.19(Sun Nov 12 19:46:22 CST 2017)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 1.8.0_151-8u151-b12-0ubuntu0.16.04.2-b12
+Operating System: Linux
+OS Version: 4.4.0-112-generic
+Default Encoding: UTF-8
+Language: en
+Country: US
+--></g></svg></p>
+<h2 class="mume-header" id="analysis">Analysis</h2>
+
+<h3 class="mume-header" id="activity-flow-1">Activity Flow</h3>
+
+<h3 class="mume-header" id="description-2">Description</h3>
+
+<ol>
+<li>Current Balance of Each Depository
+<ol>
+<li>Balance Distribution by Managing Account</li>
+</ol>
+</li>
+<li>Current Balance of Each Managing Account
+<ol>
+<li>Balance Distribution by Depository</li>
+</ol>
+</li>
+</ol>
+<h3 class="mume-header" id="requirement-mapping-1">Requirement Mapping</h3>
+
+<hr>
+<h3 class="mume-header" id="dfd">DFD</h3>
+
+<h4 class="mume-header" id="context-diagram">Context Diagram</h4>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Context_Diagram Pages: 1 -->
+<svg width="889pt" height="153pt" viewBox="0.00 0.00 888.88 152.51" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 148.5078)">
+<title>Context_Diagram</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-148.5078 884.8804,-148.5078 884.8804,4 -4,4"></polygon>
+<!-- enti1input -->
+<g id="node1" class="node">
+<title>enti1input</title>
+<polygon fill="none" stroke="#000000" points="143.2709,-91.7078 .2425,-91.7078 .2425,-55.7078 143.2709,-55.7078 143.2709,-91.7078"></polygon>
+<text text-anchor="middle" x="71.7567" y="-69.5078" font-family="Times,serif" font-size="14.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- proc1 -->
+<g id="node3" class="node">
+<title>proc1</title>
+<text text-anchor="start" x="507.6166" y="-81.1078" font-family="Times,serif" font-size="14.00" fill="#000000">0</text>
+<text text-anchor="start" x="451.4269" y="-57.1078" font-family="Times,serif" font-size="14.00" fill="#000000">Bookkeeping System</text>
+<polygon fill="#000000" stroke="#000000" points="444.6166,-73.7078 444.6166,-73.7078 577.6166,-73.7078 577.6166,-73.7078 444.6166,-73.7078"></polygon>
+<path fill="none" stroke="#000000" d="M456.1166,-46.7078C456.1166,-46.7078 565.1166,-46.7078 565.1166,-46.7078 571.1166,-46.7078 577.1166,-52.7078 577.1166,-58.7078 577.1166,-58.7078 577.1166,-88.7078 577.1166,-88.7078 577.1166,-94.7078 571.1166,-100.7078 565.1166,-100.7078 565.1166,-100.7078 456.1166,-100.7078 456.1166,-100.7078 450.1166,-100.7078 444.1166,-94.7078 444.1166,-88.7078 444.1166,-88.7078 444.1166,-58.7078 444.1166,-58.7078 444.1166,-52.7078 450.1166,-46.7078 456.1166,-46.7078"></path>
+</g>
+<!-- enti1input&#45;&gt;proc1 -->
+<g id="edge1" class="edge">
+<title>enti1input&#45;&gt;proc1</title>
+<path fill="none" stroke="#000000" d="M105.6678,-91.8688C122.0439,-99.6351 142.2764,-107.8034 161.5134,-111.7078 273.2804,-134.3924 306.2299,-133.7944 418.1166,-111.7078 423.3861,-110.6676 428.7328,-109.3239 434.0613,-107.7651"></path>
+<polygon fill="#000000" stroke="#000000" points="435.1318,-111.0975 443.612,-104.7463 433.0221,-104.423 435.1318,-111.0975"></polygon>
+<text text-anchor="middle" x="289.815" y="-131.9078" font-family="Times,serif" font-size="14.00" fill="#000000">Expense Record</text>
+</g>
+<!-- enti1input&#45;&gt;proc1 -->
+<g id="edge2" class="edge">
+<title>enti1input&#45;&gt;proc1</title>
+<path fill="none" stroke="#000000" d="M143.7341,-73.7078C221.1175,-73.7078 344.0374,-73.7078 425.9947,-73.7078"></path>
+<polygon fill="#000000" stroke="#000000" points="426.0298,-77.2079 436.0297,-73.7078 426.0297,-70.2079 426.0298,-77.2079"></polygon>
+<text text-anchor="middle" x="289.815" y="-77.9078" font-family="Times,serif" font-size="14.00" fill="#000000">Income Record</text>
+</g>
+<!-- enti1input&#45;&gt;proc1 -->
+<g id="edge3" class="edge">
+<title>enti1input&#45;&gt;proc1</title>
+<path fill="none" stroke="#000000" d="M143.0298,-55.649C149.2505,-54.5423 155.4744,-53.5984 161.5134,-52.9078 274.8208,-39.9507 304.7675,-40.3209 418.1166,-52.9078 420.6574,-53.19 423.2304,-53.5145 425.8223,-53.8751"></path>
+<polygon fill="#000000" stroke="#000000" points="425.4677,-57.3618 435.8853,-55.4322 426.5382,-50.4441 425.4677,-57.3618"></polygon>
+<text text-anchor="middle" x="289.815" y="-56.9078" font-family="Times,serif" font-size="14.00" fill="#000000">Transfer Record</text>
+</g>
+<!-- enti1input&#45;&gt;proc1 -->
+<g id="edge4" class="edge">
+<title>enti1input&#45;&gt;proc1</title>
+<path fill="none" stroke="#000000" d="M95.3557,-55.4536C112.6201,-43.3059 137.1829,-28.4249 161.5134,-21.9078 271.6758,7.5997 307.7656,6.8867 418.1166,-21.9078 431.4444,-25.3855 444.8846,-31.2566 457.2327,-37.8245"></path>
+<polygon fill="#000000" stroke="#000000" points="455.5728,-40.9062 466.0137,-42.7058 458.974,-34.788 455.5728,-40.9062"></polygon>
+<text text-anchor="middle" x="289.815" y="-25.9078" font-family="Times,serif" font-size="14.00" fill="#000000">Depository&#45;Managing Account Configuration</text>
+</g>
+<!-- enti1output -->
+<g id="node2" class="node">
+<title>enti1output</title>
+<polygon fill="none" stroke="#000000" points="880.6379,-91.7078 737.6095,-91.7078 737.6095,-55.7078 880.6379,-55.7078 880.6379,-91.7078"></polygon>
+<text text-anchor="middle" x="809.1237" y="-69.5078" font-family="Times,serif" font-size="14.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- proc1&#45;&gt;enti1output -->
+<g id="edge5" class="edge">
+<title>proc1&#45;&gt;enti1output</title>
+<path fill="none" stroke="#000000" d="M585.1725,-73.7078C628.4286,-73.7078 682.9628,-73.7078 727.3864,-73.7078"></path>
+<polygon fill="#000000" stroke="#000000" points="727.5734,-77.2079 737.5734,-73.7078 727.5734,-70.2079 727.5734,-77.2079"></polygon>
+<text text-anchor="middle" x="661.2418" y="-77.9078" font-family="Times,serif" font-size="14.00" fill="#000000">Balance Distribution</text>
+</g>
+</g>
+</svg>
+</p>
+<h4 class="mume-header" id="diagram-0">Diagram 0</h4>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Diagram_0 Pages: 1 -->
+<svg width="1119pt" height="860pt" viewBox="0.00 0.00 1118.70 860.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 856)">
+<title>Diagram_0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-856 1114.702,-856 1114.702,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_system</title>
+<polygon fill="none" stroke="#000000" points="8,-76.6296 8,-843.9337 682,-843.9337 682,-76.6296 8,-76.6296"></polygon>
+</g>
+<!-- enti1input -->
+<g id="node1" class="node">
+<title>enti1input</title>
+<polygon fill="none" stroke="#000000" points="852.7976,-770 727.2024,-770 727.2024,-734 852.7976,-734 852.7976,-770"></polygon>
+<text text-anchor="middle" x="790" y="-748.4" font-family="Times,serif" font-size="12.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- proc1 -->
+<g id="node3" class="node">
+<title>proc1</title>
+<text text-anchor="start" x="220" y="-381.2" font-family="Times,serif" font-size="12.00" fill="#000000">1</text>
+<text text-anchor="start" x="169.6906" y="-359.2" font-family="Times,serif" font-size="12.00" fill="#000000">Keep Expense Record</text>
+<polygon fill="#000000" stroke="#000000" points="163,-374 163,-374 283,-374 283,-374 163,-374"></polygon>
+<path fill="none" stroke="#000000" d="M175,-349C175,-349 271,-349 271,-349 277,-349 283,-355 283,-361 283,-361 283,-387 283,-387 283,-393 277,-399 271,-399 271,-399 175,-399 175,-399 169,-399 163,-393 163,-387 163,-387 163,-361 163,-361 163,-355 169,-349 175,-349"></path>
+</g>
+<!-- enti1input&#45;&gt;proc1 -->
+<g id="edge1" class="edge">
+<title>enti1input&#45;&gt;proc1</title>
+<path fill="none" stroke="#000000" d="M780.8215,-733.7815C764.0256,-700.0387 727.7735,-625.3013 702.748,-560 689.6571,-525.8409 699.4408,-511.1396 678,-481.5 664.8426,-463.3112 657.7056,-460.6735 637,-452 518.0515,-402.1726 477.4879,-428.1458 351,-403 334.8989,-399.7991 317.7224,-396.103 301.351,-392.4438"></path>
+<polygon fill="#000000" stroke="#000000" points="301.8031,-388.958 291.2784,-390.1751 300.2649,-395.787 301.8031,-388.958"></polygon>
+<text text-anchor="middle" x="734.626" y="-551" font-family="Times,serif" font-size="10.00" fill="#000000">Expense Record</text>
+</g>
+<!-- proc2 -->
+<g id="node4" class="node">
+<title>proc2</title>
+<text text-anchor="start" x="576.5" y="-381.2" font-family="Times,serif" font-size="12.00" fill="#000000">2</text>
+<text text-anchor="start" x="528.5246" y="-359.2" font-family="Times,serif" font-size="12.00" fill="#000000">Keep Income Record</text>
+<polygon fill="#000000" stroke="#000000" points="522,-374 522,-374 637,-374 637,-374 522,-374"></polygon>
+<path fill="none" stroke="#000000" d="M533.5,-349C533.5,-349 624.5,-349 624.5,-349 630.5,-349 636.5,-355 636.5,-361 636.5,-361 636.5,-387 636.5,-387 636.5,-393 630.5,-399 624.5,-399 624.5,-399 533.5,-399 533.5,-399 527.5,-399 521.5,-393 521.5,-387 521.5,-387 521.5,-361 521.5,-361 521.5,-355 527.5,-349 533.5,-349"></path>
+</g>
+<!-- enti1input&#45;&gt;proc2 -->
+<g id="edge5" class="edge">
+<title>enti1input&#45;&gt;proc2</title>
+<path fill="none" stroke="#000000" d="M852.8907,-745.2926C906.5225,-735.674 975,-712.358 975,-656 975,-656 975,-656 975,-458 975,-425.6378 770.001,-396.3599 654.9949,-382.4811"></path>
+<polygon fill="#000000" stroke="#000000" points="655.1806,-378.9785 644.8359,-381.2669 654.3498,-385.929 655.1806,-378.9785"></polygon>
+<text text-anchor="middle" x="1005.681" y="-551" font-family="Times,serif" font-size="10.00" fill="#000000">Income Record</text>
+</g>
+<!-- proc3 -->
+<g id="node5" class="node">
+<title>proc3</title>
+<text text-anchor="start" x="316.5" y="-663.2" font-family="Times,serif" font-size="12.00" fill="#000000">3</text>
+<text text-anchor="start" x="218.862" y="-641.2" font-family="Times,serif" font-size="12.00" fill="#000000">Configure Depository&#45;Managing Account</text>
+<polygon fill="#000000" stroke="#000000" points="212,-656 212,-656 427,-656 427,-656 212,-656"></polygon>
+<path fill="none" stroke="#000000" d="M223.5,-631C223.5,-631 414.5,-631 414.5,-631 420.5,-631 426.5,-637 426.5,-643 426.5,-643 426.5,-669 426.5,-669 426.5,-675 420.5,-681 414.5,-681 414.5,-681 223.5,-681 223.5,-681 217.5,-681 211.5,-675 211.5,-669 211.5,-669 211.5,-643 211.5,-643 211.5,-637 217.5,-631 223.5,-631"></path>
+</g>
+<!-- enti1input&#45;&gt;proc3 -->
+<g id="edge9" class="edge">
+<title>enti1input&#45;&gt;proc3</title>
+<path fill="none" stroke="#000000" d="M727.1214,-740.5188C713.5804,-738.214 699.3313,-735.9149 686,-734 616.3528,-723.9961 597.7227,-729.7238 528.712,-716 492.1309,-708.7253 452.6567,-698.1673 417.9301,-687.929"></path>
+<polygon fill="#000000" stroke="#000000" points="418.8507,-684.5513 408.2677,-685.0528 416.8535,-691.2604 418.8507,-684.5513"></polygon>
+<text text-anchor="middle" x="619.644" y="-707" font-family="Times,serif" font-size="10.00" fill="#000000">Depository&#45;Managing Account Configuration</text>
+</g>
+<!-- proc4 -->
+<g id="node6" class="node">
+<title>proc4</title>
+<text text-anchor="start" x="407" y="-381.2" font-family="Times,serif" font-size="12.00" fill="#000000">4</text>
+<text text-anchor="start" x="374.8532" y="-359.2" font-family="Times,serif" font-size="12.00" fill="#000000">Transfer Asset</text>
+<polygon fill="#000000" stroke="#000000" points="368,-374 368,-374 452,-374 452,-374 368,-374"></polygon>
+<path fill="none" stroke="#000000" d="M380,-349C380,-349 440,-349 440,-349 446,-349 452,-355 452,-361 452,-361 452,-387 452,-387 452,-393 446,-399 440,-399 440,-399 380,-399 380,-399 374,-399 368,-393 368,-387 368,-387 368,-361 368,-361 368,-355 374,-349 380,-349"></path>
+</g>
+<!-- enti1input&#45;&gt;proc4 -->
+<g id="edge15" class="edge">
+<title>enti1input&#45;&gt;proc4</title>
+<path fill="none" stroke="#000000" d="M790,-733.9527C790,-714.6577 790,-683.1667 790,-656 790,-656 790,-656 790,-458 790,-391.6342 659.222,-433.1467 505,-403 493.6119,-400.7739 481.6471,-397.7145 470.1954,-394.4136"></path>
+<polygon fill="#000000" stroke="#000000" points="470.8743,-390.964 460.2914,-391.4655 468.8772,-397.6731 470.8743,-390.964"></polygon>
+<text text-anchor="middle" x="871.2135" y="-551" font-family="Times,serif" font-size="10.00" fill="#000000">Depository&#45;Managing Acc Transfer Info</text>
+</g>
+<!-- proc5 -->
+<g id="node7" class="node">
+<title>proc5</title>
+<text text-anchor="start" x="415.5" y="-121.2" font-family="Times,serif" font-size="12.00" fill="#000000">5</text>
+<text text-anchor="start" x="344.5212" y="-99.2" font-family="Times,serif" font-size="12.00" fill="#000000">Calculate Balance Distribution</text>
+<polygon fill="#000000" stroke="#000000" points="338,-114 338,-114 499,-114 499,-114 338,-114"></polygon>
+<path fill="none" stroke="#000000" d="M349.5,-89C349.5,-89 486.5,-89 486.5,-89 492.5,-89 498.5,-95 498.5,-101 498.5,-101 498.5,-127 498.5,-127 498.5,-133 492.5,-139 486.5,-139 486.5,-139 349.5,-139 349.5,-139 343.5,-139 337.5,-133 337.5,-127 337.5,-127 337.5,-101 337.5,-101 337.5,-95 343.5,-89 349.5,-89"></path>
+</g>
+<!-- enti1input&#45;&gt;proc5 -->
+<g id="edge20" class="edge">
+<title>enti1input&#45;&gt;proc5</title>
+<path fill="none" stroke="#000000" d="M852.8481,-741.752C930.0778,-727.3424 1051,-698.0643 1051,-656 1051,-656 1051,-656 1051,-187 1051,-133.8942 694.8546,-119.3843 516.8441,-115.4487"></path>
+<polygon fill="#000000" stroke="#000000" points="516.7551,-111.9461 506.6825,-115.2312 516.6052,-118.9445 516.7551,-111.9461"></polygon>
+<text text-anchor="middle" x="1080.851" y="-425" font-family="Times,serif" font-size="10.00" fill="#000000">Query Request</text>
+</g>
+<!-- enti1output -->
+<g id="node2" class="node">
+<title>enti1output</title>
+<polygon fill="none" stroke="#000000" points="480.7976,-36 355.2024,-36 355.2024,0 480.7976,0 480.7976,-36"></polygon>
+<text text-anchor="middle" x="418" y="-14.4" font-family="Times,serif" font-size="12.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- datastore1 -->
+<g id="node8" class="node">
+<title>datastore1</title>
+<text text-anchor="start" x="229.5146" y="-240.2" font-family="Times,serif" font-size="12.00" fill="#000000">DS: Expense Record</text>
+<polygon fill="#000000" stroke="#000000" points="225,-232 225,-258 225,-258 225,-232 225,-232"></polygon>
+<polygon fill="none" stroke="#000000" points="212.5,-230 212.5,-258 335.5,-258 335.5,-230 212.5,-230"></polygon>
+</g>
+<!-- proc1&#45;&gt;datastore1 -->
+<g id="edge4" class="edge">
+<title>proc1&#45;&gt;datastore1</title>
+<path fill="none" stroke="#000000" d="M154.7904,-345.4686C121.1292,-327.2965 91.8288,-302.3719 113,-276.5 124.5134,-262.4302 164.5008,-254.3134 201.7404,-249.71"></path>
+<polygon fill="#000000" stroke="#000000" points="202.6152,-253.1321 212.1451,-248.5027 201.8083,-246.1787 202.6152,-253.1321"></polygon>
+<text text-anchor="middle" x="141.626" y="-298" font-family="Times,serif" font-size="10.00" fill="#000000">Expense Record</text>
+</g>
+<!-- datastore2 -->
+<g id="node9" class="node">
+<title>datastore2</title>
+<text text-anchor="start" x="375.8486" y="-240.2" font-family="Times,serif" font-size="12.00" fill="#000000">DS: Income Record</text>
+<polygon fill="#000000" stroke="#000000" points="371,-232 371,-258 371,-258 371,-232 371,-232"></polygon>
+<polygon fill="none" stroke="#000000" points="358.5,-230 358.5,-258 477.5,-258 477.5,-230 358.5,-230"></polygon>
+</g>
+<!-- proc2&#45;&gt;datastore2 -->
+<g id="edge8" class="edge">
+<title>proc2&#45;&gt;datastore2</title>
+<path fill="none" stroke="#000000" d="M561.4517,-344.6997C550.7053,-328.5492 535.8074,-308.9972 519,-295 502.9327,-281.6191 482.765,-270.5484 464.6847,-262.1801"></path>
+<polygon fill="#000000" stroke="#000000" points="466.0106,-258.9391 455.4529,-258.0524 463.1534,-265.3294 466.0106,-258.9391"></polygon>
+<text text-anchor="middle" x="561.681" y="-298" font-family="Times,serif" font-size="10.00" fill="#000000">Income Record</text>
+</g>
+<!-- proc3&#45;&gt;datastore2 -->
+<g id="edge14" class="edge">
+<title>proc3&#45;&gt;datastore2</title>
+<path fill="none" stroke="#000000" d="M298.1674,-626.8176C286.8959,-611.7087 272.3686,-593.2778 258,-578 205.6567,-522.3443 160.6863,-533.6723 129.331,-464 114.5725,-431.2062 35.8626,-479.8411 146,-345 172.4776,-312.5836 279.2003,-279.6921 350.8275,-260.6027"></path>
+<polygon fill="#000000" stroke="#000000" points="351.9125,-263.9363 360.6895,-258.0022 350.1276,-257.1677 351.9125,-263.9363"></polygon>
+<text text-anchor="middle" x="207.3345" y="-455" font-family="Times,serif" font-size="10.00" fill="#000000">Depository&#45;Managing Acc Init Record</text>
+</g>
+<!-- datastore3 -->
+<g id="node10" class="node">
+<title>datastore3</title>
+<text text-anchor="start" x="155.5106" y="-818.2" font-family="Times,serif" font-size="12.00" fill="#000000">DS: Depository Info</text>
+<polygon fill="#000000" stroke="#000000" points="151,-810 151,-836 151,-836 151,-810 151,-810"></polygon>
+<polygon fill="none" stroke="#000000" points="138.5,-808 138.5,-836 259.5,-836 259.5,-808 138.5,-808"></polygon>
+</g>
+<!-- proc3&#45;&gt;datastore3 -->
+<g id="edge12" class="edge">
+<title>proc3&#45;&gt;datastore3</title>
+<path fill="none" stroke="#000000" d="M322.6768,-685.4208C324.1911,-710.2131 322.4572,-745.4673 305,-770 294.2206,-785.1484 277.773,-796.0902 261.0269,-803.9046"></path>
+<polygon fill="#000000" stroke="#000000" points="259.5132,-800.746 251.727,-807.9311 262.2944,-807.1698 259.5132,-800.746"></polygon>
+<text text-anchor="middle" x="350.796" y="-749" font-family="Times,serif" font-size="10.00" fill="#000000">Depository Info</text>
+</g>
+<!-- datastore4 -->
+<g id="node11" class="node">
+<title>datastore4</title>
+<text text-anchor="start" x="346.5178" y="-511.2" font-family="Times,serif" font-size="12.00" fill="#000000">DS: Managing Account Info</text>
+<polygon fill="#000000" stroke="#000000" points="342,-503 342,-529 342,-529 342,-503 342,-503"></polygon>
+<polygon fill="none" stroke="#000000" points="330,-501 330,-529 490,-529 490,-501 330,-501"></polygon>
+</g>
+<!-- proc3&#45;&gt;datastore4 -->
+<g id="edge13" class="edge">
+<title>proc3&#45;&gt;datastore4</title>
+<path fill="none" stroke="#000000" d="M390.6804,-626.9913C405.5822,-617.4924 419.3657,-605.3219 428,-590 437.0372,-573.9632 431.1783,-553.5229 423.8154,-538.0326"></path>
+<polygon fill="#000000" stroke="#000000" points="426.8878,-536.3549 419.1563,-529.111 420.6829,-539.5953 426.8878,-536.3549"></polygon>
+<text text-anchor="middle" x="480.04" y="-581" font-family="Times,serif" font-size="10.00" fill="#000000">Managing Account Info</text>
+</g>
+<!-- proc4&#45;&gt;datastore1 -->
+<g id="edge18" class="edge">
+<title>proc4&#45;&gt;datastore1</title>
+<path fill="none" stroke="#000000" d="M359.8506,-350.9805C339.9354,-339.9105 318.0591,-325.0803 302.263,-307 292.3677,-295.6738 285.3832,-280.3178 280.8331,-267.6022"></path>
+<polygon fill="#000000" stroke="#000000" points="284.1543,-266.4975 277.6968,-258.098 277.5069,-268.6911 284.1543,-266.4975"></polygon>
+<text text-anchor="middle" x="355.8685" y="-298" font-family="Times,serif" font-size="10.00" fill="#000000">Transfer Outbound Record</text>
+</g>
+<!-- proc4&#45;&gt;datastore2 -->
+<g id="edge19" class="edge">
+<title>proc4&#45;&gt;datastore2</title>
+<path fill="none" stroke="#000000" d="M411.7954,-344.8255C413.2141,-321.7709 415.171,-289.972 416.5053,-268.2894"></path>
+<polygon fill="#000000" stroke="#000000" points="420.0017,-268.453 417.1227,-258.2569 413.0149,-268.023 420.0017,-268.453"></polygon>
+<text text-anchor="middle" x="464.534" y="-298" font-family="Times,serif" font-size="10.00" fill="#000000">Transfer Inbound Record</text>
+</g>
+<!-- proc5&#45;&gt;enti1output -->
+<g id="edge23" class="edge">
+<title>proc5&#45;&gt;enti1output</title>
+<path fill="none" stroke="#000000" d="M418,-84.9363C418,-72.6436 418,-58.3776 418,-46.1819"></path>
+<polygon fill="#000000" stroke="#000000" points="421.5001,-46.0991 418,-36.0992 414.5001,-46.0992 421.5001,-46.0991"></polygon>
+<text text-anchor="middle" x="459.518" y="-57" font-family="Times,serif" font-size="10.00" fill="#000000">Balance Distribution</text>
+</g>
+<!-- datastore1&#45;&gt;proc5 -->
+<g id="edge21" class="edge">
+<title>datastore1&#45;&gt;proc5</title>
+<path fill="none" stroke="#000000" d="M289.6846,-229.8402C310.7626,-210.8115 348.9599,-176.3279 378.2166,-149.9155"></path>
+<polygon fill="#000000" stroke="#000000" points="380.7498,-152.344 385.8271,-143.0449 376.0591,-147.1481 380.7498,-152.344"></polygon>
+<text text-anchor="middle" x="377.5705" y="-184" font-family="Times,serif" font-size="10.00" fill="#000000">Expense Records</text>
+</g>
+<!-- datastore2&#45;&gt;proc5 -->
+<g id="edge22" class="edge">
+<title>datastore2&#45;&gt;proc5</title>
+<path fill="none" stroke="#000000" d="M418,-229.8402C418,-211.6212 418,-179.2347 418,-153.3294"></path>
+<polygon fill="#000000" stroke="#000000" points="421.5001,-153.0449 418,-143.0449 414.5001,-153.045 421.5001,-153.0449"></polygon>
+<text text-anchor="middle" x="450.6255" y="-184" font-family="Times,serif" font-size="10.00" fill="#000000">Income Records</text>
+</g>
+<!-- datastore3&#45;&gt;proc1 -->
+<g id="edge2" class="edge">
+<title>datastore3&#45;&gt;proc1</title>
+<path fill="none" stroke="#000000" d="M138.497,-808.1888C91.4061,-795.626 34,-775.4934 34,-752 34,-752 34,-752 34,-608 34,-538.6538 -1.9537,-509.3716 37,-452 61.3887,-416.0799 105.786,-396.6573 145.0884,-386.1776"></path>
+<polygon fill="#000000" stroke="#000000" points="146.1083,-389.5303 154.9555,-383.7014 144.4043,-382.7408 146.1083,-389.5303"></polygon>
+<text text-anchor="middle" x="79.957" y="-581" font-family="Times,serif" font-size="10.00" fill="#000000">Available Depositories</text>
+</g>
+<!-- datastore3&#45;&gt;proc2 -->
+<g id="edge6" class="edge">
+<title>datastore3&#45;&gt;proc2</title>
+<path fill="none" stroke="#000000" d="M259.6309,-814.8661C298.5179,-808.0655 348.7048,-794.9703 387,-770 534.1079,-674.0785 578.0185,-629.4172 637,-464 643.6454,-445.3627 634.7367,-426.664 622.0599,-411.1772"></path>
+<polygon fill="#000000" stroke="#000000" points="624.4046,-408.5461 615.1497,-403.3888 619.1684,-413.1919 624.4046,-408.5461"></polygon>
+<text text-anchor="middle" x="633.957" y="-581" font-family="Times,serif" font-size="10.00" fill="#000000">Available Depositories</text>
+</g>
+<!-- datastore3&#45;&gt;proc3 -->
+<g id="edge10" class="edge">
+<title>datastore3&#45;&gt;proc3</title>
+<path fill="none" stroke="#000000" d="M198.0971,-807.7735C197.6026,-789.3807 199.0747,-756.9883 213.086,-734 223.4092,-717.0627 238.9201,-702.6395 254.91,-690.9741"></path>
+<polygon fill="#000000" stroke="#000000" points="257.0923,-693.7192 263.2904,-685.1265 253.0866,-687.9786 257.0923,-693.7192"></polygon>
+<text text-anchor="middle" x="259.957" y="-749" font-family="Times,serif" font-size="10.00" fill="#000000">Available Depositories</text>
+</g>
+<!-- datastore3&#45;&gt;proc4 -->
+<g id="edge16" class="edge">
+<title>datastore3&#45;&gt;proc4</title>
+<path fill="none" stroke="#000000" d="M186.2667,-807.8593C175.5639,-794.4735 162,-773.3063 162,-752 162,-752 162,-752 162,-608 162,-594.6666 157.0675,-590.3529 162.086,-578 191.4149,-505.8078 223.3163,-500.8814 284,-452 304.6911,-435.3331 329.1931,-419.4198 351.0641,-406.3645"></path>
+<polygon fill="#000000" stroke="#000000" points="353.0983,-409.2283 359.9374,-401.1365 349.5449,-403.1973 353.0983,-409.2283"></polygon>
+<text text-anchor="middle" x="208.957" y="-581" font-family="Times,serif" font-size="10.00" fill="#000000">Available Depositories</text>
+</g>
+<!-- datastore4&#45;&gt;proc1 -->
+<g id="edge3" class="edge">
+<title>datastore4&#45;&gt;proc1</title>
+<path fill="none" stroke="#000000" d="M370.1965,-500.9043C348.6819,-492.1846 322.3497,-479.6583 301.595,-464 282.0981,-449.2907 263.911,-429.0753 249.9527,-411.5294"></path>
+<polygon fill="#000000" stroke="#000000" points="252.353,-408.9143 243.4529,-403.1663 246.8259,-413.2099 252.353,-408.9143"></polygon>
+<text text-anchor="middle" x="353.2025" y="-455" font-family="Times,serif" font-size="10.00" fill="#000000">Available Managing Accs</text>
+</g>
+<!-- datastore4&#45;&gt;proc2 -->
+<g id="edge7" class="edge">
+<title>datastore4&#45;&gt;proc2</title>
+<path fill="none" stroke="#000000" d="M452.7899,-500.9206C473.9808,-492.5039 499.0215,-480.252 518,-464 534.7264,-449.6766 548.8762,-429.7169 559.3241,-412.2327"></path>
+<polygon fill="#000000" stroke="#000000" points="562.4784,-413.7691 564.4443,-403.3582 556.4152,-410.2709 562.4784,-413.7691"></polygon>
+<text text-anchor="middle" x="581.2025" y="-455" font-family="Times,serif" font-size="10.00" fill="#000000">Available Managing Accs</text>
+</g>
+<!-- datastore4&#45;&gt;proc3 -->
+<g id="edge11" class="edge">
+<title>datastore4&#45;&gt;proc3</title>
+<path fill="none" stroke="#000000" d="M378.3882,-529.1761C358.9782,-539.6865 335.6066,-556.0033 323.595,-578 317.2339,-589.649 315.064,-603.7876 314.8108,-616.811"></path>
+<polygon fill="#000000" stroke="#000000" points="311.3134,-617.0057 314.9752,-626.9476 318.3125,-616.8922 311.3134,-617.0057"></polygon>
+<text text-anchor="middle" x="375.2025" y="-581" font-family="Times,serif" font-size="10.00" fill="#000000">Available Managing Accs</text>
+</g>
+<!-- datastore4&#45;&gt;proc4 -->
+<g id="edge17" class="edge">
+<title>datastore4&#45;&gt;proc4</title>
+<path fill="none" stroke="#000000" d="M410,-500.9649C410,-480.7405 410,-442.6247 410,-413.4128"></path>
+<polygon fill="#000000" stroke="#000000" points="413.5001,-413.103 410,-403.1031 406.5001,-413.1031 413.5001,-413.103"></polygon>
+<text text-anchor="middle" x="462.2025" y="-455" font-family="Times,serif" font-size="10.00" fill="#000000">Available Managing Accs</text>
+</g>
+</g>
+</svg>
+</p>
+<h4 class="mume-header" id="diagram-1">Diagram 1</h4>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: digram_1 Pages: 1 -->
+<svg width="606pt" height="404pt" viewBox="0.00 0.00 606.37 404.40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 400.4)">
+<title>digram_1</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-400.4 602.3697,-400.4 602.3697,4 -4,4"></polygon>
+<!-- enti1input -->
+<g id="node1" class="node">
+<title>enti1input</title>
+<polygon fill="none" stroke="#000000" points="143.2709,-396.4 .2425,-396.4 .2425,-360.4 143.2709,-360.4 143.2709,-396.4"></polygon>
+<text text-anchor="middle" x="71.7567" y="-374.2" font-family="Times,serif" font-size="14.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- proc1_1 -->
+<g id="node2" class="node">
+<title>proc1_1</title>
+<text text-anchor="start" x="283.0067" y="-236" font-family="Times,serif" font-size="14.00" fill="#000000">1.1</text>
+<text text-anchor="start" x="220.6192" y="-212" font-family="Times,serif" font-size="14.00" fill="#000000">Validate Expense Record</text>
+<polygon fill="#000000" stroke="#000000" points="213.7567,-228.6 213.7567,-228.6 369.7567,-228.6 369.7567,-228.6 213.7567,-228.6"></polygon>
+<path fill="none" stroke="#000000" d="M225.7567,-201.6C225.7567,-201.6 357.7567,-201.6 357.7567,-201.6 363.7567,-201.6 369.7567,-207.6 369.7567,-213.6 369.7567,-213.6 369.7567,-243.6 369.7567,-243.6 369.7567,-249.6 363.7567,-255.6 357.7567,-255.6 357.7567,-255.6 225.7567,-255.6 225.7567,-255.6 219.7567,-255.6 213.7567,-249.6 213.7567,-243.6 213.7567,-243.6 213.7567,-213.6 213.7567,-213.6 213.7567,-207.6 219.7567,-201.6 225.7567,-201.6"></path>
+</g>
+<!-- enti1input&#45;&gt;proc1_1 -->
+<g id="edge1" class="edge">
+<title>enti1input&#45;&gt;proc1_1</title>
+<path fill="none" stroke="#000000" d="M64.9004,-360.2355C60.7694,-345.9706 57.9665,-326.267 67.5869,-312.4 83.194,-289.9037 142.1476,-268.3597 195.6787,-252.7501"></path>
+<polygon fill="#000000" stroke="#000000" points="196.9514,-256.0263 205.5994,-249.9056 195.022,-249.2975 196.9514,-256.0263"></polygon>
+<text text-anchor="middle" x="140.8416" y="-323.2" font-family="Times,serif" font-size="14.00" fill="#000000">Unvalidated Expnese Info</text>
+</g>
+<!-- proc1_2 -->
+<g id="node3" class="node">
+<title>proc1_2</title>
+<text text-anchor="start" x="283.0067" y="-121.2" font-family="Times,serif" font-size="14.00" fill="#000000">1.2</text>
+<text text-anchor="start" x="230.7244" y="-97.2" font-family="Times,serif" font-size="14.00" fill="#000000">Save Expense Record</text>
+<polygon fill="#000000" stroke="#000000" points="223.7567,-113.8 223.7567,-113.8 359.7567,-113.8 359.7567,-113.8 223.7567,-113.8"></polygon>
+<path fill="none" stroke="#000000" d="M235.7567,-86.8C235.7567,-86.8 347.7567,-86.8 347.7567,-86.8 353.7567,-86.8 359.7567,-92.8 359.7567,-98.8 359.7567,-98.8 359.7567,-128.8 359.7567,-128.8 359.7567,-134.8 353.7567,-140.8 347.7567,-140.8 347.7567,-140.8 235.7567,-140.8 235.7567,-140.8 229.7567,-140.8 223.7567,-134.8 223.7567,-128.8 223.7567,-128.8 223.7567,-98.8 223.7567,-98.8 223.7567,-92.8 229.7567,-86.8 235.7567,-86.8"></path>
+</g>
+<!-- proc1_1&#45;&gt;proc1_2 -->
+<g id="edge4" class="edge">
+<title>proc1_1&#45;&gt;proc1_2</title>
+<path fill="none" stroke="#000000" d="M291.7567,-197.5335C291.7567,-184.5163 291.7567,-169.1924 291.7567,-155.2362"></path>
+<polygon fill="#000000" stroke="#000000" points="295.2568,-154.8913 291.7567,-144.8914 288.2568,-154.8914 295.2568,-154.8913"></polygon>
+<text text-anchor="middle" x="354.7343" y="-167" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Expnese Record</text>
+</g>
+<!-- dsExpenseRecord -->
+<g id="node6" class="node">
+<title>dsExpenseRecord</title>
+<text text-anchor="start" x="238.4404" y="-10.4" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Expense Record</text>
+<polygon fill="#000000" stroke="#000000" points="233.7567,-2 233.7567,-30 233.7567,-30 233.7567,-2 233.7567,-2"></polygon>
+<polygon fill="none" stroke="#000000" points="221.7567,0 221.7567,-30 361.7567,-30 361.7567,0 221.7567,0"></polygon>
+</g>
+<!-- proc1_2&#45;&gt;dsExpenseRecord -->
+<g id="edge5" class="edge">
+<title>proc1_2&#45;&gt;dsExpenseRecord</title>
+<path fill="none" stroke="#000000" d="M291.7567,-82.5391C291.7567,-68.8473 291.7567,-52.9967 291.7567,-40.0931"></path>
+<polygon fill="#000000" stroke="#000000" points="295.2568,-40.0593 291.7567,-30.0593 288.2568,-40.0594 295.2568,-40.0593"></polygon>
+<text text-anchor="middle" x="354.7343" y="-52.2" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Expnese Record</text>
+</g>
+<!-- dsDepositoryInfo -->
+<g id="node4" class="node">
+<title>dsDepositoryInfo</title>
+<text text-anchor="start" x="239.6024" y="-322.8" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Depository Info</text>
+<polygon fill="#000000" stroke="#000000" points="234.7567,-314.4 234.7567,-342.4 234.7567,-342.4 234.7567,-314.4 234.7567,-314.4"></polygon>
+<polygon fill="none" stroke="#000000" points="222.7567,-312.4 222.7567,-342.4 360.7567,-342.4 360.7567,-312.4 222.7567,-312.4"></polygon>
+</g>
+<!-- dsDepositoryInfo&#45;&gt;proc1_1 -->
+<g id="edge2" class="edge">
+<title>dsDepositoryInfo&#45;&gt;proc1_1</title>
+<path fill="none" stroke="#000000" d="M291.7567,-312.3944C291.7567,-301.0783 291.7567,-284.9821 291.7567,-269.9169"></path>
+<polygon fill="#000000" stroke="#000000" points="295.2568,-269.7232 291.7567,-259.7232 288.2568,-269.7232 295.2568,-269.7232"></polygon>
+<text text-anchor="middle" x="351.8216" y="-281.8" font-family="Times,serif" font-size="14.00" fill="#000000">Available Depository</text>
+</g>
+<!-- dsManagingAccountInfo -->
+<g id="node5" class="node">
+<title>dsManagingAccountInfo</title>
+<text text-anchor="start" x="383.3608" y="-322.8" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Managing Account Info</text>
+<polygon fill="#000000" stroke="#000000" points="378.7567,-314.4 378.7567,-342.4 378.7567,-342.4 378.7567,-314.4 378.7567,-314.4"></polygon>
+<polygon fill="none" stroke="#000000" points="366.2567,-312.4 366.2567,-342.4 549.2567,-342.4 549.2567,-312.4 366.2567,-312.4"></polygon>
+</g>
+<!-- dsManagingAccountInfo&#45;&gt;proc1_1 -->
+<g id="edge3" class="edge">
+<title>dsManagingAccountInfo&#45;&gt;proc1_1</title>
+<path fill="none" stroke="#000000" d="M447.9464,-312.1456C440.2937,-301.2711 428.7975,-286.974 415.7567,-277.6 406.9786,-271.2901 397.2763,-265.6517 387.2792,-260.6497"></path>
+<polygon fill="#000000" stroke="#000000" points="388.5655,-257.3854 378.0334,-256.234 385.5487,-263.702 388.5655,-257.3854"></polygon>
+<text text-anchor="middle" x="515.5632" y="-281.8" font-family="Times,serif" font-size="14.00" fill="#000000">Available Managing Account</text>
+</g>
+</g>
+</svg>
+</p>
+<h4 class="mume-header" id="diagram-2">Diagram 2</h4>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: digram_2 Pages: 1 -->
+<svg width="601pt" height="404pt" viewBox="0.00 0.00 601.37 404.40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 400.4)">
+<title>digram_2</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-400.4 597.3697,-400.4 597.3697,4 -4,4"></polygon>
+<!-- enti1input -->
+<g id="node1" class="node">
+<title>enti1input</title>
+<polygon fill="none" stroke="#000000" points="143.2709,-396.4 .2425,-396.4 .2425,-360.4 143.2709,-360.4 143.2709,-396.4"></polygon>
+<text text-anchor="middle" x="71.7567" y="-374.2" font-family="Times,serif" font-size="14.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- proc2_1 -->
+<g id="node2" class="node">
+<title>proc2_1</title>
+<text text-anchor="start" x="278.0067" y="-236" font-family="Times,serif" font-size="14.00" fill="#000000">2.1</text>
+<text text-anchor="start" x="218.3422" y="-212" font-family="Times,serif" font-size="14.00" fill="#000000">Validate Income Record</text>
+<polygon fill="#000000" stroke="#000000" points="211.7567,-228.6 211.7567,-228.6 361.7567,-228.6 361.7567,-228.6 211.7567,-228.6"></polygon>
+<path fill="none" stroke="#000000" d="M223.7567,-201.6C223.7567,-201.6 349.7567,-201.6 349.7567,-201.6 355.7567,-201.6 361.7567,-207.6 361.7567,-213.6 361.7567,-213.6 361.7567,-243.6 361.7567,-243.6 361.7567,-249.6 355.7567,-255.6 349.7567,-255.6 349.7567,-255.6 223.7567,-255.6 223.7567,-255.6 217.7567,-255.6 211.7567,-249.6 211.7567,-243.6 211.7567,-243.6 211.7567,-213.6 211.7567,-213.6 211.7567,-207.6 217.7567,-201.6 223.7567,-201.6"></path>
+</g>
+<!-- enti1input&#45;&gt;proc2_1 -->
+<g id="edge1" class="edge">
+<title>enti1input&#45;&gt;proc2_1</title>
+<path fill="none" stroke="#000000" d="M65.1069,-360.2537C61.1198,-345.9991 58.4729,-326.3004 68.0329,-312.4 83.2994,-290.2022 141.3583,-268.5332 193.8218,-252.7923"></path>
+<polygon fill="#000000" stroke="#000000" points="194.9412,-256.1113 203.5412,-249.9233 192.9594,-249.3976 194.9412,-256.1113"></polygon>
+<text text-anchor="middle" x="139.1186" y="-323.2" font-family="Times,serif" font-size="14.00" fill="#000000">Unvalidated Income Info</text>
+</g>
+<!-- proc2_2 -->
+<g id="node3" class="node">
+<title>proc2_2</title>
+<text text-anchor="start" x="278.0067" y="-121.2" font-family="Times,serif" font-size="14.00" fill="#000000">2.2</text>
+<text text-anchor="start" x="228.4474" y="-97.2" font-family="Times,serif" font-size="14.00" fill="#000000">Save Income Record</text>
+<polygon fill="#000000" stroke="#000000" points="221.7567,-113.8 221.7567,-113.8 351.7567,-113.8 351.7567,-113.8 221.7567,-113.8"></polygon>
+<path fill="none" stroke="#000000" d="M233.7567,-86.8C233.7567,-86.8 339.7567,-86.8 339.7567,-86.8 345.7567,-86.8 351.7567,-92.8 351.7567,-98.8 351.7567,-98.8 351.7567,-128.8 351.7567,-128.8 351.7567,-134.8 345.7567,-140.8 339.7567,-140.8 339.7567,-140.8 233.7567,-140.8 233.7567,-140.8 227.7567,-140.8 221.7567,-134.8 221.7567,-128.8 221.7567,-128.8 221.7567,-98.8 221.7567,-98.8 221.7567,-92.8 227.7567,-86.8 233.7567,-86.8"></path>
+</g>
+<!-- proc2_1&#45;&gt;proc2_2 -->
+<g id="edge4" class="edge">
+<title>proc2_1&#45;&gt;proc2_2</title>
+<path fill="none" stroke="#000000" d="M286.7567,-197.5335C286.7567,-184.5163 286.7567,-169.1924 286.7567,-155.2362"></path>
+<polygon fill="#000000" stroke="#000000" points="290.2568,-154.8913 286.7567,-144.8914 283.2568,-154.8914 290.2568,-154.8913"></polygon>
+<text text-anchor="middle" x="347.0113" y="-167" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Income Record</text>
+</g>
+<!-- dsIncomeRecord -->
+<g id="node6" class="node">
+<title>dsIncomeRecord</title>
+<text text-anchor="start" x="236.6634" y="-10.4" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Income Record</text>
+<polygon fill="#000000" stroke="#000000" points="231.7567,-2 231.7567,-30 231.7567,-30 231.7567,-2 231.7567,-2"></polygon>
+<polygon fill="none" stroke="#000000" points="219.2567,0 219.2567,-30 354.2567,-30 354.2567,0 219.2567,0"></polygon>
+</g>
+<!-- proc2_2&#45;&gt;dsIncomeRecord -->
+<g id="edge5" class="edge">
+<title>proc2_2&#45;&gt;dsIncomeRecord</title>
+<path fill="none" stroke="#000000" d="M286.7567,-82.5391C286.7567,-68.8473 286.7567,-52.9967 286.7567,-40.0931"></path>
+<polygon fill="#000000" stroke="#000000" points="290.2568,-40.0593 286.7567,-30.0593 283.2568,-40.0594 290.2568,-40.0593"></polygon>
+<text text-anchor="middle" x="347.0113" y="-52.2" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Income Record</text>
+</g>
+<!-- dsDepositoryInfo -->
+<g id="node4" class="node">
+<title>dsDepositoryInfo</title>
+<text text-anchor="start" x="234.6024" y="-322.8" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Depository Info</text>
+<polygon fill="#000000" stroke="#000000" points="229.7567,-314.4 229.7567,-342.4 229.7567,-342.4 229.7567,-314.4 229.7567,-314.4"></polygon>
+<polygon fill="none" stroke="#000000" points="217.7567,-312.4 217.7567,-342.4 355.7567,-342.4 355.7567,-312.4 217.7567,-312.4"></polygon>
+</g>
+<!-- dsDepositoryInfo&#45;&gt;proc2_1 -->
+<g id="edge2" class="edge">
+<title>dsDepositoryInfo&#45;&gt;proc2_1</title>
+<path fill="none" stroke="#000000" d="M286.7567,-312.3944C286.7567,-301.0783 286.7567,-284.9821 286.7567,-269.9169"></path>
+<polygon fill="#000000" stroke="#000000" points="290.2568,-269.7232 286.7567,-259.7232 283.2568,-269.7232 290.2568,-269.7232"></polygon>
+<text text-anchor="middle" x="346.8216" y="-281.8" font-family="Times,serif" font-size="14.00" fill="#000000">Available Depository</text>
+</g>
+<!-- dsManagingAccountInfo -->
+<g id="node5" class="node">
+<title>dsManagingAccountInfo</title>
+<text text-anchor="start" x="378.3608" y="-322.8" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Managing Account Info</text>
+<polygon fill="#000000" stroke="#000000" points="373.7567,-314.4 373.7567,-342.4 373.7567,-342.4 373.7567,-314.4 373.7567,-314.4"></polygon>
+<polygon fill="none" stroke="#000000" points="361.2567,-312.4 361.2567,-342.4 544.2567,-342.4 544.2567,-312.4 361.2567,-312.4"></polygon>
+</g>
+<!-- dsManagingAccountInfo&#45;&gt;proc2_1 -->
+<g id="edge3" class="edge">
+<title>dsManagingAccountInfo&#45;&gt;proc2_1</title>
+<path fill="none" stroke="#000000" d="M442.9464,-312.1456C435.2937,-301.2711 423.7975,-286.974 410.7567,-277.6 401.0652,-270.6336 390.2473,-264.4856 379.1498,-259.109"></path>
+<polygon fill="#000000" stroke="#000000" points="380.3261,-255.7967 369.7808,-254.773 377.3861,-262.1494 380.3261,-255.7967"></polygon>
+<text text-anchor="middle" x="510.5632" y="-281.8" font-family="Times,serif" font-size="14.00" fill="#000000">Available Managing Account</text>
+</g>
+</g>
+</svg>
+</p>
+<h4 class="mume-header" id="diagram-3">Diagram 3</h4>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: digram_3 Pages: 1 -->
+<svg width="1204pt" height="356pt" viewBox="0.00 0.00 1203.90 356.40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 352.4)">
+<title>digram_3</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-352.4 1199.8976,-352.4 1199.8976,4 -4,4"></polygon>
+<!-- enti1input -->
+<g id="node1" class="node">
+<title>enti1input</title>
+<polygon fill="none" stroke="#000000" points="555.4118,-348.4 412.3834,-348.4 412.3834,-312.4 555.4118,-312.4 555.4118,-348.4"></polygon>
+<text text-anchor="middle" x="483.8976" y="-326.2" font-family="Times,serif" font-size="14.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- proc3_1 -->
+<g id="node2" class="node">
+<title>proc3_1</title>
+<text text-anchor="start" x="475.1476" y="-236" font-family="Times,serif" font-size="14.00" fill="#000000">3.1</text>
+<text text-anchor="start" x="405.7538" y="-212" font-family="Times,serif" font-size="14.00" fill="#000000">Validate Configuration Info</text>
+<polygon fill="#000000" stroke="#000000" points="398.8976,-228.6 398.8976,-228.6 568.8976,-228.6 568.8976,-228.6 398.8976,-228.6"></polygon>
+<path fill="none" stroke="#000000" d="M410.8976,-201.6C410.8976,-201.6 556.8976,-201.6 556.8976,-201.6 562.8976,-201.6 568.8976,-207.6 568.8976,-213.6 568.8976,-213.6 568.8976,-243.6 568.8976,-243.6 568.8976,-249.6 562.8976,-255.6 556.8976,-255.6 556.8976,-255.6 410.8976,-255.6 410.8976,-255.6 404.8976,-255.6 398.8976,-249.6 398.8976,-243.6 398.8976,-243.6 398.8976,-213.6 398.8976,-213.6 398.8976,-207.6 404.8976,-201.6 410.8976,-201.6"></path>
+</g>
+<!-- enti1input&#45;&gt;proc3_1 -->
+<g id="edge1" class="edge">
+<title>enti1input&#45;&gt;proc3_1</title>
+<path fill="none" stroke="#000000" d="M483.8976,-312.2002C483.8976,-300.5111 483.8976,-284.832 483.8976,-270.2113"></path>
+<polygon fill="#000000" stroke="#000000" points="487.3977,-269.8243 483.8976,-259.8243 480.3977,-269.8244 487.3977,-269.8243"></polygon>
+<text text-anchor="middle" x="572.5414" y="-281.8" font-family="Times,serif" font-size="14.00" fill="#000000">Unvalidated Configuration Info</text>
+</g>
+<!-- proc3_2 -->
+<g id="node3" class="node">
+<title>proc3_2</title>
+<text text-anchor="start" x="230.1476" y="-121.2" font-family="Times,serif" font-size="14.00" fill="#000000">3.2</text>
+<text text-anchor="start" x="154.5301" y="-97.2" font-family="Times,serif" font-size="14.00" fill="#000000">Add/Update Depository Entry</text>
+<polygon fill="#000000" stroke="#000000" points="147.8976,-113.8 147.8976,-113.8 329.8976,-113.8 329.8976,-113.8 147.8976,-113.8"></polygon>
+<path fill="none" stroke="#000000" d="M159.8976,-86.8C159.8976,-86.8 317.8976,-86.8 317.8976,-86.8 323.8976,-86.8 329.8976,-92.8 329.8976,-98.8 329.8976,-98.8 329.8976,-128.8 329.8976,-128.8 329.8976,-134.8 323.8976,-140.8 317.8976,-140.8 317.8976,-140.8 159.8976,-140.8 159.8976,-140.8 153.8976,-140.8 147.8976,-134.8 147.8976,-128.8 147.8976,-128.8 147.8976,-98.8 147.8976,-98.8 147.8976,-92.8 153.8976,-86.8 159.8976,-86.8"></path>
+</g>
+<!-- proc3_1&#45;&gt;proc3_2 -->
+<g id="edge4" class="edge">
+<title>proc3_1&#45;&gt;proc3_2</title>
+<path fill="none" stroke="#000000" d="M395.9539,-197.4985C381.8568,-191.9027 367.5457,-185.8494 354.2664,-179.6 335.7006,-170.8627 316.1018,-160.249 298.4315,-150.1191"></path>
+<polygon fill="#000000" stroke="#000000" points="299.7902,-146.8614 289.3826,-144.8784 296.282,-152.9188 299.7902,-146.8614"></polygon>
+<text text-anchor="middle" x="416.7132" y="-167" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Depository Info</text>
+</g>
+<!-- proc3_3 -->
+<g id="node4" class="node">
+<title>proc3_3</title>
+<text text-anchor="start" x="1065.1476" y="-121.2" font-family="Times,serif" font-size="14.00" fill="#000000">3.2</text>
+<text text-anchor="start" x="966.7885" y="-97.2" font-family="Times,serif" font-size="14.00" fill="#000000">Add/Update Managing Account Entry</text>
+<polygon fill="#000000" stroke="#000000" points="959.8976,-113.8 959.8976,-113.8 1187.8976,-113.8 1187.8976,-113.8 959.8976,-113.8"></polygon>
+<path fill="none" stroke="#000000" d="M971.8976,-86.8C971.8976,-86.8 1175.8976,-86.8 1175.8976,-86.8 1181.8976,-86.8 1187.8976,-92.8 1187.8976,-98.8 1187.8976,-98.8 1187.8976,-128.8 1187.8976,-128.8 1187.8976,-134.8 1181.8976,-140.8 1175.8976,-140.8 1175.8976,-140.8 971.8976,-140.8 971.8976,-140.8 965.8976,-140.8 959.8976,-134.8 959.8976,-128.8 959.8976,-128.8 959.8976,-98.8 959.8976,-98.8 959.8976,-92.8 965.8976,-86.8 971.8976,-86.8"></path>
+</g>
+<!-- proc3_1&#45;&gt;proc3_3 -->
+<g id="edge6" class="edge">
+<title>proc3_1&#45;&gt;proc3_3</title>
+<path fill="none" stroke="#000000" d="M577.0907,-214.6621C635.9683,-205.514 713.5644,-192.8288 781.8976,-179.6 851.6402,-166.0983 868.6002,-160.4271 937.8976,-144.8 939.16,-144.5153 940.4289,-144.229 941.7036,-143.9413"></path>
+<polygon fill="#000000" stroke="#000000" points="942.5921,-147.3288 951.5746,-141.7105 941.0491,-140.501 942.5921,-147.3288"></polygon>
+<text text-anchor="middle" x="944.4548" y="-167" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Managing Account Info</text>
+</g>
+<!-- proc3_4 -->
+<g id="node5" class="node">
+<title>proc3_4</title>
+<text text-anchor="start" x="515.1476" y="-121.2" font-family="Times,serif" font-size="14.00" fill="#000000">3.4</text>
+<text text-anchor="start" x="370.7222" y="-97.2" font-family="Times,serif" font-size="14.00" fill="#000000">Add/Update Depository&#45;Managing Account Init Value</text>
+<polygon fill="#000000" stroke="#000000" points="363.8976,-113.8 363.8976,-113.8 683.8976,-113.8 683.8976,-113.8 363.8976,-113.8"></polygon>
+<path fill="none" stroke="#000000" d="M375.8976,-86.8C375.8976,-86.8 671.8976,-86.8 671.8976,-86.8 677.8976,-86.8 683.8976,-92.8 683.8976,-98.8 683.8976,-98.8 683.8976,-128.8 683.8976,-128.8 683.8976,-134.8 677.8976,-140.8 671.8976,-140.8 671.8976,-140.8 375.8976,-140.8 375.8976,-140.8 369.8976,-140.8 363.8976,-134.8 363.8976,-128.8 363.8976,-128.8 363.8976,-98.8 363.8976,-98.8 363.8976,-92.8 369.8976,-86.8 375.8976,-86.8"></path>
+</g>
+<!-- proc3_1&#45;&gt;proc3_4 -->
+<g id="edge8" class="edge">
+<title>proc3_1&#45;&gt;proc3_4</title>
+<path fill="none" stroke="#000000" d="M480.2579,-197.3929C480.0086,-186.1981 480.9798,-173.6643 484.868,-162.8 485.9857,-159.6769 487.3911,-156.6024 488.9998,-153.6093"></path>
+<polygon fill="#000000" stroke="#000000" points="492.0943,-155.2587 494.3511,-144.907 486.1315,-151.5919 492.0943,-155.2587"></polygon>
+<text text-anchor="middle" x="619.4124" y="-167" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Depository&#45;Managing Account Init Value</text>
+</g>
+<!-- dsDepositoryInfo -->
+<g id="node6" class="node">
+<title>dsDepositoryInfo</title>
+<text text-anchor="start" x="17.7433" y="-10.4" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Depository Info</text>
+<polygon fill="#000000" stroke="#000000" points="12.8976,-2 12.8976,-30 12.8976,-30 12.8976,-2 12.8976,-2"></polygon>
+<polygon fill="none" stroke="#000000" points=".8976,0 .8976,-30 138.8976,-30 138.8976,0 .8976,0"></polygon>
+</g>
+<!-- proc3_2&#45;&gt;dsDepositoryInfo -->
+<g id="edge5" class="edge">
+<title>proc3_2&#45;&gt;dsDepositoryInfo</title>
+<path fill="none" stroke="#000000" d="M185.4249,-82.5391C158.9602,-67.0673 127.7801,-48.839 104.4867,-35.2213"></path>
+<polygon fill="#000000" stroke="#000000" points="106.0564,-32.0848 95.657,-30.0593 102.5235,-38.1279 106.0564,-32.0848"></polygon>
+<text text-anchor="middle" x="216.7132" y="-52.2" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Depository Info</text>
+</g>
+<!-- dsManagingAccountInfo -->
+<g id="node7" class="node">
+<title>dsManagingAccountInfo</title>
+<text text-anchor="start" x="777.5017" y="-10.4" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Managing Account Info</text>
+<polygon fill="#000000" stroke="#000000" points="772.8976,-2 772.8976,-30 772.8976,-30 772.8976,-2 772.8976,-2"></polygon>
+<polygon fill="none" stroke="#000000" points="760.3976,0 760.3976,-30 943.3976,-30 943.3976,0 760.3976,0"></polygon>
+</g>
+<!-- proc3_3&#45;&gt;dsManagingAccountInfo -->
+<g id="edge7" class="edge">
+<title>proc3_3&#45;&gt;dsManagingAccountInfo</title>
+<path fill="none" stroke="#000000" d="M1003.9601,-82.6747C968.2544,-66.784 925.9498,-47.9566 895.0383,-34.1996"></path>
+<polygon fill="#000000" stroke="#000000" points="896.3899,-30.9702 885.8308,-30.1018 893.5437,-37.3654 896.3899,-30.9702"></polygon>
+<text text-anchor="middle" x="1047.4548" y="-52.2" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Managing Account Info</text>
+</g>
+<!-- dsIncomeRecord -->
+<g id="node8" class="node">
+<title>dsIncomeRecord</title>
+<text text-anchor="start" x="433.8043" y="-10.4" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Income Record</text>
+<polygon fill="#000000" stroke="#000000" points="428.8976,-2 428.8976,-30 428.8976,-30 428.8976,-2 428.8976,-2"></polygon>
+<polygon fill="none" stroke="#000000" points="416.3976,0 416.3976,-30 551.3976,-30 551.3976,0 416.3976,0"></polygon>
+</g>
+<!-- proc3_4&#45;&gt;dsIncomeRecord -->
+<g id="edge9" class="edge">
+<title>proc3_4&#45;&gt;dsIncomeRecord</title>
+<path fill="none" stroke="#000000" d="M494.3768,-82.6838C490.5121,-77.0898 487.1182,-71.0409 484.868,-64.8 482.1256,-57.1939 481.2569,-48.5007 481.2592,-40.5291"></path>
+<polygon fill="#000000" stroke="#000000" points="484.7673,-40.4194 481.7079,-30.2759 477.7739,-40.1133 484.7673,-40.4194"></polygon>
+<text text-anchor="middle" x="619.4124" y="-52.2" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Depository&#45;Managing Account Init Value</text>
+</g>
+<!-- dsDepositoryInfo&#45;&gt;proc3_1 -->
+<g id="edge2" class="edge">
+<title>dsDepositoryInfo&#45;&gt;proc3_1</title>
+<path fill="none" stroke="#000000" d="M50.6708,-30.2257C36.6301,-42.659 18.7159,-61.5939 10.7678,-82.8 1.0968,-108.6027 -6.9365,-123.6844 10.7678,-144.8 57.0012,-199.9418 255.8028,-218.8206 380.5354,-225.2694"></path>
+<polygon fill="#000000" stroke="#000000" points="380.7126,-228.7825 390.8743,-225.7844 381.0608,-221.7912 380.7126,-228.7825"></polygon>
+<text text-anchor="middle" x="70.9625" y="-109.6" font-family="Times,serif" font-size="14.00" fill="#000000">Available Depository</text>
+</g>
+<!-- dsManagingAccountInfo&#45;&gt;proc3_1 -->
+<g id="edge3" class="edge">
+<title>dsManagingAccountInfo&#45;&gt;proc3_1</title>
+<path fill="none" stroke="#000000" d="M828.93,-30.1274C812.1389,-42.3771 790.1375,-61.1194 777.2846,-82.8 754.7141,-120.8726 786.0814,-149.2165 753.8976,-179.6 729.8849,-202.2695 652.6991,-214.7561 586.9725,-221.4405"></path>
+<polygon fill="#000000" stroke="#000000" points="586.5597,-217.9641 576.9497,-222.4247 587.2438,-224.9306 586.5597,-217.9641"></polygon>
+<text text-anchor="middle" x="859.7041" y="-109.6" font-family="Times,serif" font-size="14.00" fill="#000000">Available Managing Account</text>
+</g>
+</g>
+</svg>
+</p>
+<h4 class="mume-header" id="diagram-4">Diagram 4</h4>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: digram_4 Pages: 1 -->
+<svg width="606pt" height="404pt" viewBox="0.00 0.00 606.37 404.40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 400.4)">
+<title>digram_4</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-400.4 602.3697,-400.4 602.3697,4 -4,4"></polygon>
+<!-- enti1input -->
+<g id="node1" class="node">
+<title>enti1input</title>
+<polygon fill="none" stroke="#000000" points="143.2709,-396.4 .2425,-396.4 .2425,-360.4 143.2709,-360.4 143.2709,-396.4"></polygon>
+<text text-anchor="middle" x="71.7567" y="-374.2" font-family="Times,serif" font-size="14.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- proc4_1 -->
+<g id="node2" class="node">
+<title>proc4_1</title>
+<text text-anchor="start" x="283.0067" y="-236" font-family="Times,serif" font-size="14.00" fill="#000000">4.1</text>
+<text text-anchor="start" x="220.6283" y="-212" font-family="Times,serif" font-size="14.00" fill="#000000">Validate Transfer Record</text>
+<polygon fill="#000000" stroke="#000000" points="213.7567,-228.6 213.7567,-228.6 369.7567,-228.6 369.7567,-228.6 213.7567,-228.6"></polygon>
+<path fill="none" stroke="#000000" d="M225.7567,-201.6C225.7567,-201.6 357.7567,-201.6 357.7567,-201.6 363.7567,-201.6 369.7567,-207.6 369.7567,-213.6 369.7567,-213.6 369.7567,-243.6 369.7567,-243.6 369.7567,-249.6 363.7567,-255.6 357.7567,-255.6 357.7567,-255.6 225.7567,-255.6 225.7567,-255.6 219.7567,-255.6 213.7567,-249.6 213.7567,-243.6 213.7567,-243.6 213.7567,-213.6 213.7567,-213.6 213.7567,-207.6 219.7567,-201.6 225.7567,-201.6"></path>
+</g>
+<!-- enti1input&#45;&gt;proc4_1 -->
+<g id="edge1" class="edge">
+<title>enti1input&#45;&gt;proc4_1</title>
+<path fill="none" stroke="#000000" d="M64.9077,-360.2354C60.7819,-345.9705 57.9851,-326.2668 67.6051,-312.4 83.2108,-289.9051 142.1596,-268.3611 195.6864,-252.7511"></path>
+<polygon fill="#000000" stroke="#000000" points="196.9585,-256.0275 205.6063,-249.9066 195.0289,-249.2987 196.9585,-256.0275"></polygon>
+<text text-anchor="middle" x="140.8325" y="-323.2" font-family="Times,serif" font-size="14.00" fill="#000000">Unvalidated Transfer Info</text>
+</g>
+<!-- proc4_2 -->
+<g id="node3" class="node">
+<title>proc4_2</title>
+<text text-anchor="start" x="177.0067" y="-121.2" font-family="Times,serif" font-size="14.00" fill="#000000">4.2</text>
+<text text-anchor="start" x="99.6532" y="-97.2" font-family="Times,serif" font-size="14.00" fill="#000000">Save Inbound Transfer Record</text>
+<polygon fill="#000000" stroke="#000000" points="92.7567,-113.8 92.7567,-113.8 278.7567,-113.8 278.7567,-113.8 92.7567,-113.8"></polygon>
+<path fill="none" stroke="#000000" d="M104.7567,-86.8C104.7567,-86.8 266.7567,-86.8 266.7567,-86.8 272.7567,-86.8 278.7567,-92.8 278.7567,-98.8 278.7567,-98.8 278.7567,-128.8 278.7567,-128.8 278.7567,-134.8 272.7567,-140.8 266.7567,-140.8 266.7567,-140.8 104.7567,-140.8 104.7567,-140.8 98.7567,-140.8 92.7567,-134.8 92.7567,-128.8 92.7567,-128.8 92.7567,-98.8 92.7567,-98.8 92.7567,-92.8 98.7567,-86.8 104.7567,-86.8"></path>
+</g>
+<!-- proc4_1&#45;&gt;proc4_2 -->
+<g id="edge4" class="edge">
+<title>proc4_1&#45;&gt;proc4_2</title>
+<path fill="none" stroke="#000000" d="M218.0655,-197.5495C211.1198,-192.3581 204.7769,-186.402 199.6591,-179.6 194.2528,-172.4145 190.8411,-163.5971 188.7132,-154.78"></path>
+<polygon fill="#000000" stroke="#000000" points="192.1415,-154.073 186.8184,-144.9124 185.2671,-155.3931 192.1415,-154.073"></polygon>
+<text text-anchor="middle" x="287.8055" y="-167" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Transfer Inbound Record</text>
+</g>
+<!-- proc4_3 -->
+<g id="node4" class="node">
+<title>proc4_3</title>
+<text text-anchor="start" x="389.5067" y="-121.2" font-family="Times,serif" font-size="14.00" fill="#000000">4.3</text>
+<text text-anchor="start" x="307.4849" y="-97.2" font-family="Times,serif" font-size="14.00" fill="#000000">Save Outbound Transfer Record</text>
+<polygon fill="#000000" stroke="#000000" points="300.7567,-113.8 300.7567,-113.8 495.7567,-113.8 495.7567,-113.8 300.7567,-113.8"></polygon>
+<path fill="none" stroke="#000000" d="M312.2567,-86.8C312.2567,-86.8 483.2567,-86.8 483.2567,-86.8 489.2567,-86.8 495.2567,-92.8 495.2567,-98.8 495.2567,-98.8 495.2567,-128.8 495.2567,-128.8 495.2567,-134.8 489.2567,-140.8 483.2567,-140.8 483.2567,-140.8 312.2567,-140.8 312.2567,-140.8 306.2567,-140.8 300.2567,-134.8 300.2567,-128.8 300.2567,-128.8 300.2567,-98.8 300.2567,-98.8 300.2567,-92.8 306.2567,-86.8 312.2567,-86.8"></path>
+</g>
+<!-- proc4_1&#45;&gt;proc4_3 -->
+<g id="edge6" class="edge">
+<title>proc4_1&#45;&gt;proc4_3</title>
+<path fill="none" stroke="#000000" d="M356.6334,-197.5112C363.7229,-192.2442 370.3245,-186.2806 375.7567,-179.6 381.6721,-172.325 386.0243,-163.3903 389.2169,-154.4779"></path>
+<polygon fill="#000000" stroke="#000000" points="392.5691,-155.4852 392.2452,-144.8953 385.8944,-153.3758 392.5691,-155.4852"></polygon>
+<text text-anchor="middle" x="477.4738" y="-167" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Transfer Outbound Record</text>
+</g>
+<!-- dsIncomeRecord -->
+<g id="node7" class="node">
+<title>dsIncomeRecord</title>
+<text text-anchor="start" x="135.6634" y="-10.4" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Income Record</text>
+<polygon fill="#000000" stroke="#000000" points="130.7567,-2 130.7567,-30 130.7567,-30 130.7567,-2 130.7567,-2"></polygon>
+<polygon fill="none" stroke="#000000" points="118.2567,0 118.2567,-30 253.2567,-30 253.2567,0 118.2567,0"></polygon>
+</g>
+<!-- proc4_2&#45;&gt;dsIncomeRecord -->
+<g id="edge5" class="edge">
+<title>proc4_2&#45;&gt;dsIncomeRecord</title>
+<path fill="none" stroke="#000000" d="M185.7567,-82.5391C185.7567,-68.8473 185.7567,-52.9967 185.7567,-40.0931"></path>
+<polygon fill="#000000" stroke="#000000" points="189.2568,-40.0593 185.7567,-30.0593 182.2568,-40.0594 189.2568,-40.0593"></polygon>
+<text text-anchor="middle" x="273.8055" y="-52.2" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Transfer Inbound Record</text>
+</g>
+<!-- dsExpenseRecord -->
+<g id="node8" class="node">
+<title>dsExpenseRecord</title>
+<text text-anchor="start" x="344.4404" y="-10.4" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Expense Record</text>
+<polygon fill="#000000" stroke="#000000" points="339.7567,-2 339.7567,-30 339.7567,-30 339.7567,-2 339.7567,-2"></polygon>
+<polygon fill="none" stroke="#000000" points="327.7567,0 327.7567,-30 467.7567,-30 467.7567,0 327.7567,0"></polygon>
+</g>
+<!-- proc4_3&#45;&gt;dsExpenseRecord -->
+<g id="edge7" class="edge">
+<title>proc4_3&#45;&gt;dsExpenseRecord</title>
+<path fill="none" stroke="#000000" d="M397.7567,-82.5391C397.7567,-68.8473 397.7567,-52.9967 397.7567,-40.0931"></path>
+<polygon fill="#000000" stroke="#000000" points="401.2568,-40.0593 397.7567,-30.0593 394.2568,-40.0594 401.2568,-40.0593"></polygon>
+<text text-anchor="middle" x="490.4738" y="-52.2" font-family="Times,serif" font-size="14.00" fill="#000000">Valid Transfer Outbound Record</text>
+</g>
+<!-- dsDepositoryInfo -->
+<g id="node5" class="node">
+<title>dsDepositoryInfo</title>
+<text text-anchor="start" x="239.6024" y="-322.8" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Depository Info</text>
+<polygon fill="#000000" stroke="#000000" points="234.7567,-314.4 234.7567,-342.4 234.7567,-342.4 234.7567,-314.4 234.7567,-314.4"></polygon>
+<polygon fill="none" stroke="#000000" points="222.7567,-312.4 222.7567,-342.4 360.7567,-342.4 360.7567,-312.4 222.7567,-312.4"></polygon>
+</g>
+<!-- dsDepositoryInfo&#45;&gt;proc4_1 -->
+<g id="edge2" class="edge">
+<title>dsDepositoryInfo&#45;&gt;proc4_1</title>
+<path fill="none" stroke="#000000" d="M291.7567,-312.3944C291.7567,-301.0783 291.7567,-284.9821 291.7567,-269.9169"></path>
+<polygon fill="#000000" stroke="#000000" points="295.2568,-269.7232 291.7567,-259.7232 288.2568,-269.7232 295.2568,-269.7232"></polygon>
+<text text-anchor="middle" x="351.8216" y="-281.8" font-family="Times,serif" font-size="14.00" fill="#000000">Available Depository</text>
+</g>
+<!-- dsManagingAccountInfo -->
+<g id="node6" class="node">
+<title>dsManagingAccountInfo</title>
+<text text-anchor="start" x="383.3608" y="-322.8" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Managing Account Info</text>
+<polygon fill="#000000" stroke="#000000" points="378.7567,-314.4 378.7567,-342.4 378.7567,-342.4 378.7567,-314.4 378.7567,-314.4"></polygon>
+<polygon fill="none" stroke="#000000" points="366.2567,-312.4 366.2567,-342.4 549.2567,-342.4 549.2567,-312.4 366.2567,-312.4"></polygon>
+</g>
+<!-- dsManagingAccountInfo&#45;&gt;proc4_1 -->
+<g id="edge3" class="edge">
+<title>dsManagingAccountInfo&#45;&gt;proc4_1</title>
+<path fill="none" stroke="#000000" d="M447.9464,-312.1456C440.2937,-301.2711 428.7975,-286.974 415.7567,-277.6 406.9786,-271.2901 397.2763,-265.6517 387.2792,-260.6497"></path>
+<polygon fill="#000000" stroke="#000000" points="388.5655,-257.3854 378.0334,-256.234 385.5487,-263.702 388.5655,-257.3854"></polygon>
+<text text-anchor="middle" x="515.5632" y="-281.8" font-family="Times,serif" font-size="14.00" fill="#000000">Available Managing Account</text>
+</g>
+</g>
+</svg>
+</p>
+<h4 class="mume-header" id="diagram-5">Diagram 5</h4>
+
+<p><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: digram_5 Pages: 1 -->
+<svg width="496pt" height="330pt" viewBox="0.00 0.00 495.76 329.60" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 325.6)">
+<title>digram_5</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-325.6 491.7567,-325.6 491.7567,4 -4,4"></polygon>
+<!-- enti1input -->
+<g id="node1" class="node">
+<title>enti1input</title>
+<polygon fill="none" stroke="#000000" points="143.2709,-321.6 .2425,-321.6 .2425,-285.6 143.2709,-285.6 143.2709,-321.6"></polygon>
+<text text-anchor="middle" x="71.7567" y="-299.4" font-family="Times,serif" font-size="14.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- proc5_1 -->
+<g id="node3" class="node">
+<title>proc5_1</title>
+<text text-anchor="start" x="266.0067" y="-161.2" font-family="Times,serif" font-size="14.00" fill="#000000">5.1</text>
+<text text-anchor="start" x="172.5028" y="-137.2" font-family="Times,serif" font-size="14.00" fill="#000000">Calculate Balance Distribution: &#160;&#160;&#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="165.3075" y="-120.4" font-family="Times,serif" font-size="14.00" fill="#000000">Depository by Managing Account &#160;&#160;&#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="175.4169" y="-103.6" font-family="Times,serif" font-size="14.00" fill="#000000">Managing Account By Despository</text>
+<polygon fill="#000000" stroke="#000000" points="158.7567,-153.8 158.7567,-153.8 390.7567,-153.8 390.7567,-153.8 158.7567,-153.8"></polygon>
+<path fill="none" stroke="#000000" d="M170.7567,-92.8C170.7567,-92.8 378.7567,-92.8 378.7567,-92.8 384.7567,-92.8 390.7567,-98.8 390.7567,-104.8 390.7567,-104.8 390.7567,-168.8 390.7567,-168.8 390.7567,-174.8 384.7567,-180.8 378.7567,-180.8 378.7567,-180.8 170.7567,-180.8 170.7567,-180.8 164.7567,-180.8 158.7567,-174.8 158.7567,-168.8 158.7567,-168.8 158.7567,-104.8 158.7567,-104.8 158.7567,-98.8 164.7567,-92.8 170.7567,-92.8"></path>
+</g>
+<!-- enti1input&#45;&gt;proc5_1 -->
+<g id="edge1" class="edge">
+<title>enti1input&#45;&gt;proc5_1</title>
+<path fill="none" stroke="#000000" d="M64.9922,-285.3881C60.9757,-271.2821 58.2142,-251.814 67.1143,-237.6 84.5561,-209.7446 112.1343,-189.3914 141.5639,-174.5925"></path>
+<polygon fill="#000000" stroke="#000000" points="143.2525,-177.6642 150.7475,-170.1759 140.2186,-171.3558 143.2525,-177.6642"></polygon>
+<text text-anchor="middle" x="133.0779" y="-248.4" font-family="Times,serif" font-size="14.00" fill="#000000">Request without Param</text>
+</g>
+<!-- enti1output -->
+<g id="node2" class="node">
+<title>enti1output</title>
+<polygon fill="none" stroke="#000000" points="346.2709,-36 203.2425,-36 203.2425,0 346.2709,0 346.2709,-36"></polygon>
+<text text-anchor="middle" x="274.7567" y="-13.8" font-family="Times,serif" font-size="14.00" fill="#000000">Group of Bookkeepers</text>
+</g>
+<!-- proc5_1&#45;&gt;enti1output -->
+<g id="edge4" class="edge">
+<title>proc5_1&#45;&gt;enti1output</title>
+<path fill="none" stroke="#000000" d="M274.7567,-88.4795C274.7567,-74.1702 274.7567,-58.9716 274.7567,-46.3659"></path>
+<polygon fill="#000000" stroke="#000000" points="278.2568,-46.0431 274.7567,-36.0432 271.2568,-46.0432 278.2568,-46.0431"></polygon>
+<text text-anchor="middle" x="332.8819" y="-58.2" font-family="Times,serif" font-size="14.00" fill="#000000">Balance Distribution</text>
+</g>
+<!-- dsIncomeRecord -->
+<g id="node4" class="node">
+<title>dsIncomeRecord</title>
+<text text-anchor="start" x="224.6634" y="-248" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Income Record</text>
+<polygon fill="#000000" stroke="#000000" points="219.7567,-239.6 219.7567,-267.6 219.7567,-267.6 219.7567,-239.6 219.7567,-239.6"></polygon>
+<polygon fill="none" stroke="#000000" points="207.2567,-237.6 207.2567,-267.6 342.2567,-267.6 342.2567,-237.6 207.2567,-237.6"></polygon>
+</g>
+<!-- dsIncomeRecord&#45;&gt;proc5_1 -->
+<g id="edge2" class="edge">
+<title>dsIncomeRecord&#45;&gt;proc5_1</title>
+<path fill="none" stroke="#000000" d="M274.7567,-237.4612C274.7567,-226.4978 274.7567,-210.913 274.7567,-195.2725"></path>
+<polygon fill="#000000" stroke="#000000" points="278.2568,-195.0344 274.7567,-185.0345 271.2568,-195.0345 278.2568,-195.0344"></polygon>
+<text text-anchor="middle" x="320.4324" y="-207" font-family="Times,serif" font-size="14.00" fill="#000000">Income Records</text>
+</g>
+<!-- dsExpenseRecord -->
+<g id="node5" class="node">
+<title>dsExpenseRecord</title>
+<text text-anchor="start" x="364.4404" y="-248" font-family="Times,serif" font-size="14.00" fill="#000000">DS: Expense Record</text>
+<polygon fill="#000000" stroke="#000000" points="359.7567,-239.6 359.7567,-267.6 359.7567,-267.6 359.7567,-239.6 359.7567,-239.6"></polygon>
+<polygon fill="none" stroke="#000000" points="347.7567,-237.6 347.7567,-267.6 487.7567,-267.6 487.7567,-237.6 347.7567,-237.6"></polygon>
+</g>
+<!-- dsExpenseRecord&#45;&gt;proc5_1 -->
+<g id="edge3" class="edge">
+<title>dsExpenseRecord&#45;&gt;proc5_1</title>
+<path fill="none" stroke="#000000" d="M404.6045,-237.4607C395.3349,-227.1768 382.3722,-213.5449 369.7567,-202.8 365.0912,-198.8263 360.1882,-194.8622 355.1704,-190.9618"></path>
+<polygon fill="#000000" stroke="#000000" points="357.2835,-188.1716 347.2087,-184.8928 353.0399,-193.7386 357.2835,-188.1716"></polygon>
+<text text-anchor="middle" x="434.1554" y="-207" font-family="Times,serif" font-size="14.00" fill="#000000">Expense Records</text>
+</g>
+</g>
+</svg>
+</p>
+<h2 class="mume-header" id=""></h2>
+
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#feature-name">Feature Name</a>
+<ul>
+<li><a href="#activity-flow">Activity Flow</a></li>
+<li><a href="#description">Description</a></li>
+<li><a href="#requirement-mapping">Requirement Mapping</a></li>
+</ul>
+</li>
+<li><a href="#display-total-expense-of-this-month">Display Total Expense of This Month</a></li>
+<li><a href="#create-an-expense-record">Create An Expense Record</a>
+<ul>
+<li><a href="#main-flow">Main Flow</a></li>
+</ul>
+</li>
+<li><a href="#create-an-income-record">Create An Income Record</a>
+<ul>
+<li><a href="#main-flow-1">Main Flow</a></li>
+</ul>
+</li>
+<li><a href="#configure-depository">Configure Depository</a>
+<ul>
+<li><a href="#main-flow-2">Main Flow</a></li>
+<li><a href="#description-1">Description</a></li>
+<li><a href="#ux-state">UX State</a></li>
+</ul>
+</li>
+<li><a href="#analysis">Analysis</a>
+<ul>
+<li><a href="#activity-flow-1">Activity Flow</a></li>
+<li><a href="#description-2">Description</a></li>
+<li><a href="#requirement-mapping-1">Requirement Mapping</a></li>
+<li><a href="#dfd">DFD</a>
+<ul>
+<li><a href="#context-diagram">Context Diagram</a></li>
+<li><a href="#diagram-0">Diagram 0</a></li>
+<li><a href="#diagram-1">Diagram 1</a></li>
+<li><a href="#diagram-2">Diagram 2</a></li>
+<li><a href="#diagram-3">Diagram 3</a></li>
+<li><a href="#diagram-4">Diagram 4</a></li>
+<li><a href="#diagram-5">Diagram 5</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#">#</a></li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    </body>
+    
+    
+    
+    
+    
+    <script>
+(function bindTaskListEvent() {
+  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
+  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
+    var checkbox = taskListItemCheckboxes[i]
+    var li = checkbox.parentElement
+    if (li.tagName !== 'LI') li = li.parentElement
+    if (li.tagName === 'LI') {
+      li.classList.add('task-list-item')
+    }
+  }
+}())    
+</script>
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  </html>

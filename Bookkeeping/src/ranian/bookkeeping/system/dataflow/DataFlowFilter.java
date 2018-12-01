@@ -56,6 +56,8 @@ public class DataFlowFilter implements Filter {
 		
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
+		
+		System.out.println("response leaving AP");
 	}
 
 	/**
